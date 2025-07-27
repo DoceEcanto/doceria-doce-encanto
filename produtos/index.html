@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore nosso delicioso cardápio de bolos, tortas, brigadeiros e outras delícias artesanais da Doce Encanto. Encomende já!">
+    <title>Nosso Cardápio | Doces e Bolos Artesanais | Doce Encanto</title>
+    <link rel="stylesheet" href="../css/style.css"> <!-- Caminho para o CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap"
+        rel="stylesheet">
+    <link rel="canonical" href="https://www.sua-doceria.com.br/produtos/">
+    <!-- Opcional: Link canônico para a página de produtos -->
+</head>
+
+<body>
+
+    <!-- Barra de Navegação -->
+    <header class="navbar">
+        <div class="container">
+            <a href="../index.html#home" class="logo">Doce<span>Encanto</span></a>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="index.html">Cardápio</a></li> <!-- Link para esta página -->
+                    <li><a href="../sobre.html#sobre">Sobre Nós</a></li>
+                    <li><a href="../contato.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <button class="btn-menu-mobile">&#9776;</button>
+        </div>
+    </header>
+
+    <!-- Banner da Página de Produtos -->
+    <section class="page-banner produtos-banner">
+        <div class="container">
+            <h1>Nosso Cardápio</h1>
+            <p>Descubra nossas delícias feitas com amor!</p>
+        </div>
+    </section>
+
+    <!-- Seção do Cardápio -->
+    <section id="cardapio" class="secao-cardapio">
+        <div class="container">
+            <h2>Explore Nossas Delícias</h2>
+            <p class="subtitulo-cardapio">Todos os nossos produtos são preparados com ingredientes frescos e de alta
+                qualidade.</p>
+
+            <div class="categorias-nav">
+                <button class="btn-categoria active" data-categoria="todos">Todos</button>
+                <button class="btn-categoria" data-categoria="bolos">Bolos</button>
+                <button class="btn-categoria" data-categoria="tortas">Tortas</center>
+                    <button class="btn-categoria" data-categoria="docinhos">Docinhos</button>
+                    <button class="btn-categoria" data-categoria="outros">Outros</button>
+            </div>
+
+            <div class="produtos-grid" id="lista-produtos">
+                <!-- Produtos serão carregados aqui via JavaScript ou escritos manualmente -->
+                <!-- Exemplo de como um produto seria listado: -->
+
+                <!-- Categoria: Bolos -->
+                <div class="produto-item" data-categoria="bolos">
+                    <img src="../img/bolo-morango.jpg" alt="Bolo de Morango">
+                    <h3>Bolo de Morango</h3>
+                    <p>Camadas de pão de ló, recheio cremoso de morango e chantilly.</p>
+                    <p class="preco">A partir de R$ 70,00 (fatia)</p>
+                    <a href="../contato.html#contato" class="btn btn-secondary">Pedir Agora</a>
+                </div>
+                <div class="produto-item" data-categoria="bolos">
+                    <img src="../img/bolo-chocolate.jpg" alt="Bolo de Chocolate Intenso">
+                    <h3>Bolo de Chocolate Intenso</h3>
+                    <p>Um clássico para os amantes de chocolate, com cobertura cremosa.</p>
+                    <p class="preco">A partir de R$ 85,00 (fatia)</p>
+                    <a href="../contato.html#contato" class="btn btn-secondary">Pedir Agora</a>
+                </div>
+                <div class="produto-item" data-categoria="bolos">
+                    <img src="../img/bolo-cenoura.jpg" alt="Bolo de Cenoura com Chocolate">
+                    <h3>Bolo de Cenoura com Brigadeiro</h3>
+                    <p>Massa fofinha de cenoura com a cobertura irresistível de brigadeiro.</p>
+                    <p class="preco">A partir de R$ 75,00 (fatia)</p>
+                    <a href="../contato.html#contato" class="btn btn-secondary">Pedir Agora</a>
+                </div>
+
+                <!-- Categoria: Tortas -->
+                <div class="produto-item" data-categoria="tortas">
+                    <img src="../img/torta-limao.jpg" alt="Torta de Limão">
+                    <h3>Torta de Limão</h3>
+                    <p>Equilíbrio perfeito entre o doce e o azedinho, com base crocante.</p>
+                    <p class="preco">A partir de R$ 60,00 (unidade)</p>
+                    <a href="../contato.html#contato" class="btn btn-secondary">Pedir Agora</a>
+                </div>
+                <div class="produto-item" data-categoria="tortas">
+                    <img src="../img/torta-mousse.jpg" alt="Torta Mousse de Maracujá">
+                    <h3>Torta Mousse de Maracujá</h3>
+                    <p>Leveza e o sabor tropical do maracujá em uma mousse aveludada.</p>
+                    <p class="preco">A partir de R$ 65,00 (unidade)</p>
+                    <a href="../contato.html#contato" class="btn btn-secondary">Pedir Agora</a>
+                </div>
+
+                <!-- Categoria: Docinhos -->
+                <div class="produto-item" data-categoria="docinhos">
+                    <img src="../img/brigadeiro-tradicional.jpg" alt="Brigadeiro Gourmet">
+                    <h3>Brigadeiro Gourmet</h3>
+                    <p>O clássico que todo mundo ama, feito com chocolate nobre.</p>
+                    <p class="preco">R$ 5,00 (unidade)</p>
+                    <a href="../contato.html#contato" class="btn btn-secondary">Pedir Agora</a>
+                </div>
+                <div class="produto-item" data-categoria="docinhos">
+                    <img src="../img/beijinho.jpg" alt="Beijinho">
+                    <h3>Beijinho</h3>
+                    <p>A doçura do coco com um toque de carinho.</p>
+                    <p class="preco">R$ 4,50 (unidade)</p>
+                    <a href="../contato.html#contato" class="btn btn-secondary">Pedir Agora</a>
+                </div>
+                <div class="produto-item" data-categoria="docinhos">
+                    <img src="../img/brigadeiro-churros.jpg" alt="Brigadeiro de Churros">
+                    <h3>Brigadeiro de Churros</h3>
+                    <p>O sabor da canela e do doce de leite em forma de brigadeiro.</p>
+                    <p class="preco">R$ 5,50 (unidade)</p>
+                    <a href="../contato.html#contato" class="btn btn-secondary">Pedir Agora</a>
+                </div>
+
+                <!-- Categoria: Outros -->
+                <div class="produto-item" data-categoria="outros">
+                    <img src="../img/bem-casado.jpg" alt="Bem Casado">
+                    <h3>Bem Casado</h3>
+                    <p>Tradicional doce para celebrações, com recheio de doce de leite.</p>
+                    <p class="preco">R$ 7,00 (unidade)</p>
+                    <a href="../contato.html#contato" class="btn btn-secondary">Pedir Agora</a>
+                </div>
+                <div class="produto-item" data-categoria="outros">
+                    <img src="../img/pao-de-mel.jpg" alt="Pão de Mel">
+                    <h3>Pão de Mel</h3>
+                    <p>Massa macia de mel com especiarias, recheio de doce de leite e cobertura de chocolate.</p>
+                    <p class="preco">R$ 6,00 (unidade)</p>
+                    <a href="../contato.html#contato" class="btn btn-secondary">Pedir Agora</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão Voltar ao Topo -->
+    <a href="../index.html#home" id="btnVoltarAoTop" class="btn-voltar-ao-topo" aria-label="Voltar ao topo">
+        &#9650; <!-- Seta para cima -->
+    </a>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="../index.html#home">Doce<span>Encanto</span></a>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="../index.html#home">Home</a></li>
+                        <li><a href="index.html">Cardápio</a></li>
+                        <li><a href="../sobre.html#sobre">Sobre Nós</a></li>
+                        <li><a href="../contato.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Siga-nos</h4>
+                    <!-- Lembre-se de trocar '#' pelos links reais -->
+                    <a href="#" aria-label="Instagram"><img src="../img/icon-instagram.png" alt="Instagram"></a>
+                    <a href="#" aria-label="WhatsApp"><img src="../img/icon-whatsapp.png" alt="WhatsApp"></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Doce Encanto. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- O script de filtros de categoria seria adicionado aqui se o desejo for dinâmico. -->
+    <!-- Por enquanto, os produtos estão listados manualmente para demonstração. -->
+    <!-- <script src="../js/cardapio.js"></script> -->
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

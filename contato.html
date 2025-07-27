@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Entre em contato com a Doce Encanto em Lages - SC para fazer seu pedido, tirar dúvidas ou solicitar um orçamento. Estamos à disposição!">
+    <title>Contato | Peça seu Doce | Doce Encanto Lages</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap"
+        rel="stylesheet">
+    <link rel="canonical" href="https://www.sua-doceria.com.br/contato.html">
+    <!-- Opcional: Link canônico para a página de contato -->
+</head>
+
+<body>
+
+    <!-- Barra de Navegação -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html#home" class="logo">Doce<span>Encanto</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="produtos/">Cardápio</a></li>
+                    <li><a href="sobre.html#sobre">Sobre Nós</a></li>
+                    <li><a href="contato.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <button class="btn-menu-mobile">&#9776;</button>
+        </div>
+    </header>
+
+    <!-- Banner da Página Contato -->
+    <section class="page-banner contato-banner">
+        <div class="container">
+            <h1>Entre em Contato</h1>
+            <p>Fale conosco e deixe seu dia mais doce!</p>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contato" class="secao-contato">
+        <div class="container">
+            <div class="contato-info">
+                <h2>Fale Conosco</h2>
+                <p>Estamos ansiosos para ouvir você! Entre em contato para fazer seu pedido, tirar dúvidas ou solicitar
+                    um orçamento.</p>
+                <ul>
+                    <li>
+                        <img src="img/icon-localizacao.png" alt="Ícone de Localização"> <!-- Placeholder -->
+                        <span>Lages - Santa Catarina</span>
+                    </li>
+                    <li>
+                        <img src="img/icon-telefone.png" alt="Ícone de Telefone"> <!-- Placeholder -->
+                        <!-- Este link é o que abre o WhatsApp -->
+                        <a href="https://wa.me/5549999999999" target="_blank" class="link-whatsapp-direto">
+                            (49) 99999-9999
+                        </a>
+                    </li>
+                    <li>
+                        <img src="img/icon-email.png" alt="Ícone de Email"> <!-- Placeholder -->
+                        <span>contato@doceencanto.com.br</span>
+                    </li>
+                </ul>
+                <div class="contato-social">
+                    <h4>Siga nossas Redes Sociais</h4>
+                    <a href="#" aria-label="Instagram"><img src="img/icon-instagram.png" alt="Instagram"></a>
+                    <a href="#" aria-label="WhatsApp"><img src="img/icon-whatsapp.png" alt="WhatsApp"></a>
+                </div>
+            </div>
+
+            <div class="contato-formulario">
+                <h3>Envie uma Mensagem</h3>
+                <!-- O formulário envia para um link de WhatsApp -->
+                <form id="formContato">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone (com DDD):</label>
+                        <input type="tel" id="telefone" name="telefone" required placeholder="(XX) XXXXX-XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="produto">Produto desejado (opcional):</label>
+                        <input type="text" id="produto" name="produto" placeholder="Ex: Bolo de Morango">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem:</label>
+                        <textarea id="mensagem" name="mensagem" rows="4" required
+                            placeholder="Descreva seu pedido, dúvidas ou solicitação..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-enviar-contato">Enviar via WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão Voltar ao Topo -->
+    <a href="index.html#home" id="btnVoltarAoTop" class="btn-voltar-ao-topo" aria-label="Voltar ao topo">
+        &#9650; <!-- Seta para cima -->
+    </a>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html#home">Doce<span>Encanto</span></a>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="produtos/">Cardápio</a></li>
+                        <li><a href="sobre.html#sobre">Sobre Nós</a></li>
+                        <li><a href="contato.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Siga-nos</h4>
+                    <!-- Lembre-se de trocar '#' pelos links reais -->
+                    <a href="#" aria-label="Instagram"><img src="img/icon-instagram.png" alt="Instagram"></a>
+                    <a href="#" aria-label="WhatsApp"><img src="img/icon-whatsapp.png" alt="WhatsApp"></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Doce Encanto. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <!-- O script específico para o formulário de contato já está no main.js -->
+</body>
+
+</html>
