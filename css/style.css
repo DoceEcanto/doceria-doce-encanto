@@ -1,9 +1,9 @@
 /* ----- VARIÁVEIS DE CORES ----- */
 :root {
     --cor-primaria: #e91e63;
-    /* Um tom de rosa/vermelho vibrante */
+    /* Rosa vibrante */
     --cor-primaria-hover: #c2185b;
-    /* Tom mais escuro para hover */
+    /* Rosa mais escuro para hover */
     --cor-secundaria: #ffffff;
     /* Branco */
     --cor-fundo: #f8f8f8;
@@ -18,6 +18,10 @@
     /* Cor de hover para links */
     --cor-texto-subtitulo: #666;
     /* Texto para subtítulos */
+    --cor-foco-input: #e91e63;
+    /* Cor de foco para inputs, igual à primária */
+    --cor-overlay-banner: rgba(0, 0, 0, 0.4);
+    /* Overlay para banners */
 }
 
 /* ----- RESET BÁSICO E ESTILOS GLOBAIS ----- */
@@ -34,6 +38,8 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     /* Evita scroll horizontal */
+    scroll-behavior: smooth;
+    /* Habilita scroll suave por padrão no navegador */
 }
 
 .container {
@@ -82,8 +88,12 @@ a {
     transition: color 0.3s ease;
 }
 
-a:hover {
+a:hover,
+a:focus {
+    /* Adicionado :focus para acessibilidade */
     color: var(--cor-link-hover);
+    text-decoration: none;
+    /* Remove underline padrão, hover já define */
 }
 
 img {
@@ -97,6 +107,7 @@ section {
     padding: 60px 0;
 }
 
+/* Títulos secundários mais suaves */
 .subtitulo-destaques,
 .subtitulo-cardapio,
 .subtitulo-depoimentos {
@@ -114,6 +125,8 @@ section {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    /* Transição suave ao scroll */
 }
 
 .navbar .container {
@@ -150,11 +163,12 @@ section {
     position: relative;
 }
 
-.navbar nav ul li a:hover {
+.navbar nav ul li a:hover,
+.navbar nav ul li a:focus {
     color: var(--cor-primaria);
 }
 
-/* Efeito de underline sutil no hover */
+/* Efeito de underline sutil no hover/focus */
 .navbar nav ul li a::after {
     content: '';
     position: absolute;
@@ -167,9 +181,22 @@ section {
     transition: width 0.3s ease;
 }
 
-.navbar nav ul li a:hover::after {
+.navbar nav ul li a:hover::after,
+.navbar nav ul li a:focus::after {
     width: 100%;
     left: 0;
+    background: var(--cor-primaria);
+}
+
+/* Estilo para link ativo na navbar */
+.navbar nav ul li a.active {
+    color: var(--cor-primaria);
+    font-weight: 700;
+    /* Mais destaque para a página ativa */
+}
+
+.navbar nav ul li a.active::after {
+    width: 100%;
     background: var(--cor-primaria);
 }
 
@@ -181,7 +208,21 @@ section {
     font-size: 2rem;
     cursor: pointer;
     color: var(--cor-primaria);
+    padding: 5px;
+    /* Adicionado padding para facilitar o clique */
+    border-radius: 4px;
+    /* Leve arredondamento */
+    transition: background-color 0.3s ease;
 }
+
+.btn-menu-mobile:hover,
+.btn-menu-mobile:focus {
+    background-color: rgba(233, 30, 99, 0.1);
+    /* Leve fundo rosa no hover */
+    outline: none;
+    /* Remove outline padrão, o hover já dá feedback */
+}
+
 
 /* ----- HERO SECTION (BANNER PRINCIPAL) ----- */
 .hero {
@@ -227,6 +268,8 @@ section {
     font-size: 4rem;
     /* Tamanho maior para o título principal */
     margin-bottom: 15px;
+    line-height: 1.2;
+    /* Ajuste para o título principal */
 }
 
 .hero-text h1 span {
@@ -261,6 +304,13 @@ section {
     border-radius: 15px;
     /* Bordas arredondadas para a imagem */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    /* Transição suave */
+}
+
+.hero-image img:hover {
+    transform: scale(1.03);
+    /* Leve zoom no hover */
 }
 
 /* ----- ESTILOS GERAIS PARA BOTÕES (CTAS) ----- */
@@ -268,6 +318,7 @@ section {
     display: inline-block;
     padding: 12px 25px;
     margin: 10px 5px;
+    /* Mantido para compatibilidade com layout flex/grid */
     border: none;
     border-radius: 25px;
     /* Bordas arredondadas para um visual amigável */
@@ -287,7 +338,8 @@ section {
     /* Texto branco */
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
     background-color: var(--cor-primaria-hover);
     /* Uma variação mais escura da cor primária */
     transform: translateY(-2px);
@@ -303,7 +355,8 @@ section {
     border: 2px solid var(--cor-primaria);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn-secondary:focus {
     background-color: var(--cor-primaria);
     /* Muda para cor primária no hover */
     color: var(--cor-texto-branco);
@@ -349,7 +402,9 @@ section {
     /* Borda leve */
 }
 
-.produto-item:hover {
+.produto-item:hover,
+.produto-item:focus {
+    /* Adicionado focus */
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
@@ -382,6 +437,14 @@ section {
     margin-top: 10px;
 }
 
+/* Botão "Pedir Agora" dentro do item de produto */
+.produto-item .btn-secondary {
+    margin-top: 15px;
+    padding: 10px 20px;
+    /* Menor padding para o botão interno */
+    font-size: 1rem;
+}
+
 /* ----- SEÇÃO DE DEPOIMENTOS ----- */
 .secao-depoimentos {
     background-color: var(--cor-primaria);
@@ -404,6 +467,8 @@ section {
     /* Para um scroll mais suave */
     padding-bottom: 20px;
     /* Espaço para o scrollbar */
+    -webkit-overflow-scrolling: touch;
+    /* Melhora scroll em dispositivos touch */
 }
 
 .depoimento-item {
@@ -465,19 +530,26 @@ section {
     align-items: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     opacity: 0;
-    /* Começa escondido */
     visibility: hidden;
     /* Começa invisível */
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    /* Adicionado transform */
     z-index: 1001;
     /* Garante que fique acima de outros elementos */
 }
 
 .btn-voltar-ao-topo.show {
     opacity: 1;
-    /* Mostra o botão */
     visibility: visible;
 }
+
+.btn-voltar-ao-topo:hover,
+.btn-voltar-ao-topo:focus {
+    background-color: var(--cor-primaria-hover);
+    transform: translateY(-5px);
+    /* Efeito de elevação */
+}
+
 
 /* ----- PÁGINAS ESPECÍFICAS (BANNERS) ----- */
 .page-banner {
@@ -487,6 +559,10 @@ section {
     text-align: center;
     padding: 100px 0;
     position: relative;
+    display: flex;
+    /* Usando flex para centralizar conteúdo */
+    align-items: center;
+    justify-content: center;
 }
 
 .page-banner::before {
@@ -496,8 +572,8 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    /* Overlay escuro */
+    background: var(--cor-overlay-banner);
+    /* Usando variável para o overlay */
 }
 
 .page-banner .container {
@@ -510,6 +586,7 @@ section {
     font-size: 3.5rem;
     margin-bottom: 10px;
     color: var(--cor-texto-branco);
+    line-height: 1.2;
 }
 
 .page-banner p {
@@ -519,18 +596,18 @@ section {
 
 /* Estilos específicos para cada banner */
 .produtos-banner {
-    background-image: url('img/banner-produtos.jpg');
-    /* Assumindo que você tenha essa imagem */
+    background-image: url('../img/banner-produtos.jpg');
+    /* Ajustado caminho para consistentemente usar ../ */
 }
 
 .sobre-banner {
-    background-image: url('img/banner-sobre.jpg');
-    /* Assumindo que você tenha essa imagem */
+    background-image: url('../img/banner-sobre.jpg');
+    /* Ajustado caminho */
 }
 
 .contato-banner {
-    background-image: url('img/banner-contato.jpg');
-    /* Assumindo que você tenha essa imagem */
+    background-image: url('../img/banner-contato.jpg');
+    /* Ajustado caminho */
 }
 
 /* ----- SEÇÃO SOBRE NÓS ----- */
@@ -561,6 +638,11 @@ section {
 .sobre-imagem img {
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.sobre-imagem img:hover {
+    transform: scale(1.03);
 }
 
 .sobre-texto {
@@ -586,8 +668,10 @@ section {
     color: var(--cor-primaria);
 }
 
-.link-interna:hover {
+.link-interna:hover,
+.link-interna:focus {
     text-decoration: underline;
+    color: var(--cor-link-hover);
 }
 
 /* ----- SEÇÃO COMO PEDIR ----- */
@@ -614,6 +698,19 @@ section {
     /* Largura máxima para cada passo */
     min-width: 250px;
     /* Largura mínima */
+    background-color: var(--cor-secundaria);
+    /* Fundo branco para destaque */
+    padding: 25px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--cor-borda-cardapio);
+}
+
+.passo:hover,
+.passo:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .icone-passo {
@@ -695,7 +792,8 @@ section {
     font-weight: 600;
 }
 
-.contato-info ul li a:hover {
+.contato-info ul li a:hover,
+.contato-info ul li a:focus {
     color: var(--cor-link-hover);
     /* Hover para link do telefone */
 }
@@ -718,7 +816,8 @@ section {
     transition: transform 0.3s ease;
 }
 
-.contato-social img:hover {
+.contato-social img:hover,
+.contato-social img:focus {
     transform: scale(1.1);
 }
 
@@ -756,7 +855,8 @@ section {
     border-radius: 5px;
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Adicionado box-shadow */
 }
 
 .form-group input[type="text"]:focus,
@@ -764,7 +864,9 @@ section {
 .form-group textarea:focus {
     border-color: var(--cor-primaria);
     outline: none;
-    /* Remove o contorno padrão */
+    /* Remove o outline padrão */
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
+    /* Sombra de foco suave */
 }
 
 .form-group textarea {
@@ -847,7 +949,8 @@ section {
     transition: color 0.3s ease;
 }
 
-.footer-links ul li a:hover {
+.footer-links ul li a:hover,
+.footer-links ul li a:focus {
     color: var(--cor-primaria);
     text-decoration: underline;
 }
@@ -877,7 +980,8 @@ section {
     transition: transform 0.3s ease;
 }
 
-.footer-social img:hover {
+.footer-social img:hover,
+.footer-social img:focus {
     transform: scale(1.1);
 }
 
@@ -922,7 +1026,7 @@ section {
         padding: 20px 0;
         transform: translateY(-100%);
         /* Começa escondido */
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, opacity 0.3s ease;
         opacity: 0;
         pointer-events: none;
         /* Não interage quando escondido */
@@ -979,7 +1083,6 @@ section {
     /* Seção de Depoimentos */
     .depoimento-item {
         flex-basis: 90%;
-        /* Ocupa 90% para ter margem */
     }
 
     /* Páginas Específicas (Banners) */
@@ -1020,7 +1123,6 @@ section {
     .contato-formulario {
         width: 100%;
         box-sizing: border-box;
-        /* Inclui padding e border na largura */
         margin-bottom: 30px;
     }
 
@@ -1078,17 +1180,18 @@ section {
 
     .produtos-grid {
         grid-template-columns: 1fr;
-        /* Um item por linha */
     }
 
+    /* Um item por linha */
     .produto-item img {
         height: 180px;
     }
 
     .depoimento-item {
         flex-basis: 100%;
-        /* Agora ocupa 100% */
     }
+
+    /* Agora ocupa 100% */
 
     .page-banner h1 {
         font-size: 2.5rem;
@@ -1106,3 +1209,189 @@ section {
         right: 20px;
     }
 }
+
+/* ----- ESTILOS ADICIONAIS PARA PAINEL ADMIN ----- */
+
+/* Estilos gerais para seções de autenticação/dashboard */
+.auth-section,
+#admin-dashboard {
+    padding: 60px 0;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--cor-fundo);
+}
+
+/* Estilos para os formulários de login e produto */
+#loginForm,
+#productForm {
+    background-color: var(--cor-secundaria);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+}
+
+/* Ajustes para labels e inputs no formulário de produto */
+#productForm label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--cor-texto);
+    text-align: left;
+}
+
+#productForm input[type="text"],
+#productForm input[type="number"],
+#productForm textarea,
+#productForm input[type="email"],
+#productForm input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#productForm input[type="text"]:focus,
+#productForm input[type="number"]:focus,
+#productForm textarea:focus,
+#productForm input[type="email"]:focus,
+#productForm input[type="password"]:focus {
+    border-color: var(--cor-primaria);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
+}
+
+/* Ajustes para input de arquivo */
+#productForm input[type="file"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: var(--cor-secundaria);
+}
+
+#productForm input[type="file"]:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
+}
+
+/* Preview da imagem */
+#productForm #currentProductImagePreview {
+    max-width: 100px;
+    display: block;
+    margin-top: 10px;
+    border: 1px solid var(--cor-borda-cardapio);
+    border-radius: 5px;
+}
+
+/* Layout para ações de editar/excluir */
+.admin-actions {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+    /* Empurra os botões para a direita */
+}
+
+/* Estilo para cada item de produto na lista do admin */
+.product-admin-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid var(--cor-borda-cardapio);
+    margin-bottom: 10px;
+    background-color: var(--cor-secundaria);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+.product-admin-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-admin-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.product-admin-item img {
+    margin-right: 15px;
+    border-radius: 4px;
+}
+
+.product-admin-item span {
+    margin-right: 15px;
+    flex-grow: 1;
+    /* Permite que o texto ocupe o espaço */
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.product-admin-item span:nth-of-type(2) {
+    /* Estilo para o preço */
+    flex-grow: 0;
+    /* Não cresce muito */
+    min-width: 80px;
+    /* Garante espaço mínimo */
+    text-align: right;
+    font-weight: 600;
+    color: var(--cor-primaria);
+}
+
+/* Estilo para botões menores de ação no admin */
+.btn-sm {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+/* Botão de exclusão */
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Botão de Sair */
+#logout-btn {
+    margin-bottom: 30px;
+    background-color: var(--cor-primaria-hover);
+    border-color: var(--cor-primaria-hover);
+}
+
+#logout-btn:hover {
+    background-color: var(--cor-primaria);
+}
+
+/* Mensagens de erro e sucesso */
+#login-error,
+#form-message {
+    font-weight: 600;
+}
+
+#form-message.success {
+    color: green;
+}
+
+#form-message.error {
+    color: red;
+}
+
+#form-message.info {
+    color: blue;
+}
+
+/* Para feedback de upload */

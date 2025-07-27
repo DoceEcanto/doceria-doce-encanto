@@ -7,13 +7,15 @@
     <meta name="description"
         content="Doce Encanto: Bolos, tortas e doces artesanais feitos com amor em Lages - SC. Encomende seu momento especial!">
     <title>Doce Encanto | Confeitaria Artesanal em Lages - SC</title>
+    <!-- Link para o arquivo CSS principal -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap"
         rel="stylesheet">
+    <!-- Link canônico opcional para SEO -->
     <link rel="canonical" href="https://www.sua-doceria.com.br/">
-    <!-- Opcional: Link canônico para a página principal -->
 </head>
 
 <body>
@@ -21,16 +23,22 @@
     <!-- Barra de Navegação -->
     <header class="navbar">
         <div class="container">
+            <!-- Logo da Doceria -->
             <a href="index.html#home" class="logo">Doce<span>Encanto</span></a>
+
+            <!-- Menu de Navegação Principal -->
             <nav>
                 <ul>
-                    <li><a href="index.html#home">Home</a></li>
+                    <!-- Link ativo para a página Home -->
+                    <li><a href="index.html#home" class="active">Home</a></li>
                     <li><a href="produtos/">Cardápio</a></li>
                     <li><a href="sobre.html#sobre">Sobre Nós</a></li>
                     <li><a href="contato.html#contato">Contato</a></li>
                 </ul>
             </nav>
-            <button class="btn-menu-mobile">&#9776;</button>
+
+            <!-- Botão para abrir o menu mobile (visível em telas menores) -->
+            <button class="btn-menu-mobile" aria-label="Abrir menu">&#9776;</button>
         </div>
     </header>
 
@@ -42,13 +50,15 @@
                 <h1>Doce<span>Encanto</span></h1>
                 <p>Os sabores que adoçam seus momentos mais especiais.</p>
                 <div class="hero-cta">
+                    <!-- Botão para ver o cardápio completo -->
                     <a href="produtos/" class="btn btn-primary">Ver Cardápio Completo</a>
+                    <!-- Botão para fazer um pedido -->
                     <a href="contato.html#contato" class="btn btn-secondary">Faça seu Pedido Agora</a>
                 </div>
             </div>
             <div class="hero-image">
-                <!-- Imagem do banner principal -->
-                <img src="img/banner-hero.jpg" alt="Bolo decorado da Doce Encanto">
+                <!-- Imagem representativa da confeitaria -->
+                <img src="img/banner-hero.jpg" alt="Bolo decorado da Doce Encanto com frutas frescas">
             </div>
         </div>
     </section>
@@ -61,28 +71,29 @@
             <div class="produtos-grid">
                 <!-- Exemplo de Produto 1 -->
                 <div class="produto-item">
-                    <img src="img/brigadeiro-tradicional.jpg" alt="Brigadeiro Tradicional">
+                    <img src="img/brigadeiro-tradicional.jpg" alt="Brigadeiro Gourmet tradicional cremoso">
                     <h3>Brigadeiro Gourmet</h3>
                     <p>O clássico que todo mundo ama, feito com chocolate nobre.</p>
-                    <!-- Opcional: Preço -->
+                    <!-- Preço opcional pode ser adicionado aqui -->
                     <!-- <p class="preco">R$ 5,00</p> -->
                 </div>
                 <!-- Exemplo de Produto 2 -->
                 <div class="produto-item">
-                    <img src="img/bolo-morango.jpg" alt="Bolo de Morango">
+                    <img src="img/bolo-morango.jpg" alt="Bolo de Morango com chantilly e frutas">
                     <h3>Bolo de Morango</h3>
                     <p>Camadas de pão de ló, recheio cremoso de morango e chantilly.</p>
                     <!-- <p class="preco">R$ 70,00 (fatia)</p> -->
                 </div>
                 <!-- Exemplo de Produto 3 -->
                 <div class="produto-item">
-                    <img src="img/torta-limao.jpg" alt="Torta de Limão">
+                    <img src="img/torta-limao.jpg" alt="Torta de Limão com base crocante e cobertura de merengue">
                     <h3>Torta de Limão</h3>
                     <p>Equilíbrio perfeito entre o doce e o azedinho, com base crocante.</p>
                     <!-- <p class="preco">R$ 60,00 (unidade)</p> -->
                 </div>
                 <!-- Adicionar mais produtos conforme necessário -->
             </div>
+            <!-- Botão para explorar todo o cardápio -->
             <div class="cta-produtos">
                 <a href="produtos/" class="btn btn-primary">Explorar Todo o Cardápio</a>
             </div>
@@ -97,7 +108,7 @@
                 <!-- Depoimento 1 -->
                 <div class="depoimento-item">
                     <div class="depoimento-avatar">
-                        <img src="img/avatar-cliente1.jpg" alt="Avatar Cliente 1">
+                        <img src="img/avatar-cliente1.jpg" alt="Foto de perfil da cliente Maria S.">
                     </div>
                     <div class="depoimento-content">
                         <p>"Os doces da Doce Encanto são simplesmente divinos! Perfeitos para qualquer ocasião.
@@ -109,7 +120,7 @@
                 <!-- Depoimento 2 -->
                 <div class="depoimento-item">
                     <div class="depoimento-avatar">
-                        <img src="img/avatar-cliente2.jpg" alt="Avatar Cliente 2">
+                        <img src="img/avatar-cliente2.jpg" alt="Foto de perfil do cliente João P.">
                     </div>
                     <div class="depoimento-content">
                         <p>"A torta de limão foi o sucesso da minha festa! Leve, azedinha na medida certa. Amei!"</p>
@@ -123,6 +134,7 @@
     </section>
 
     <!-- Botão Voltar ao Topo -->
+    <!-- Link aponta para o ID 'home' na mesma página -->
     <a href="#home" id="btnVoltarAoTop" class="btn-voltar-ao-topo" aria-label="Voltar ao topo">
         &#9650; <!-- Seta para cima -->
     </a>
@@ -131,31 +143,39 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <!-- Logo no Rodapé -->
                 <div class="footer-logo">
                     <a href="index.html#home">Doce<span>Encanto</span></a>
                 </div>
+                <!-- Links de Navegação no Rodapé -->
                 <div class="footer-links">
                     <h4>Navegação</h4>
                     <ul>
-                        <li><a href="index.html#home">Home</a></li>
+                        <!-- Link ativo para a página Home -->
+                        <li><a href="index.html#home" class="active">Home</a></li>
                         <li><a href="produtos/">Cardápio</a></li>
                         <li><a href="sobre.html#sobre">Sobre Nós</a></li>
                         <li><a href="contato.html#contato">Contato</a></li>
                     </ul>
                 </div>
+                <!-- Links de Redes Sociais -->
                 <div class="footer-social">
                     <h4>Siga-nos</h4>
-                    <!-- Lembre-se de trocar '#' pelos links reais -->
-                    <a href="#" aria-label="Instagram"><img src="img/icon-instagram.png" alt="Instagram"></a>
-                    <a href="#" aria-label="WhatsApp"><img src="img/icon-whatsapp.png" alt="WhatsApp"></a>
+                    <!-- Substitua '#' pelos links reais das suas redes sociais -->
+                    <a href="#" aria-label="Instagram da Doce Encanto"><img src="img/icon-instagram.png"
+                            alt="Instagram"></a>
+                    <a href="#" aria-label="WhatsApp da Doce Encanto"><img src="img/icon-whatsapp.png"
+                            alt="WhatsApp"></a>
                 </div>
             </div>
+            <!-- Informações de Copyright -->
             <div class="footer-bottom">
                 <p>&copy; 2025 Doce Encanto. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Inclusão do script principal para interatividade -->
     <script src="js/main.js"></script>
 </body>
 

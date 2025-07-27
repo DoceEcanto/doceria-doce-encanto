@@ -1,44 +1,64 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Seleção de elementos
     const btnsFiltro = document.querySelectorAll('.filtros .btn');
     const cardsProduto = document.querySelectorAll('.catalogo-grid .produto-card');
     const btnTodos = document.querySelector('.filtro-todos');
+    const btnPedir = document.querySelectorAll('.catalogo-grid .btn-secondary[data-produto]');
 
-    // Adiciona evento de clique para cada botão de filtro
+    // Função para obter as categorias de um produto
+    function getCategories(card) {
+        const categoria = card.getAttribute('data-categoria') || '';
+        return categoria.split(' ').map(c => c.trim()).filter(Boolean);
+    }
+
+    // Função para aplicar o filtro
+    function aplicarFiltro(categoria) {
+        cardsProduto.forEach(card => {
+            const categorias = getCategories(card);
+            if (categoria === 'todos' || categorias.includes(categoria)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Função para remover classe ativa de todos os filtros
+    function limparFiltros() {
+        btnsFiltro.forEach(btn => btn.classList.remove('filtro-ativo'));
+    }
+
+    // Lógica de clique nos botões de filtro
     btnsFiltro.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove a classe 'filtro-ativo' de todos os botões
-            btnsFiltro.forEach(b => b.classList.remove('filtro-ativo'));
-            // Adiciona a classe 'filtro-ativo' ao botão clicado
+            limparFiltros();
             btn.classList.add('filtro-ativo');
-
-            const categoriaFiltrada = btn.getAttribute('data-categoria');
-
-            // Mostra ou esconde os cards de produto
-            cardsProduto.forEach(card => {
-                const categoriasDoCard = card.getAttribute('data-categoria').split(' '); // Divide se houver múltiplas categorias
-
-                if (categoriaFiltrada === 'todos' || categoriasDoCard.includes(categoriaFiltrada)) {
-                    card.style.display = 'block'; // Mostra o card
-                } else {
-                    card.style.display = 'none'; // Esconde o card
-                }
-            });
+            const categoria = btn.getAttribute('data-categoria');
+            aplicarFiltro(categoria);
         });
     });
 
-    // ----- FUNCIONALIDADE DOS BOTÕES "PEDIR AGORA" NA PÁGINA DE CATÁLOGO -----
-    // Reutilizamos o código do main.js para os botões de pedir
-    const botoesPedirCatalogo = document.querySelectorAll('.catalogo-grid .btn-secondary[data-produto]');
+    // Garante que o filtro "Todos" esteja ativo ao carregar a página
+    if (btnTodos) {
+        limparFiltros();
+        btnTodos.classList.add('filtro-ativo');
+        aplicarFiltro('todos');
+    }
 
-    botoesPedirCatalogo.forEach(botao => {
+    // Lógica dos botões "Pedir Agora"
+    function abrirWhatsApp(produto) {
+        const numeroWhatsApp = '+5549998314260'; // <<<<< ATENÇÃO: SUBSTITUA POR SEU NÚMERO REAL
+        const mensagem = `Olá! Gostaria de saber mais sobre o produto: ${produto}`;
+        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+        window.open(urlWhatsApp, '_blank');
+    }
+
+    btnPedir.forEach(botao => {
         botao.addEventListener('click', () => {
-            const produtoNome = botao.getAttribute('data-produto');
-            const numeroWhatsApp = '+5549998314260'; // <<<<< ATENÇÃO: SUBSTITUA POR SEU NÚMERO REAL
-
-            const mensagem = `Olá! Gostaria de saber mais sobre o produto: ${produtoNome}`;
-            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-
-            window.open(urlWhatsApp, '_blank');
+            const produto = botao.getAttribute('data-produto');
+            if (produto) {
+                abrirWhatsApp(produto);
+            }
         });
     });
 });

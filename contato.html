@@ -7,13 +7,15 @@
     <meta name="description"
         content="Entre em contato com a Doce Encanto em Lages - SC para fazer seu pedido, tirar dúvidas ou solicitar um orçamento. Estamos à disposição!">
     <title>Contato | Peça seu Doce | Doce Encanto Lages</title>
+    <!-- Link para o arquivo CSS principal -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap"
         rel="stylesheet">
+    <!-- Link canônico opcional para SEO -->
     <link rel="canonical" href="https://www.sua-doceria.com.br/contato.html">
-    <!-- Opcional: Link canônico para a página de contato -->
 </head>
 
 <body>
@@ -21,16 +23,22 @@
     <!-- Barra de Navegação -->
     <header class="navbar">
         <div class="container">
+            <!-- Logo da Doceria -->
             <a href="index.html#home" class="logo">Doce<span>Encanto</span></a>
+
+            <!-- Menu de Navegação Principal -->
             <nav>
                 <ul>
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="produtos/">Cardápio</a></li>
                     <li><a href="sobre.html#sobre">Sobre Nós</a></li>
-                    <li><a href="contato.html#contato">Contato</a></li>
+                    <!-- Link ativo para a página Contato -->
+                    <li><a href="contato.html#contato" class="active">Contato</a></li>
                 </ul>
             </nav>
-            <button class="btn-menu-mobile">&#9776;</button>
+
+            <!-- Botão para abrir o menu mobile (visível em telas menores) -->
+            <button class="btn-menu-mobile" aria-label="Abrir menu">&#9776;</button>
         </div>
     </header>
 
@@ -45,37 +53,46 @@
     <!-- Seção de Contato -->
     <section id="contato" class="secao-contato">
         <div class="container">
+            <!-- Informações de Contato e Redes Sociais -->
             <div class="contato-info">
                 <h2>Fale Conosco</h2>
                 <p>Estamos ansiosos para ouvir você! Entre em contato para fazer seu pedido, tirar dúvidas ou solicitar
                     um orçamento.</p>
                 <ul>
                     <li>
-                        <img src="img/icon-localizacao.png" alt="Ícone de Localização"> <!-- Placeholder -->
+                        <!-- Ícone de localização com texto alternativo -->
+                        <img src="img/icon-localizacao.png" alt="Ícone de localização">
                         <span>Lages - Santa Catarina</span>
                     </li>
                     <li>
-                        <img src="img/icon-telefone.png" alt="Ícone de Telefone"> <!-- Placeholder -->
-                        <!-- Este link é o que abre o WhatsApp -->
-                        <a href="https://wa.me/5549999999999" target="_blank" class="link-whatsapp-direto">
+                        <!-- Ícone de telefone com link direto para WhatsApp -->
+                        <img src="img/icon-telefone.png" alt="Ícone de telefone">
+                        <a href="https://wa.me/5549999999999" target="_blank" class="link-whatsapp-direto"
+                            aria-label="Entre em contato pelo WhatsApp">
                             (49) 99999-9999
                         </a>
                     </li>
                     <li>
-                        <img src="img/icon-email.png" alt="Ícone de Email"> <!-- Placeholder -->
+                        <!-- Ícone de email com texto alternativo -->
+                        <img src="img/icon-email.png" alt="Ícone de email">
                         <span>contato@doceencanto.com.br</span>
                     </li>
                 </ul>
+                <!-- Seção de Redes Sociais -->
                 <div class="contato-social">
                     <h4>Siga nossas Redes Sociais</h4>
-                    <a href="#" aria-label="Instagram"><img src="img/icon-instagram.png" alt="Instagram"></a>
-                    <a href="#" aria-label="WhatsApp"><img src="img/icon-whatsapp.png" alt="WhatsApp"></a>
+                    <!-- Links para redes sociais com aria-label -->
+                    <a href="#" aria-label="Instagram da Doce Encanto"><img src="img/icon-instagram.png"
+                            alt="Instagram"></a>
+                    <a href="#" aria-label="WhatsApp da Doce Encanto"><img src="img/icon-whatsapp.png"
+                            alt="WhatsApp"></a>
                 </div>
             </div>
 
+            <!-- Formulário de Contato -->
             <div class="contato-formulario">
                 <h3>Envie uma Mensagem</h3>
-                <!-- O formulário envia para um link de WhatsApp -->
+                <!-- O formulário envia para um link de WhatsApp via JavaScript -->
                 <form id="formContato">
                     <div class="form-group">
                         <label for="nome">Nome:</label>
@@ -94,6 +111,7 @@
                         <textarea id="mensagem" name="mensagem" rows="4" required
                             placeholder="Descreva seu pedido, dúvidas ou solicitação..."></textarea>
                     </div>
+                    <!-- Botão para enviar o formulário via WhatsApp -->
                     <button type="submit" class="btn btn-primary btn-enviar-contato">Enviar via WhatsApp</button>
                 </form>
             </div>
@@ -101,6 +119,7 @@
     </section>
 
     <!-- Botão Voltar ao Topo -->
+    <!-- Link aponta para o ID 'home' na página inicial -->
     <a href="index.html#home" id="btnVoltarAoTop" class="btn-voltar-ao-topo" aria-label="Voltar ao topo">
         &#9650; <!-- Seta para cima -->
     </a>
@@ -109,33 +128,40 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <!-- Logo no Rodapé -->
                 <div class="footer-logo">
                     <a href="index.html#home">Doce<span>Encanto</span></a>
                 </div>
+                <!-- Links de Navegação no Rodapé -->
                 <div class="footer-links">
                     <h4>Navegação</h4>
                     <ul>
                         <li><a href="index.html#home">Home</a></li>
                         <li><a href="produtos/">Cardápio</a></li>
                         <li><a href="sobre.html#sobre">Sobre Nós</a></li>
-                        <li><a href="contato.html#contato">Contato</a></li>
+                        <!-- Link ativo para a página Contato -->
+                        <li><a href="contato.html#contato" class="active">Contato</a></li>
                     </ul>
                 </div>
+                <!-- Links de Redes Sociais -->
                 <div class="footer-social">
                     <h4>Siga-nos</h4>
-                    <!-- Lembre-se de trocar '#' pelos links reais -->
-                    <a href="#" aria-label="Instagram"><img src="img/icon-instagram.png" alt="Instagram"></a>
-                    <a href="#" aria-label="WhatsApp"><img src="img/icon-whatsapp.png" alt="WhatsApp"></a>
+                    <!-- Substitua '#' pelos links reais das suas redes sociais -->
+                    <a href="#" aria-label="Instagram da Doce Encanto"><img src="img/icon-instagram.png"
+                            alt="Instagram"></a>
+                    <a href="#" aria-label="WhatsApp da Doce Encanto"><img src="img/icon-whatsapp.png"
+                            alt="WhatsApp"></a>
                 </div>
             </div>
+            <!-- Informações de Copyright -->
             <div class="footer-bottom">
                 <p>&copy; 2025 Doce Encanto. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Inclusão do script principal para interatividade (inclui a lógica do formulário) -->
     <script src="js/main.js"></script>
-    <!-- O script específico para o formulário de contato já está no main.js -->
 </body>
 
 </html>

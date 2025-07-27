@@ -7,13 +7,15 @@
     <meta name="description"
         content="Conheça a história da Doce Encanto, nossa paixão por confeitaria artesanal e nosso processo de encomenda em Lages - SC. Feito com amor e dedicação.">
     <title>Sobre Nós e Como Pedir | Doce Encanto Lages</title>
+    <!-- Link para o arquivo CSS principal -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap"
         rel="stylesheet">
+    <!-- Link canônico opcional para SEO -->
     <link rel="canonical" href="https://www.sua-doceria.com.br/sobre.html">
-    <!-- Opcional: Link canônico para a página sobre -->
 </head>
 
 <body>
@@ -21,16 +23,22 @@
     <!-- Barra de Navegação -->
     <header class="navbar">
         <div class="container">
+            <!-- Logo da Doceria -->
             <a href="index.html#home" class="logo">Doce<span>Encanto</span></a>
+
+            <!-- Menu de Navegação Principal -->
             <nav>
                 <ul>
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="produtos/">Cardápio</a></li>
-                    <li><a href="sobre.html#sobre">Sobre Nós</a></li>
+                    <!-- Link ativo para a página Sobre -->
+                    <li><a href="sobre.html#sobre" class="active">Sobre Nós</a></li>
                     <li><a href="contato.html#contato">Contato</a></li>
                 </ul>
             </nav>
-            <button class="btn-menu-mobile">&#9776;</button>
+
+            <!-- Botão para abrir o menu mobile (visível em telas menores) -->
+            <button class="btn-menu-mobile" aria-label="Abrir menu">&#9776;</button>
         </div>
     </header>
 
@@ -47,7 +55,9 @@
         <div class="container">
             <div class="sobre-content">
                 <div class="sobre-imagem">
-                    <img src="img/sobre-nos-doceria.jpg" alt="Fachada da Doce Encanto ou confeiteira trabalhando">
+                    <!-- Imagem representando a doceria ou o processo criativo -->
+                    <img src="img/sobre-nos-doceria.jpg"
+                        alt="Confeiteira da Doce Encanto decorando um bolo com atenção aos detalhes">
                 </div>
                 <div class="sobre-texto">
                     <h2>Nossa História</h2>
@@ -68,25 +78,31 @@
         <div class="container">
             <h2>Como Pedir Conosco</h2>
             <div class="passos-pedido">
+                <!-- Passo 1 -->
                 <div class="passo">
                     <div class="icone-passo">
-                        <img src="img/icon-cardapio.png" alt="Ícone de Cardápio">
+                        <!-- Ícone representando o cardápio -->
+                        <img src="img/icon-cardapio.png" alt="Ícone de um cardápio aberto">
                     </div>
                     <h3>1. Explore Nosso Cardápio</h3>
                     <p>Visite nossa página de <a href="produtos/" class="link-interna">Cardápio</a> e escolha seus
                         produtos favoritos.</p>
                 </div>
+                <!-- Passo 2 -->
                 <div class="passo">
                     <div class="icone-passo">
-                        <img src="img/icon-whatsapp.png" alt="Ícone de WhatsApp">
+                        <!-- Ícone representando o WhatsApp -->
+                        <img src="img/icon-whatsapp.png" alt="Ícone do WhatsApp">
                     </div>
                     <h3>2. Entre em Contato</h3>
                     <p>Envie uma mensagem pelo nosso <a href="contato.html#contato" class="link-interna">WhatsApp</a>
                         informando sua escolha, endereço e data desejada.</p>
                 </div>
+                <!-- Passo 3 -->
                 <div class="passo">
                     <div class="icone-passo">
-                        <img src="img/icon-entrega.png" alt="Ícone de Entrega">
+                        <!-- Ícone representando entrega -->
+                        <img src="img/icon-entrega.png" alt="Ícone de um pacote sendo entregue">
                     </div>
                     <h3>3. Receba sua Doce Encanto</h3>
                     <p>Aguarde a confirmação do seu pedido e aproveite nossas delícias!</p>
@@ -96,6 +112,7 @@
     </section>
 
     <!-- Botão Voltar ao Topo -->
+    <!-- Link aponta para o ID 'home' na página inicial -->
     <a href="index.html#home" id="btnVoltarAoTop" class="btn-voltar-ao-topo" aria-label="Voltar ao topo">
         &#9650; <!-- Seta para cima -->
     </a>
@@ -104,31 +121,40 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <!-- Logo no Rodapé -->
                 <div class="footer-logo">
                     <a href="index.html#home">Doce<span>Encanto</span></a>
                 </div>
+                <!-- Links de Navegação no Rodapé -->
                 <div class="footer-links">
                     <h4>Navegação</h4>
                     <ul>
+                        <!-- Link ativo para a página Home -->
                         <li><a href="index.html#home">Home</a></li>
                         <li><a href="produtos/">Cardápio</a></li>
-                        <li><a href="sobre.html#sobre">Sobre Nós</a></li>
+                        <!-- Link ativo para a página Sobre -->
+                        <li><a href="sobre.html#sobre" class="active">Sobre Nós</a></li>
                         <li><a href="contato.html#contato">Contato</a></li>
                     </ul>
                 </div>
+                <!-- Links de Redes Sociais -->
                 <div class="footer-social">
                     <h4>Siga-nos</h4>
-                    <!-- Lembre-se de trocar '#' pelos links reais -->
-                    <a href="#" aria-label="Instagram"><img src="img/icon-instagram.png" alt="Instagram"></a>
-                    <a href="#" aria-label="WhatsApp"><img src="img/icon-whatsapp.png" alt="WhatsApp"></a>
+                    <!-- Substitua '#' pelos links reais das suas redes sociais -->
+                    <a href="#" aria-label="Instagram da Doce Encanto"><img src="img/icon-instagram.png"
+                            alt="Instagram"></a>
+                    <a href="#" aria-label="WhatsApp da Doce Encanto"><img src="img/icon-whatsapp.png"
+                            alt="WhatsApp"></a>
                 </div>
             </div>
+            <!-- Informações de Copyright -->
             <div class="footer-bottom">
                 <p>&copy; 2025 Doce Encanto. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Inclusão do script principal para interatividade -->
     <script src="js/main.js"></script>
 </body>
 

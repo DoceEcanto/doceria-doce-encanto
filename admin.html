@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle | Doce Encanto</title>
+    <link rel="stylesheet" href="../css/style.css"> <!-- Link para o seu CSS principal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Estilos básicos para o painel admin */
+        .auth-section,
+        #admin-dashboard {
+            padding: 60px 0;
+            min-height: 70vh;
+            /* Ocupa boa parte da tela */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: var(--cor-fundo);
+        }
+
+        #loginForm,
+        #productForm {
+            background-color: var(--cor-secundaria);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+
+        #productForm label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--cor-texto);
+            text-align: left;
+        }
+
+        #productForm input[type="text"],
+        #productForm input[type="number"],
+        #productForm textarea,
+        #productForm input[type="email"],
+        #productForm input[type="password"],
+        #productForm input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #productForm input[type="file"] {
+            padding: 8px;
+            /* Ajuste para input de arquivo */
+        }
+
+        #productForm textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        #productForm button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        #productForm #currentProductImagePreview {
+            max-width: 100px;
+            display: block;
+            margin-top: 10px;
+            border: 1px solid var(--cor-borda-cardapio);
+            border-radius: 5px;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+            margin-left: auto;
+            /* Empurra os botões para a direita */
+        }
+
+        .product-admin-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid var(--cor-borda-cardapio);
+            margin-bottom: 10px;
+            background-color: var(--cor-secundaria);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .product-admin-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .product-admin-item img {
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+
+        .product-admin-item span {
+            margin-right: 15px;
+            flex-grow: 1;
+            /* Permite que o texto ocupe o espaço */
+            text-align: left;
+        }
+
+        .product-admin-item .btn-sm {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+        #logout-btn {
+            margin-bottom: 30px;
+            background-color: var(--cor-primaria-hover);
+            border-color: var(--cor-primaria-hover);
+        }
+
+        #logout-btn:hover {
+            background-color: var(--cor-primaria);
+        }
+
+        #login-error,
+        #form-message {
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Seção de Login -->
+    <section id="login-section" class="auth-section">
+        <div class="container">
+            <h2>Painel de Controle - Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="admin-email">Email:</label>
+                    <input type="email" id="admin-email" required placeholder="seu-email@admin.com">
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">Senha:</label>
+                    <input type="password" id="admin-password" required placeholder="********">
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                <p id="login-error" style="color: red; margin-top: 10px;"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Área de Gerenciamento de Produtos (inicialmente oculta) -->
+    <section id="admin-dashboard" style="display: none;">
+        <div class="container">
+            <h2>Gerenciar Produtos</h2>
+            <button id="logout-btn" class="btn btn-primary">Sair</button>
+
+            <!-- Formulário para Adicionar/Editar Produto -->
+            <h3 style="margin-top: 30px;">Adicionar Novo Produto</h3>
+            <form id="productForm">
+                <input type="hidden" id="productId"> <!-- Campo oculto para ID do produto em edição -->
+                <div class="form-group">
+                    <label for="productName">Nome:</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Descrição:</label>
+                    <textarea id="productDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Preço (ex: 70.50):</label>
+                    <input type="number" id="productPrice" step="0.01" required placeholder="Ex: 75.00">
+                </div>
+                <div class="form-group">
+                    <label for="productCategory">Categoria(s) (separadas por vírgula):</label>
+                    <input type="text" id="productCategory" placeholder="Ex: Bolos, Tortas, Docinhos">
+                </div>
+                <div class="form-group">
+                    <label for="productImage">Foto do Produto:</label>
+                    <input type="file" id="productImage" accept="image/*">
+                    <img id="currentProductImagePreview" src="" alt="Preview da Imagem"
+                        style="max-width: 100px; margin-top: 10px; display: none;">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Produto</button>
+                <p id="form-message" style="margin-top: 10px;"></p>
+            </form>
+
+            <!-- Lista de Produtos -->
+            <h3 style="margin-top: 40px;">Produtos Existentes</h3>
+            <div id="productList">
+                <!-- Produtos serão carregados aqui -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Inclusão do Firebase SDK -->
+    <!-- Certifique-se de que a versão do SDK é a mais recente ou compatível -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+    <!-- Seu script do admin -->
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>
