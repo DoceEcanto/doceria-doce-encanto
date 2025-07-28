@@ -16,9 +16,855 @@
         rel="stylesheet">
     <!-- Link canônico opcional para SEO -->
     <link rel="canonical" href="https://www.sua-doceria.com.br/contato.html">
+
+    <!-- Animações CSS -->
+    <style>
+        /* Keyframes para animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
+            }
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            14% {
+                transform: scale(1.3);
+            }
+
+            28% {
+                transform: scale(1);
+            }
+
+            42% {
+                transform: scale(1.3);
+            }
+
+            70% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff69b4, #ffc0cb, #ff1493);
+            background-size: 300% 300%;
+            animation: gradientMove 3s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loading-logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            border-top: 6px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Navbar Animations */
+        .navbar {
+            animation: slideInFromTop 1s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .navbar:hover {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo:hover {
+            animation: heartbeat 1s ease-in-out;
+            color: #ff69b4;
+        }
+
+        .logo::before {
+            content: '📞';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover::before {
+            left: -20px;
+            opacity: 1;
+        }
+
+        /* Navigation Links */
+        nav ul li a {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: #ff69b4;
+            transform: translateY(-3px);
+        }
+
+        /* Page Banner */
+        .page-banner {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.8), rgba(255, 192, 203, 0.8));
+            animation: gradientShift 6s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background: linear-gradient(45deg, rgba(255, 105, 180, 0.8), rgba(255, 192, 203, 0.8));
+            }
+
+            50% {
+                background: linear-gradient(45deg, rgba(255, 192, 203, 0.8), rgba(255, 105, 180, 0.8));
+            }
+        }
+
+        .page-banner h1 {
+            animation: bounceIn 1.2s ease-out 0.5s both;
+            position: relative;
+        }
+
+        .page-banner h1::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 3s ease-in-out 2s infinite;
+        }
+
+        .page-banner p {
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        /* Contact Section */
+        .secao-contato {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .secao-contato .container {
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+
+        /* Contact Info */
+        .contato-info {
+            animation: fadeInLeft 1s ease-out 0.8s both;
+            position: relative;
+        }
+
+        .contato-info h2 {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contato-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            transform: translateX(-100%);
+            animation: slideInRight 1s ease-out 1.2s both;
+        }
+
+        @keyframes slideInRight {
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .contato-info ul li {
+            animation: fadeInUp 0.8s ease-out both;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contato-info ul li:nth-child(1) {
+            animation-delay: 1s;
+        }
+
+        .contato-info ul li:nth-child(2) {
+            animation-delay: 1.2s;
+        }
+
+        .contato-info ul li:nth-child(3) {
+            animation-delay: 1.4s;
+        }
+
+        .contato-info ul li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .contato-info ul li:hover::before {
+            left: 100%;
+        }
+
+        .contato-info ul li:hover {
+            transform: translateX(10px);
+            background: rgba(255, 105, 180, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .contato-info ul li img {
+            transition: all 0.3s ease;
+        }
+
+        .contato-info ul li:hover img {
+            transform: scale(1.2) rotate(15deg);
+            filter: brightness(1.2);
+        }
+
+        .link-whatsapp-direto {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .link-whatsapp-direto::after {
+            content: '💬';
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .link-whatsapp-direto:hover::after {
+            right: -20px;
+            opacity: 1;
+        }
+
+        .link-whatsapp-direto:hover {
+            color: #25D366;
+            animation: pulse 0.5s ease-in-out;
+        }
+
+        /* Social Media */
+        .contato-social {
+            animation: fadeInUp 0.8s ease-out 1.6s both;
+        }
+
+        .contato-social a {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contato-social a:hover {
+            transform: scale(1.3) rotate(360deg);
+            animation: glow 1s ease-in-out infinite;
+        }
+
+        /* Form Section */
+        .contato-formulario {
+            animation: fadeInRight 1s ease-out 1s both;
+            position: relative;
+        }
+
+        .contato-formulario h3 {
+            position: relative;
+            text-align: center;
+        }
+
+        .contato-formulario h3::before,
+        .contato-formulario h3::after {
+            content: '✉️';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .contato-formulario h3::before {
+            left: -40px;
+            animation-delay: 0.5s;
+        }
+
+        .contato-formulario h3::after {
+            right: -40px;
+            animation-delay: 1s;
+        }
+
+        /* Form Groups */
+        .form-group {
+            animation: fadeInUp 0.8s ease-out both;
+            position: relative;
+        }
+
+        .form-group:nth-child(1) {
+            animation-delay: 1.2s;
+        }
+
+        .form-group:nth-child(2) {
+            animation-delay: 1.4s;
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 1.6s;
+        }
+
+        .form-group:nth-child(4) {
+            animation-delay: 1.8s;
+        }
+
+        .form-group label {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .form-group:hover label {
+            color: #ff69b4;
+            transform: translateX(5px);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            transform: scale(1.02);
+            border-color: #ff69b4;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        /* Input Animations */
+        .form-group input:not(:placeholder-shown)+label,
+        .form-group textarea:not(:placeholder-shown)+label {
+            transform: translateY(-25px) scale(0.8);
+            color: #ff69b4;
+        }
+
+        /* Submit Button */
+        .btn-enviar-contato {
+            animation: fadeInUp 0.8s ease-out 2s both;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-enviar-contato::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-enviar-contato:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-enviar-contato:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.4);
+            animation: pulse 0.5s ease-in-out infinite;
+        }
+
+        .btn-enviar-contato::after {
+            content: '🚀';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .btn-enviar-contato:hover::after {
+            opacity: 1;
+            right: 10px;
+        }
+
+        /* Success Animation */
+        .form-success {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: successPop 0.5s ease-out forwards;
+        }
+
+        @keyframes successPop {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Back to Top Button */
+        .btn-voltar-ao-topo {
+            animation: float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .btn-voltar-ao-topo:hover {
+            transform: translateY(-5px) scale(1.2);
+            animation: pulse 0.5s ease-in-out;
+            background: #ff69b4;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .footer-logo a:hover {
+            animation: heartbeat 1s ease-in-out;
+            color: #ff69b4;
+        }
+
+        .footer-links a {
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            transform: translateX(10px);
+            color: #ff69b4;
+        }
+
+        .footer-social a {
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            transform: scale(1.3) rotate(15deg);
+        }
+
+        /* Scroll Reveal */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 105, 180, 0.3);
+            animation: floatElement 12s infinite linear;
+        }
+
+        @keyframes floatElement {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            animation: float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+            animation: pulse 0.5s ease-in-out infinite;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+
+            .contato-info,
+            .contato-formulario {
+                animation: fadeInUp 0.6s ease-out 0.3s both;
+            }
+
+            .form-group {
+                animation: fadeInUp 0.6s ease-out both;
+            }
+
+            .form-group:nth-child(n) {
+                animation-delay: 0.5s;
+            }
+
+            .contato-formulario h3::before,
+            .contato-formulario h3::after {
+                display: none;
+            }
+        }
+
+        /* Typing Indicator */
+        .typing-indicator {
+            display: none;
+            padding: 10px;
+            background: rgba(255, 105, 180, 0.1);
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .typing-indicator.show {
+            display: block;
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        .typing-dots {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ff69b4;
+            margin: 0 2px;
+            animation: typingBounce 1.5s infinite;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingBounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">Doce<span style="color: #fff;">Encanto</span></div>
+            <div class="loading-spinner"></div>
+            <p>Preparando nosso atendimento...</p>
+        </div>
+    </div>
+
+    <!-- Floating Elements -->
+    <div class="floating-elements" id="floatingElements"></div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5549998406192?text=Olá! Gostaria de fazer um pedido 😊" class="whatsapp-float"
+        target="_blank" aria-label="Conversar no WhatsApp">
+        📱
+    </a>
 
     <!-- Barra de Navegação -->
     <header class="navbar">
@@ -54,7 +900,7 @@
     <section id="contato" class="secao-contato">
         <div class="container">
             <!-- Informações de Contato e Redes Sociais -->
-            <div class="contato-info">
+            <div class="contato-info scroll-reveal">
                 <h2>Fale Conosco</h2>
                 <p>Estamos ansiosos para ouvir você! Entre em contato para fazer seu pedido, tirar dúvidas ou solicitar
                     um orçamento.</p>
@@ -90,7 +936,7 @@
             </div>
 
             <!-- Formulário de Contato -->
-            <div class="contato-formulario">
+            <div class="contato-formulario scroll-reveal">
                 <h3>Envie uma Mensagem</h3>
                 <!-- O formulário envia para um link de WhatsApp via JavaScript -->
                 <form id="formContato">
@@ -111,6 +957,14 @@
                         <textarea id="mensagem" name="mensagem" rows="4" required
                             placeholder="Descreva seu pedido, dúvidas ou solicitação..."></textarea>
                     </div>
+
+                    <!-- Typing Indicator -->
+                    <div class="typing-indicator" id="typingIndicator">
+                        <div class="typing-dots">
+                            Preparando mensagem... <span></span><span></span><span></span>
+                        </div>
+                    </div>
+
                     <!-- Botão para enviar o formulário via WhatsApp -->
                     <button type="submit" class="btn btn-primary btn-enviar-contato">Enviar via WhatsApp</button>
                 </form>
@@ -119,13 +973,12 @@
     </section>
 
     <!-- Botão Voltar ao Topo -->
-    <!-- Link aponta para o ID 'home' na página inicial -->
     <a href="index.html#home" id="btnVoltarAoTop" class="btn-voltar-ao-topo" aria-label="Voltar ao topo">
-        &#9650; <!-- Seta para cima -->
+        &#9650;
     </a>
 
     <!-- Rodapé -->
-    <footer class="footer">
+    <footer class="footer scroll-reveal">
         <div class="container">
             <div class="footer-content">
                 <!-- Logo no Rodapé -->
@@ -146,7 +999,6 @@
                 <!-- Links de Redes Sociais -->
                 <div class="footer-social">
                     <h4>Siga-nos</h4>
-                    <!-- Substitua '#' pelos links reais das suas redes sociais -->
                     <a href="#" aria-label="Instagram da Doce Encanto"><img src="img/icon-instagram.png"
                             alt="Instagram"></a>
                     <a href="#" aria-label="WhatsApp da Doce Encanto"><img src="img/icon-whatsapp.png"
@@ -160,8 +1012,259 @@
         </div>
     </footer>
 
-    <!-- Inclusão do script principal para interatividade (inclui a lógica do formulário) -->
+    <!-- Scripts -->
     <script src="js/main.js"></script>
+
+    <!-- Script para animações e funcionalidades -->
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loadingScreen');
+                loadingScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 2000);
+        });
+
+        // Scroll Reveal Animation
+        function revealElements() {
+            const elements = document.querySelectorAll('.scroll-reveal');
+
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = elementTop < window.innerHeight - 100;
+
+                if (elementVisible) {
+                    element.classList.add('revealed');
+                }
+            });
+        }
+
+        // Create Floating Elements
+        function createFloatingElements() {
+            const elementsContainer = document.getElementById('floatingElements');
+            const symbols = ['📞', '💌', '📱', '✉️', '📧', '💬', '📲', '💖'];
+
+            for (let i = 0; i < 10; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                element.style.left = Math.random() * 100 + '%';
+                element.style.animationDelay = Math.random() * 12 + 's';
+                element.style.animationDuration = (Math.random() * 5 + 12) + 's';
+                elementsContainer.appendChild(element);
+            }
+        }
+
+        // Enhanced Form Handling
+        function setupFormEnhancements() {
+            const form = document.getElementById('formContato');
+            const inputs = form.querySelectorAll('input, textarea');
+            const typingIndicator = document.getElementById('typingIndicator');
+            let typingTimer;
+
+            // Add focus animations
+            inputs.forEach(input => {
+                input.addEventListener('focus', function () {
+                    this.parentNode.style.transform = 'scale(1.02)';
+                    this.parentNode.style.background = 'rgba(255,105,180,0.05)';
+                    this.parentNode.style.borderRadius = '8px';
+                    this.parentNode.style.padding = '10px';
+                });
+
+                input.addEventListener('blur', function () {
+                    this.parentNode.style.transform = '';
+                    this.parentNode.style.background = '';
+                    this.parentNode.style.borderRadius = '';
+                    this.parentNode.style.padding = '';
+                });
+
+                // Typing indicator
+                input.addEventListener('input', function () {
+                    clearTimeout(typingTimer);
+                    typingIndicator.classList.add('show');
+
+                    typingTimer = setTimeout(() => {
+                        typingIndicator.classList.remove('show');
+                    }, 1000);
+                });
+            });
+
+            // Form submission
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const nome = document.getElementById('nome').value;
+                const telefone = document.getElementById('telefone').value;
+                const produto = document.getElementById('produto').value;
+                const mensagem = document.getElementById('mensagem').value;
+
+                // Create WhatsApp message
+                let whatsappMessage = `Olá! Meu nome é ${nome}.\n`;
+                whatsappMessage += `Telefone: ${telefone}\n`;
+                if (produto) {
+                    whatsappMessage += `Produto desejado: ${produto}\n`;
+                }
+                whatsappMessage += `Mensagem: ${mensagem}`;
+
+                const whatsappUrl = `https://wa.me/5549998406192?text=${encodeURIComponent(whatsappMessage)}`;
+
+                // Show success animation
+                showSuccessAnimation();
+
+                // Open WhatsApp after animation
+                setTimeout(() => {
+                    window.open(whatsappUrl, '_blank');
+                }, 1000);
+            });
+        }
+
+        // Success Animation
+        function showSuccessAnimation() {
+            const form = document.getElementById('formContato');
+            const successDiv = document.createElement('div');
+            successDiv.className = 'form-success';
+            successDiv.innerHTML = `
+                <h3>🎉 Mensagem Preparada!</h3>
+                <p>Você será redirecionado para o WhatsApp em instantes...</p>
+            `;
+
+            form.appendChild(successDiv);
+
+            // Remove success message after 3 seconds
+            setTimeout(() => {
+                successDiv.remove();
+            }, 3000);
+        }
+
+        // Phone Number Formatting
+        function setupPhoneFormatting() {
+            const phoneInput = document.getElementById('telefone');
+
+            phoneInput.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, '');
+
+                if (value.length >= 2) {
+                    value = value.replace(/^(\d{2})(\d{0,5})(\d{0,4}).*/, '(\$1) \$2-\$3');
+                }
+
+                e.target.value = value;
+            });
+        }
+
+        // Interactive Contact Items
+        function setupContactInteractions() {
+            const contactItems = document.querySelectorAll('.contato-info ul li');
+
+            contactItems.forEach(item => {
+                item.addEventListener('mouseenter', function () {
+                    // Add ripple effect
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.width = '100px';
+                    ripple.style.height = '100px';
+                    ripple.style.background = 'rgba(255,105,180,0.3)';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.top = '50%';
+                    ripple.style.left = '50%';
+                    ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+                    ripple.style.animation = 'ripple 0.6s ease-out';
+                    ripple.style.pointerEvents = 'none';
+
+                    this.style.position = 'relative';
+                    this.appendChild(ripple);
+
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        }
+
+        // Smooth Scroll
+        function setupSmoothScroll() {
+            const links = document.querySelectorAll('a[href^="#"]');
+
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Navbar Scroll Effect
+        function setupNavbarScroll() {
+            const navbar = document.querySelector('.navbar');
+
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 100) {
+                    navbar.style.background = 'rgba(255,255,255,0.95)';
+                    navbar.style.backdropFilter = 'blur(10px)';
+                    navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                } else {
+                    navbar.style.background = '';
+                    navbar.style.backdropFilter = '';
+                    navbar.style.boxShadow = '';
+                }
+            });
+        }
+
+        // Easter Egg: Form validation with cute messages
+        function setupFormValidation() {
+            const form = document.getElementById('formContato');
+            const submitBtn = document.querySelector('.btn-enviar-contato');
+
+            form.addEventListener('input', function () {
+                const nome = document.getElementById('nome').value;
+                const telefone = document.getElementById('telefone').value;
+                const mensagem = document.getElementById('mensagem').value;
+
+                if (nome && telefone && mensagem) {
+                    submitBtn.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+                    submitBtn.innerHTML = '🚀 Pronto para Enviar!';
+                } else {
+                    submitBtn.style.background = '';
+                    submitBtn.innerHTML = 'Enviar via WhatsApp';
+                }
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function () {
+            createFloatingElements();
+            setupFormEnhancements();
+            setupPhoneFormatting();
+            setupContactInteractions();
+            setupSmoothScroll();
+            setupNavbarScroll();
+            setupFormValidation();
+            revealElements();
+
+            // Scroll listener
+            window.addEventListener('scroll', revealElements);
+
+            // Initial reveal
+            setTimeout(revealElements, 100);
+        });
+
+        // WhatsApp Button Animation
+        const whatsappBtn = document.querySelector('.whatsapp-float');
+        whatsappBtn.addEventListener('mouseenter', function () {
+            this.innerHTML = '💬';
+        });
+        whatsappBtn.addEventListener('mouseleave', function () {
+            this.innerHTML = '📱';
+        });
+    </script>
 </body>
 
 </html>
