@@ -1,0 +1,532 @@
+/* ===== CARRINHO.CSS - SISTEMA DE CARRINHO COMPLETO ===== */
+
+/* Ícone do carrinho no header */
+.carrinho-header {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.carrinho-header:hover {
+    background: rgba(255, 105, 180, 0.1);
+    color: #ff69b4;
+}
+
+.carrinho-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff69b4;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    animation: pulse 0.3s ease;
+}
+
+/* Sidebar do carrinho */
+.carrinho-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.carrinho-sidebar.aberto {
+    right: 0;
+}
+
+.carrinho-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.carrinho-overlay.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Header do carrinho */
+.carrinho-header-sidebar {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+    background: #f8f9fa;
+}
+
+.carrinho-header-sidebar h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.carrinho-fechar {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.carrinho-fechar:hover {
+    background: #e9ecef;
+    color: #333;
+}
+
+/* Lista de itens */
+.carrinho-itens {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.carrinho-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+    transition: background 0.3s ease;
+}
+
+.carrinho-item:hover {
+    background: #f8f9fa;
+}
+
+.carrinho-item:last-child {
+    border-bottom: none;
+}
+
+.carrinho-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.carrinho-item-info {
+    flex: 1;
+}
+
+.carrinho-item-nome {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.carrinho-item-preco {
+    color: #ff69b4;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.carrinho-item-observacoes {
+    color: #666;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    font-style: italic;
+}
+
+/* Controles de quantidade */
+.carrinho-quantidade {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 0.25rem;
+}
+
+.carrinho-quantidade button {
+    background: white;
+    border: 1px solid #e9ecef;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.carrinho-quantidade button:hover {
+    background: #ff69b4;
+    color: white;
+    border-color: #ff69b4;
+}
+
+.carrinho-quantidade button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.carrinho-quantidade span {
+    min-width: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.carrinho-remover {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.carrinho-remover:hover {
+    background: rgba(220, 53, 69, 0.1);
+}
+
+/* Footer do carrinho */
+.carrinho-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #e9ecef;
+    background: #f8f9fa;
+}
+
+.carrinho-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.carrinho-total-valor {
+    color: #ff69b4;
+    font-size: 1.4rem;
+}
+
+.carrinho-botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.btn-finalizar {
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.btn-finalizar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+}
+
+.btn-limpar {
+    background: white;
+    color: #666;
+    border: 2px solid #e9ecef;
+    padding: 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-limpar:hover {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+/* Estado vazio */
+.carrinho-vazio {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #666;
+}
+
+.carrinho-vazio-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.carrinho-vazio h4 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+}
+
+.carrinho-vazio p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Botão de adicionar ao carrinho nos produtos */
+.btn-adicionar-carrinho {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.btn-adicionar-carrinho:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.btn-adicionar-carrinho:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loading state */
+.btn-adicionar-carrinho.loading {
+    pointer-events: none;
+}
+
+.btn-adicionar-carrinho.loading::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 0.5rem;
+}
+
+/* Notificação de item adicionado */
+.carrinho-notificacao {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10001;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.carrinho-notificacao.mostrar {
+    transform: translateX(0);
+}
+
+.carrinho-notificacao-fechar {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+/* Modal de observações */
+.carrinho-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.carrinho-modal.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.carrinho-modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.carrinho-modal h4 {
+    margin: 0 0 1rem 0;
+    color: #333;
+}
+
+.carrinho-modal textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.carrinho-modal textarea:focus {
+    border-color: #ff69b4;
+    outline: none;
+}
+
+.carrinho-modal-botoes {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.carrinho-modal-botoes button {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-modal-adicionar {
+    background: #ff69b4;
+    color: white;
+}
+
+.btn-modal-cancelar {
+    background: #e9ecef;
+    color: #666;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .carrinho-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+
+    .carrinho-modal-content {
+        margin: 1rem;
+        width: auto;
+    }
+
+    .carrinho-modal-botoes {
+        flex-direction: column;
+    }
+}
+
+/* Animações */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.carrinho-item.novo {
+    animation: slideInRight 0.3s ease;
+}
+
+/* Efeito de adição ao carrinho */
+@keyframes adicionarCarrinho {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.produto-item.adicionando {
+    animation: adicionarCarrinho 0.5s ease;
+}
