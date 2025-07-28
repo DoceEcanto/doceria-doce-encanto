@@ -355,7 +355,7 @@
     align-items: center;
     margin-bottom: 1.5rem;
     padding: 1.5rem;
-    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
     color: white;
     border-radius: 16px;
     box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
@@ -567,143 +567,6 @@
     transform: scale(1.1);
 }
 
-/* Modal de observações - LUXO TOTAL */
-.carrinho-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
-    z-index: 10002;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s ease;
-}
-
-.carrinho-modal.ativo {
-    opacity: 1;
-    visibility: visible;
-}
-
-.carrinho-modal-content {
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-    padding: 3rem;
-    border-radius: 24px;
-    max-width: 500px;
-    width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    position: relative;
-    transform: scale(0.8);
-    transition: transform 0.4s ease;
-}
-
-.carrinho-modal.ativo .carrinho-modal-content {
-    transform: scale(1);
-}
-
-.carrinho-modal h4 {
-    margin: 0 0 2rem 0;
-    color: #2d3748;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-align: center;
-    position: relative;
-}
-
-.carrinho-modal h4::before {
-    content: '📝';
-    margin-right: 0.5rem;
-}
-
-.carrinho-modal h4::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(45deg, #ff69b4, #ff1493);
-    border-radius: 2px;
-}
-
-.carrinho-modal textarea {
-    width: 100%;
-    min-height: 120px;
-    padding: 1.5rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 16px;
-    resize: vertical;
-    font-family: inherit;
-    font-size: 1rem;
-    line-height: 1.6;
-    transition: all 0.3s ease;
-    background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
-}
-
-.carrinho-modal textarea:focus {
-    border-color: #ff69b4;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
-    background: white;
-}
-
-.carrinho-modal textarea::placeholder {
-    color: #a0aec0;
-    font-style: italic;
-}
-
-.carrinho-modal-botoes {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.carrinho-modal-botoes button {
-    flex: 1;
-    padding: 1.2rem;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.btn-modal-adicionar {
-    background: linear-gradient(45deg, #ff69b4, #ff1493);
-    color: white;
-    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
-}
-
-.btn-modal-adicionar:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(255, 105, 180, 0.4);
-}
-
-.btn-modal-cancelar {
-    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-    color: #718096;
-    border: 2px solid #e2e8f0;
-}
-
-.btn-modal-cancelar:hover {
-    background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
-    border-color: #ff4757;
-    color: #ff4757;
-    transform: translateY(-2px);
-}
-
 /* Responsividade melhorada */
 @media (max-width: 768px) {
     .carrinho-sidebar {
@@ -716,23 +579,6 @@
         font-size: 1rem;
     }
 
-    .carrinho-modal-content {
-        margin: 1rem;
-        width: auto;
-        padding: 2rem;
-    }
-
-    .carrinho-modal-botoes {
-        flex-direction: column;
-    }
-
-    .carrinho-notificacao {
-        top: 20px;
-        right: 20px;
-        left: 20px;
-        min-width: auto;
-    }
-
     .carrinho-item {
         padding: 1rem;
     }
@@ -740,6 +586,13 @@
     .carrinho-item img {
         width: 60px;
         height: 60px;
+    }
+
+    .carrinho-notificacao {
+        top: 20px;
+        right: 20px;
+        left: 20px;
+        min-width: auto;
     }
 }
 
@@ -781,7 +634,6 @@
 
     .carrinho-sidebar,
     .carrinho-overlay,
-    .carrinho-modal,
     .carrinho-notificacao,
     .carrinho-item,
     .btn-adicionar-carrinho {
@@ -808,21 +660,6 @@
     }
 
     .carrinho-item-nome {
-        color: white;
-    }
-
-    .carrinho-modal-content {
-        background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-        color: white;
-    }
-
-    .carrinho-modal h4 {
-        color: white;
-    }
-
-    .carrinho-modal textarea {
-        background: #374151;
-        border-color: #4b5563;
         color: white;
     }
 }

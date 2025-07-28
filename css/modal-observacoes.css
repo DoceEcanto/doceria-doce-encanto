@@ -1,0 +1,598 @@
+/* ===== MODAL-OBSERVACOES.CSS - MODAL SUPER BONITO ===== */
+
+/* Background do modal */
+.carrinho-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 20px;
+}
+
+.carrinho-modal.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Container do modal */
+.carrinho-modal-content {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 24px;
+    max-width: 580px;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+    position: relative;
+    transform: scale(0.8) translateY(50px);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carrinho-modal.ativo .carrinho-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+/* Header do modal */
+.carrinho-modal-header {
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+    padding: 2rem 2.5rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.carrinho-modal-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+    opacity: 0.3;
+}
+
+.carrinho-modal-header h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.carrinho-modal-header h3::before {
+    content: '📝';
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.carrinho-modal-fechar {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+.carrinho-modal-fechar:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1) rotate(90deg);
+}
+
+/* Body do modal */
+.carrinho-modal-body {
+    padding: 2.5rem;
+}
+
+.produto-preview {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 105, 180, 0.1);
+}
+
+.produto-preview img {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid white;
+}
+
+.produto-info h4 {
+    margin: 0 0 0.5rem 0;
+    color: #2d3748;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.produto-preco {
+    color: #ff69b4;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* Label e descrição */
+.observacoes-label {
+    display: block;
+    margin-bottom: 1rem;
+    color: #2d3748;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.observacoes-desc {
+    color: #718096;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    background: rgba(255, 105, 180, 0.05);
+    padding: 1rem;
+    border-radius: 12px;
+    border-left: 4px solid #ff69b4;
+}
+
+/* Textarea estilizada */
+.carrinho-modal textarea {
+    width: 100%;
+    min-height: 140px;
+    padding: 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    resize: vertical;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.carrinho-modal textarea:focus {
+    border-color: #ff69b4;
+    outline: none;
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.05),
+        0 0 0 4px rgba(255, 105, 180, 0.1);
+    background: white;
+    transform: translateY(-2px);
+}
+
+.carrinho-modal textarea::placeholder {
+    color: #a0aec0;
+    font-style: italic;
+}
+
+/* Contador de caracteres */
+.caracteres-contador {
+    text-align: right;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.caracteres-contador.limite {
+    color: #f56565;
+    font-weight: 600;
+}
+
+/* Sugestões rápidas */
+.sugestoes-rapidas {
+    margin: 1.5rem 0;
+}
+
+.sugestoes-titulo {
+    color: #4a5568;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.sugestoes-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.sugestao-btn {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    border: 2px solid #e2e8f0;
+    color: #4a5568;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.sugestao-btn:hover {
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+    border-color: #ff69b4;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+}
+
+/* Footer do modal */
+.carrinho-modal-footer {
+    padding: 0 2.5rem 2.5rem 2.5rem;
+}
+
+.carrinho-modal-botoes {
+    display: flex;
+    gap: 1rem;
+}
+
+.carrinho-modal-botoes button {
+    flex: 1;
+    padding: 1.2rem 2rem;
+    border: none;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-modal-adicionar {
+    background: linear-gradient(45deg, #10b981 0%, #059669 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+}
+
+.btn-modal-adicionar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4);
+}
+
+.btn-modal-adicionar:active {
+    transform: translateY(-1px);
+}
+
+.btn-modal-adicionar::before {
+    content: '🛒';
+    margin-right: 0.5rem;
+}
+
+.btn-modal-cancelar {
+    background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+    color: #718096;
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.btn-modal-cancelar:hover {
+    background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+    border-color: #f56565;
+    color: #c53030;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(245, 101, 101, 0.2);
+}
+
+.btn-modal-cancelar::before {
+    content: '✕';
+    margin-right: 0.5rem;
+}
+
+/* Loading state */
+.btn-modal-adicionar.loading {
+    pointer-events: none;
+    background: linear-gradient(45deg, #9ca3af 0%, #6b7280 100%);
+}
+
+.btn-modal-adicionar.loading::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 0.5rem;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Efeito de ondas no botão */
+.btn-modal-adicionar::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-modal-adicionar:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .carrinho-modal {
+        padding: 10px;
+    }
+
+    .carrinho-modal-content {
+        max-width: none;
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .carrinho-modal-header {
+        padding: 1.5rem 2rem;
+    }
+
+    .carrinho-modal-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .carrinho-modal-body {
+        padding: 2rem 1.5rem;
+    }
+
+    .carrinho-modal-footer {
+        padding: 0 1.5rem 2rem 1.5rem;
+    }
+
+    .produto-preview {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .produto-preview img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .carrinho-modal-botoes {
+        flex-direction: column;
+    }
+
+    .sugestoes-lista {
+        justify-content: center;
+    }
+
+    .carrinho-modal textarea {
+        min-height: 120px;
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carrinho-modal-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .carrinho-modal-body {
+        padding: 1.5rem 1rem;
+    }
+
+    .carrinho-modal-footer {
+        padding: 0 1rem 1.5rem 1rem;
+    }
+
+    .produto-preview {
+        padding: 1rem;
+    }
+
+    .carrinho-modal-botoes button {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .carrinho-modal-content {
+        background: linear-gradient(145deg, #1a202c 0%, #2d3748 100%);
+        box-shadow:
+            0 25px 80px rgba(0, 0, 0, 0.6),
+            0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .produto-preview {
+        background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+        border-color: rgba(255, 105, 180, 0.2);
+    }
+
+    .produto-info h4,
+    .observacoes-label {
+        color: white;
+    }
+
+    .observacoes-desc {
+        background: rgba(255, 105, 180, 0.1);
+        color: #e2e8f0;
+    }
+
+    .carrinho-modal textarea {
+        background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+        border-color: #4b5563;
+        color: white;
+    }
+
+    .carrinho-modal textarea:focus {
+        background: #374151;
+    }
+
+    .caracteres-contador {
+        color: #a0aec0;
+    }
+
+    .sugestoes-titulo {
+        color: #e2e8f0;
+    }
+
+    .sugestao-btn {
+        background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+        border-color: #4b5563;
+        color: #e2e8f0;
+    }
+
+    .btn-modal-cancelar {
+        background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+        border-color: #4b5563;
+        color: #e2e8f0;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .carrinho-modal,
+    .carrinho-modal-content,
+    .carrinho-modal-fechar,
+    .sugestao-btn,
+    .carrinho-modal-botoes button {
+        transition: none;
+    }
+
+    .carrinho-modal-header h3::before {
+        animation: none;
+    }
+
+    .btn-modal-adicionar.loading::before {
+        animation: none;
+        border: 2px solid white;
+    }
+}
+
+/* High contrast */
+@media (prefers-contrast: high) {
+    .carrinho-modal-content {
+        border: 3px solid #ff69b4;
+    }
+
+    .carrinho-modal textarea {
+        border: 3px solid #000;
+    }
+
+    .carrinho-modal textarea:focus {
+        border-color: #ff69b4;
+    }
+
+    .btn-modal-adicionar {
+        background: #000;
+        color: #fff;
+        border: 2px solid #fff;
+    }
+
+    .btn-modal-cancelar {
+        background: #fff;
+        color: #000;
+        border: 2px solid #000;
+    }
+}
+
+/* ===== MELHORAR VISUAL DO X PARA INDICAR QUE ADICIONA ===== */
+
+.carrinho-modal-fechar {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(16, 185, 129, 0.2) !important;
+    /* Verde para indicar que adiciona */
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+.carrinho-modal-fechar:hover {
+    background: rgba(16, 185, 129, 0.4) !important;
+    /* Verde mais forte */
+    transform: scale(1.1);
+}
+
+.carrinho-modal-fechar::after {
+    content: 'Adicionar' !important;
+    position: absolute;
+    top: -35px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.carrinho-modal-fechar:hover::after {
+    opacity: 1;
+}
