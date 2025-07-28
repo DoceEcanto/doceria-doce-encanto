@@ -1,0 +1,832 @@
+/* ===== SISTEMA-BUSCA.CSS - ESTILOS PARA BUSCA E FILTROS ===== */
+
+/* Container Principal da Busca */
+.busca-container {
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+    padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* Barra de Busca Principal */
+.busca-principal {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.busca-input-group {
+    display: flex;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.busca-input {
+    flex: 1;
+    padding: 1.2rem 1.5rem;
+    border: none;
+    font-size: 1.1rem;
+    background: transparent;
+    color: #333;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.busca-input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.busca-input:focus {
+    background: #fafafa;
+}
+
+.busca-btn {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    border: none;
+    padding: 1.2rem 1.5rem;
+    color: white;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    min-width: 60px;
+}
+
+.busca-btn:hover {
+    background: linear-gradient(135deg, #ff1493, #dc143c);
+    transform: scale(1.05);
+}
+
+.busca-clear {
+    background: #e74c3c;
+    border: none;
+    padding: 1.2rem 1.5rem;
+    color: white;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    min-width: 60px;
+}
+
+.busca-clear:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+/* Sugestões de Busca */
+.busca-sugestoes {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+    border-top: 1px solid #e2e8f0;
+}
+
+.sugestao-item {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 1rem;
+    color: #555;
+}
+
+.sugestao-item:hover {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    transform: translateX(5px);
+}
+
+.sugestao-item:last-child {
+    border-bottom: none;
+}
+
+/* Filtros Avançados */
+.filtros-avancados {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.filtros-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(255, 20, 147, 0.1));
+    border-bottom: 1px solid rgba(255, 105, 180, 0.2);
+}
+
+.filtros-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.filtros-toggle {
+    background: none;
+    border: 2px solid #ff69b4;
+    color: #ff69b4;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filtros-toggle:hover {
+    background: #ff69b4;
+    color: white;
+    transform: scale(1.05);
+}
+
+.filtros-content {
+    padding: 1.5rem;
+}
+
+.filtro-group {
+    margin-bottom: 2rem;
+}
+
+.filtro-label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.filtro-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Checkboxes Customizados */
+.filtro-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.8rem 1.2rem;
+    background: #f8f9fa;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.filtro-checkbox:hover {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+}
+
+.filtro-checkbox input {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    margin-right: 0.8rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.filtro-checkbox input:checked+.checkmark {
+    background: #ff69b4;
+    border-color: #ff69b4;
+}
+
+.filtro-checkbox input:checked+.checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.filtro-checkbox:hover .checkmark {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Radio Buttons Customizados */
+.filtro-radio {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.8rem 1.2rem;
+    background: #f8f9fa;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    margin-bottom: 0.5rem;
+}
+
+.filtro-radio:hover {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    transform: translateX(5px);
+}
+
+.filtro-radio input {
+    display: none;
+}
+
+.radiomark {
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    margin-right: 0.8rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.filtro-radio input:checked+.radiomark {
+    background: #ff69b4;
+    border-color: #ff69b4;
+}
+
+.filtro-radio input:checked+.radiomark::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+.filtro-radio:hover .radiomark {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Botões de Ação dos Filtros */
+.filtros-acoes {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-limpar-filtros,
+.btn-aplicar-filtros {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    min-width: 150px;
+    justify-content: center;
+}
+
+.btn-limpar-filtros {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-limpar-filtros:hover {
+    background: #5a6268;
+    transform: scale(1.05);
+}
+
+.btn-aplicar-filtros {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+}
+
+.btn-aplicar-filtros:hover {
+    background: linear-gradient(135deg, #20c997, #17a2b8);
+    transform: scale(1.05);
+}
+
+/* Ordenação */
+.ordenacao-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ordenacao-label {
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+}
+
+.ordenacao-select {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    background: white;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ordenacao-select:focus {
+    outline: none;
+    border-color: #ff69b4;
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
+}
+
+/* Informações dos Resultados */
+.busca-resultados {
+    margin-bottom: 2rem;
+}
+
+.resultados-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.resultados-count {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.resultados-acoes {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-visualizacao {
+    background: #f8f9fa;
+    border: 2px solid #e2e8f0;
+    color: #6c757d;
+    padding: 0.8rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-visualizacao:hover {
+    background: #e9ecef;
+    transform: scale(1.1);
+}
+
+.btn-visualizacao.active {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    border-color: #ff69b4;
+}
+
+/* Busca Rápida (Tags) */
+.busca-rapida {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.busca-rapida-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.busca-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.tag-busca {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    color: #1565c0;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tag-busca:hover {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+}
+
+/* Produtos Grid (Responsivo) */
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.produtos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.produto-item {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.produto-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.produto-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.produto-lista-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.produto-lista-item .produto-imagem-container {
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+    margin-right: 2rem;
+}
+
+.produto-info-lista {
+    flex: 1;
+}
+
+.produto-info-lista .produto-nome {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.produto-info-lista .produto-descricao {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.produto-detalhes {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.produto-categoria,
+.produto-popularidade {
+    background: #f8f9fa;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.produto-preco-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.produto-promocao {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 10;
+}
+
+/* Nenhum Resultado */
+.nenhum-resultado {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.nenhum-resultado-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.nenhum-resultado h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.nenhum-resultado p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.sugestoes-busca {
+    margin-bottom: 2rem;
+}
+
+.sugestoes-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tag-sugestao {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    color: #1565c0;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.tag-sugestao:hover {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    transform: scale(1.05);
+}
+
+.btn-limpar-busca {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-limpar-busca:hover {
+    background: linear-gradient(135deg, #ff1493, #dc143c);
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .busca-container {
+        padding: 1.5rem;
+    }
+
+    .busca-input-group {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+
+    .busca-input,
+    .busca-btn,
+    .busca-clear {
+        border-radius: 0;
+    }
+
+    .busca-input {
+        border-radius: 15px 15px 0 0;
+    }
+
+    .busca-btn {
+        border-radius: 0 0 15px 15px;
+    }
+
+    .filtros-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .filtro-options {
+        flex-direction: column;
+    }
+
+    .filtros-acoes {
+        flex-direction: column;
+    }
+
+    .resultados-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .produtos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .produto-lista-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .produto-lista-item .produto-imagem-container {
+        margin-right: 0;
+        margin-bottom: 1rem;
+        width: 100%;
+        max-width: 200px;
+        height: 200px;
+        align-self: center;
+    }
+
+    .produto-preco-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .busca-tags {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .busca-container {
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: 15px;
+    }
+
+    .busca-input {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .produto-item {
+        margin: 0 1rem;
+    }
+
+    .nenhum-resultado {
+        padding: 2rem 1rem;
+    }
+
+    .filtro-checkbox,
+    .filtro-radio {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animações */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.produto-item {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Scrollbar personalizada para sugestões */
+.busca-sugestoes::-webkit-scrollbar {
+    width: 8px;
+}
+
+.busca-sugestoes::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.busca-sugestoes::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    border-radius: 10px;
+}
+
+.busca-sugestoes::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ff1493, #dc143c);
+}
+
+/* Estados de loading */
+.busca-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.busca-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ff69b4;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Focus states para acessibilidade */
+.busca-input:focus,
+.ordenacao-select:focus,
+.filtros-toggle:focus,
+.btn-visualizacao:focus,
+.tag-busca:focus,
+.sugestao-item:focus {
+    outline: 3px solid rgba(255, 105, 180, 0.3);
+    outline-offset: 2px;
+}
+
+/* Estados de hover para mobile */
+@media (hover: none) {
+    .produto-item:hover {
+        transform: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .filtro-checkbox:hover,
+    .filtro-radio:hover,
+    .tag-busca:hover {
+        transform: none;
+    }
+}
