@@ -1,0 +1,402 @@
+/* ===== HOME.CSS - ESTILOS ESPECÍFICOS DA PÁGINA HOME ===== */
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff69b4, #ffc0cb, #ff1493);
+    background-size: 300% 300%;
+    animation: gradientMove 3s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-content {
+    text-align: center;
+    color: white;
+}
+
+.loading-logo {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    border-top: 6px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+/* Navbar Animations */
+.navbar {
+    animation: slideInFromTop 1s ease-out;
+    transition: all 0.3s ease;
+}
+
+.navbar:hover {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo:hover {
+    animation: heartbeat 1s ease-in-out;
+    color: #ff69b4;
+}
+
+.logo::before {
+    content: '✨';
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.logo:hover::before {
+    left: -20px;
+    opacity: 1;
+}
+
+/* Navigation Links */
+nav ul li a {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #ff69b4;
+    transform: translateY(-3px);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), rgba(255, 192, 203, 0.1));
+    animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), rgba(255, 192, 203, 0.1));
+    }
+
+    50% {
+        background: linear-gradient(45deg, rgba(255, 192, 203, 0.1), rgba(255, 105, 180, 0.1));
+    }
+}
+
+.hero-text h2 {
+    animation: fadeInLeft 1s ease-out 0.5s both;
+    position: relative;
+}
+
+.hero-text h1 {
+    animation: bounceInDown 1.2s ease-out 0.8s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-text h1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2s ease-in-out 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.hero-text p {
+    animation: fadeInLeft 1s ease-out 1.2s both;
+}
+
+.hero-cta {
+    animation: fadeInUp 1s ease-out 1.5s both;
+}
+
+.hero-image {
+    animation: fadeInRight 1s ease-out 1s both;
+}
+
+.hero-image img {
+    transition: all 0.3s ease;
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero-image:hover img {
+    transform: scale(1.05) rotate(2deg);
+    filter: brightness(1.1);
+}
+
+/* Buttons */
+.btn {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    animation: glow 1s ease-in-out infinite;
+}
+
+/* Products Section */
+.secao-destaques h2 {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.subtitulo-destaques {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.produtos-grid {
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.produto-item {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.produto-item:nth-child(1) {
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.produto-item:nth-child(2) {
+    animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.produto-item:nth-child(3) {
+    animation: fadeInUp 0.8s ease-out 1s both;
+}
+
+.produto-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), rgba(255, 192, 203, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.produto-item:hover::before {
+    opacity: 1;
+}
+
+.produto-item:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    animation: glow 2s ease-in-out infinite;
+}
+
+.produto-item img {
+    transition: all 0.3s ease;
+}
+
+.produto-item:hover img {
+    transform: scale(1.1) rotate(2deg);
+    filter: brightness(1.1);
+}
+
+.produto-item h3 {
+    transition: all 0.3s ease;
+}
+
+.produto-item:hover h3 {
+    color: #ff69b4;
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Testimonials */
+.secao-depoimentos {
+    position: relative;
+    overflow: hidden;
+}
+
+.secao-depoimentos h2 {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.depoimento-item {
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+    transition: all 0.3s ease;
+}
+
+.depoimento-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.depoimento-avatar img {
+    transition: all 0.3s ease;
+}
+
+.depoimento-item:hover .depoimento-avatar img {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+/* CTA Section */
+.cta-produtos {
+    animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+/* Floating Hearts */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    color: rgba(255, 105, 180, 0.3);
+    font-size: 20px;
+    animation: floatHeart 8s infinite linear;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Ripple Effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        animation: zoomIn 1s ease-out 0.8s both;
+    }
+
+    .produto-item {
+        animation: fadeInUp 0.6s ease-out both;
+    }
+
+    .produto-item:nth-child(n) {
+        animation-delay: 0.2s;
+    }
+}

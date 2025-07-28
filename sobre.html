@@ -7,728 +7,23 @@
     <meta name="description"
         content="Conheça a história da Doce Encanto, nossa paixão por confeitaria artesanal e nosso processo de encomenda em Lages - SC. Feito com amor e dedicação.">
     <title>Sobre Nós e Como Pedir | Doce Encanto Lages</title>
-    <!-- Link para o arquivo CSS principal -->
+
+    <!-- CSS Files Organizados -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/sobre.css">
+    <link rel="stylesheet" href="css/performance.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/mobile-first.css">
+
     <!-- Fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap"
         rel="stylesheet">
+
     <!-- Link canônico opcional para SEO -->
     <link rel="canonical" href="https://www.sua-doceria.com.br/sobre.html">
-
-    <!-- Animações CSS -->
-    <style>
-        /* Keyframes para animações */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInFromTop {
-            from {
-                opacity: 0;
-                transform: translateY(-100px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.1);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-
-            100% {
-                background-position: 1000px 0;
-            }
-        }
-
-        @keyframes heartbeat {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            14% {
-                transform: scale(1.3);
-            }
-
-            28% {
-                transform: scale(1);
-            }
-
-            42% {
-                transform: scale(1.3);
-            }
-
-            70% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes glow {
-
-            0%,
-            100% {
-                box-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
-            }
-
-            50% {
-                box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
-            }
-        }
-
-        @keyframes typewriter {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 100%;
-            }
-        }
-
-        @keyframes blink {
-
-            0%,
-            50% {
-                opacity: 1;
-            }
-
-            51%,
-            100% {
-                opacity: 0;
-            }
-        }
-
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ff69b4, #ffc0cb, #ff1493);
-            background-size: 300% 300%;
-            animation: gradientMove 3s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.5s ease-out;
-        }
-
-        .loading-screen.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .loading-content {
-            text-align: center;
-            color: white;
-        }
-
-        .loading-logo {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 6px solid rgba(255, 255, 255, 0.3);
-            border-top: 6px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Navbar Animations */
-        .navbar {
-            animation: slideInFromTop 1s ease-out;
-            transition: all 0.3s ease;
-        }
-
-        .navbar:hover {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo:hover {
-            animation: heartbeat 1s ease-in-out;
-            color: #ff69b4;
-        }
-
-        .logo::before {
-            content: '✨';
-            position: absolute;
-            left: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover::before {
-            left: -20px;
-            opacity: 1;
-        }
-
-        /* Navigation Links */
-        nav ul li a {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        nav ul li a:hover {
-            color: #ff69b4;
-            transform: translateY(-3px);
-        }
-
-        /* Page Banner */
-        .page-banner {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 105, 180, 0.8), rgba(255, 192, 203, 0.8));
-            animation: gradientShift 6s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-
-            0%,
-            100% {
-                background: linear-gradient(45deg, rgba(255, 105, 180, 0.8), rgba(255, 192, 203, 0.8));
-            }
-
-            50% {
-                background: linear-gradient(45deg, rgba(255, 192, 203, 0.8), rgba(255, 105, 180, 0.8));
-            }
-        }
-
-        .page-banner h1 {
-            animation: bounceIn 1.2s ease-out 0.5s both;
-            position: relative;
-        }
-
-        .page-banner h1::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: shimmer 3s ease-in-out 2s infinite;
-        }
-
-        .page-banner p {
-            animation: fadeInUp 1s ease-out 0.8s both;
-        }
-
-        /* Sobre Section */
-        .secao-sobre {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sobre-content {
-            animation: fadeInUp 0.8s ease-out 0.5s both;
-        }
-
-        .sobre-imagem {
-            animation: fadeInLeft 1s ease-out 0.8s both;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sobre-imagem img {
-            transition: all 0.3s ease;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .sobre-imagem:hover img {
-            transform: scale(1.05) rotate(2deg);
-            filter: brightness(1.1);
-        }
-
-        .sobre-imagem::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), rgba(255, 192, 203, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-
-        .sobre-imagem:hover::before {
-            opacity: 1;
-        }
-
-        .sobre-texto {
-            animation: fadeInRight 1s ease-out 1s both;
-        }
-
-        .sobre-texto h2 {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sobre-texto h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            transform: translateX(-100%);
-            animation: slideInRight 1s ease-out 1.5s both;
-        }
-
-        @keyframes slideInRight {
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        .sobre-texto p {
-            animation: fadeInUp 0.8s ease-out both;
-            transition: all 0.3s ease;
-        }
-
-        .sobre-texto p:nth-child(2) {
-            animation-delay: 1.2s;
-        }
-
-        .sobre-texto p:nth-child(3) {
-            animation-delay: 1.4s;
-        }
-
-        .sobre-texto p:nth-child(4) {
-            animation-delay: 1.6s;
-        }
-
-        .sobre-texto p:hover {
-            transform: translateX(10px);
-            color: #555;
-        }
-
-        /* Como Pedir Section */
-        .secao-como-pedir {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .secao-como-pedir h2 {
-            animation: fadeInUp 0.8s ease-out;
-            text-align: center;
-            position: relative;
-        }
-
-        .secao-como-pedir h2::before,
-        .secao-como-pedir h2::after {
-            content: '🍰';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .secao-como-pedir h2::before {
-            left: -60px;
-            animation-delay: 0.5s;
-        }
-
-        .secao-como-pedir h2::after {
-            right: -60px;
-            animation-delay: 1s;
-        }
-
-        .passos-pedido {
-            animation: fadeInUp 0.8s ease-out 0.5s both;
-        }
-
-        .passo {
-            animation: fadeInUp 0.8s ease-out both;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .passo:nth-child(1) {
-            animation-delay: 0.8s;
-        }
-
-        .passo:nth-child(2) {
-            animation-delay: 1s;
-        }
-
-        .passo:nth-child(3) {
-            animation-delay: 1.2s;
-        }
-
-        .passo::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.6s;
-        }
-
-        .passo:hover::before {
-            left: 100%;
-        }
-
-        .passo:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            animation: glow 2s ease-in-out infinite;
-        }
-
-        .icone-passo {
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .passo:hover .icone-passo {
-            transform: scale(1.2) rotate(360deg);
-        }
-
-        .icone-passo img {
-            transition: all 0.3s ease;
-        }
-
-        .passo:hover .icone-passo img {
-            filter: brightness(1.2);
-        }
-
-        .passo h3 {
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .passo:hover h3 {
-            color: #ff69b4;
-            transform: scale(1.05);
-        }
-
-        .passo h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #ff69b4;
-            transition: width 0.3s ease;
-        }
-
-        .passo:hover h3::after {
-            width: 100%;
-        }
-
-        .link-interna {
-            color: #ff69b4;
-            text-decoration: none;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .link-interna::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #ff1493;
-            transition: width 0.3s ease;
-        }
-
-        .link-interna:hover::after {
-            width: 100%;
-        }
-
-        .link-interna:hover {
-            color: #ff1493;
-            transform: translateX(5px);
-        }
-
-        /* Back to Top Button */
-        .btn-voltar-ao-topo {
-            animation: float 3s ease-in-out infinite;
-            transition: all 0.3s ease;
-        }
-
-        .btn-voltar-ao-topo:hover {
-            transform: translateY(-5px) scale(1.2);
-            animation: pulse 0.5s ease-in-out;
-            background: #ff69b4;
-            color: white;
-        }
-
-        /* Footer */
-        .footer {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .footer-logo a:hover {
-            animation: heartbeat 1s ease-in-out;
-            color: #ff69b4;
-        }
-
-        .footer-links a {
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            transform: translateX(10px);
-            color: #ff69b4;
-        }
-
-        .footer-social a {
-            transition: all 0.3s ease;
-        }
-
-        .footer-social a:hover {
-            transform: scale(1.3) rotate(15deg);
-        }
-
-        /* Scroll Reveal */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
-        }
-
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Floating Elements */
-        .floating-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .floating-element {
-            position: absolute;
-            font-size: 20px;
-            color: rgba(255, 105, 180, 0.3);
-            animation: floatElement 12s infinite linear;
-        }
-
-        @keyframes floatElement {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Mobile Optimizations */
-        @media (max-width: 768px) {
-            .sobre-content {
-                animation: fadeInUp 0.6s ease-out 0.3s both;
-            }
-
-            .passo {
-                animation: fadeInUp 0.6s ease-out both;
-            }
-
-            .passo:nth-child(n) {
-                animation-delay: 0.5s;
-            }
-
-            .secao-como-pedir h2::before,
-            .secao-como-pedir h2::after {
-                display: none;
-            }
-        }
-
-        /* Parallax Effect */
-        .parallax-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,105,180,0.1)"/></svg>') repeat;
-            animation: parallaxMove 20s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes parallaxMove {
-            0% {
-                transform: translateY(0);
-            }
-
-            100% {
-                transform: translateY(-100px);
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -750,21 +45,15 @@
     <!-- Barra de Navegação -->
     <header class="navbar">
         <div class="container">
-            <!-- Logo da Doceria -->
             <a href="index.html#home" class="logo">Doce<span>Encanto</span></a>
-
-            <!-- Menu de Navegação Principal -->
             <nav>
                 <ul>
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="produtos/">Cardápio</a></li>
-                    <!-- Link ativo para a página Sobre -->
                     <li><a href="sobre.html#sobre" class="active">Sobre Nós</a></li>
                     <li><a href="contato.html#contato">Contato</a></li>
                 </ul>
             </nav>
-
-            <!-- Botão para abrir o menu mobile (visível em telas menores) -->
             <button class="btn-menu-mobile" aria-label="Abrir menu">&#9776;</button>
         </div>
     </header>
@@ -777,17 +66,16 @@
         </div>
     </section>
 
-    <!-- Seção "Sobre a Doceria" -->
+    <!-- Seção "Sobre a Doceria" com classes responsivas -->
     <section id="sobre" class="secao-sobre">
         <div class="container">
-            <div class="sobre-content scroll-reveal">
-                <div class="sobre-imagem">
-                    <!-- Imagem representando a doceria ou o processo criativo -->
+            <div class="sobre-content flex flex-col md:flex-row items-center gap-lg scroll-reveal">
+                <div class="sobre-imagem flex-1">
                     <img src="img/sobre-nos-doceria.jpg"
-                        alt="Confeiteira da Doce Encanto decorando um bolo com atenção aos detalhes">
+                        alt="Confeiteira da Doce Encanto decorando um bolo com atenção aos detalhes" class="w-full">
                 </div>
-                <div class="sobre-texto">
-                    <h2>Nossa História</h2>
+                <div class="sobre-texto flex-1">
+                    <h2 class="text-2xl mb-md">Nossa História</h2>
                     <p>A Doce Encanto nasceu do sonho de transformar momentos cotidianos em celebrações saborosas.
                         Fundada em Lages - SC, nossa confeitaria se dedica a criar doces, bolos e tortas artesanais com
                         ingredientes selecionados e muito carinho.</p>
@@ -800,35 +88,30 @@
         </div>
     </section>
 
-    <!-- Seção "Como Pedir" -->
+    <!-- Seção "Como Pedir" com grid responsivo -->
     <section id="como-pedir" class="secao-como-pedir">
         <div class="container">
-            <h2 class="scroll-reveal">Como Pedir Conosco</h2>
-            <div class="passos-pedido scroll-reveal">
-                <!-- Passo 1 -->
+            <h2 class="scroll-reveal text-2xl mb-lg">Como Pedir Conosco</h2>
+            <div class="passos-pedido grid grid-auto-fit gap-md scroll-reveal"
+                data-grid-responsive='{"xs":1,"sm":1,"md":3,"lg":3,"xl":3}'>
                 <div class="passo">
                     <div class="icone-passo">
-                        <!-- Ícone representando o cardápio -->
                         <img src="img/icon-cardapio.png" alt="Ícone de um cardápio aberto">
                     </div>
                     <h3>1. Explore Nosso Cardápio</h3>
                     <p>Visite nossa página de <a href="produtos/" class="link-interna">Cardápio</a> e escolha seus
                         produtos favoritos.</p>
                 </div>
-                <!-- Passo 2 -->
                 <div class="passo">
                     <div class="icone-passo">
-                        <!-- Ícone representando o WhatsApp -->
                         <img src="img/icon-whatsapp.png" alt="Ícone do WhatsApp">
                     </div>
                     <h3>2. Entre em Contato</h3>
                     <p>Envie uma mensagem pelo nosso <a href="contato.html#contato" class="link-interna">WhatsApp</a>
                         informando sua escolha, endereço e data desejada.</p>
                 </div>
-                <!-- Passo 3 -->
                 <div class="passo">
                     <div class="icone-passo">
-                        <!-- Ícone representando entrega -->
                         <img src="img/icon-entrega.png" alt="Ícone de um pacote sendo entregue">
                     </div>
                     <h3>3. Receba sua Doce Encanto</h3>
@@ -847,23 +130,18 @@
     <footer class="footer scroll-reveal">
         <div class="container">
             <div class="footer-content">
-                <!-- Logo no Rodapé -->
                 <div class="footer-logo">
                     <a href="index.html#home">Doce<span>Encanto</span></a>
                 </div>
-                <!-- Links de Navegação no Rodapé -->
                 <div class="footer-links">
                     <h4>Navegação</h4>
                     <ul>
-                        <!-- Link ativo para a página Home -->
                         <li><a href="index.html#home">Home</a></li>
                         <li><a href="produtos/">Cardápio</a></li>
-                        <!-- Link ativo para a página Sobre -->
                         <li><a href="sobre.html#sobre" class="active">Sobre Nós</a></li>
                         <li><a href="contato.html#contato">Contato</a></li>
                     </ul>
                 </div>
-                <!-- Links de Redes Sociais -->
                 <div class="footer-social">
                     <h4>Siga-nos</h4>
                     <a href="#" aria-label="Instagram da Doce Encanto"><img src="img/icon-instagram.png"
@@ -872,7 +150,6 @@
                             alt="WhatsApp"></a>
                 </div>
             </div>
-            <!-- Informações de Copyright -->
             <div class="footer-bottom">
                 <p>&copy; 2025 Doce Encanto. Todos os direitos reservados.</p>
             </div>
@@ -881,227 +158,9 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
-
-    <!-- Script para animações -->
-    <script>
-        // Loading Screen
-        window.addEventListener('load', function () {
-            setTimeout(() => {
-                const loadingScreen = document.getElementById('loadingScreen');
-                loadingScreen.classList.add('fade-out');
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }, 2000);
-        });
-
-        // Scroll Reveal Animation
-        function revealElements() {
-            const elements = document.querySelectorAll('.scroll-reveal');
-
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = elementTop < window.innerHeight - 100;
-
-                if (elementVisible) {
-                    element.classList.add('revealed');
-                }
-            });
-        }
-
-        // Create Floating Elements
-        function createFloatingElements() {
-            const elementsContainer = document.getElementById('floatingElements');
-            const symbols = ['🍰', '🧁', '🍪', '🍩', '🎂', '🍓', '💖', '✨'];
-
-            for (let i = 0; i < 12; i++) {
-                const element = document.createElement('div');
-                element.className = 'floating-element';
-                element.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
-                element.style.left = Math.random() * 100 + '%';
-                element.style.animationDelay = Math.random() * 12 + 's';
-                element.style.animationDuration = (Math.random() * 5 + 12) + 's';
-                elementsContainer.appendChild(element);
-            }
-        }
-
-        // Smooth Scroll
-        function setupSmoothScroll() {
-            const links = document.querySelectorAll('a[href^="#"]');
-
-            links.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        }
-
-        // Parallax Effect
-        function setupParallax() {
-            window.addEventListener('scroll', function () {
-                const scrolled = window.pageYOffset;
-                const parallaxBg = document.querySelector('.parallax-bg');
-                const sobreImagem = document.querySelector('.sobre-imagem img');
-
-                if (parallaxBg) {
-                    parallaxBg.style.transform = `translateY(${scrolled * 0.3}px)`;
-                }
-
-                if (sobreImagem) {
-                    sobreImagem.style.transform = `translateY(${scrolled * 0.2}px)`;
-                }
-            });
-        }
-
-        // Navbar Scroll Effect
-        function setupNavbarScroll() {
-            const navbar = document.querySelector('.navbar');
-
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 100) {
-                    navbar.style.background = 'rgba(255,255,255,0.95)';
-                    navbar.style.backdropFilter = 'blur(10px)';
-                    navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-                } else {
-                    navbar.style.background = '';
-                    navbar.style.backdropFilter = '';
-                    navbar.style.boxShadow = '';
-                }
-            });
-        }
-
-        // Interactive Steps
-        function setupInteractiveSteps() {
-            const steps = document.querySelectorAll('.passo');
-
-            steps.forEach((step, index) => {
-                step.addEventListener('mouseenter', function () {
-                    // Add special effects for each step
-                    const icon = this.querySelector('.icone-passo img');
-                    if (icon) {
-                        icon.style.filter = 'hue-rotate(180deg) brightness(1.2)';
-                    }
-                });
-
-                step.addEventListener('mouseleave', function () {
-                    const icon = this.querySelector('.icone-passo img');
-                    if (icon) {
-                        icon.style.filter = '';
-                    }
-                });
-            });
-        }
-
-        // Timeline Animation for Story
-        function animateStoryTimeline() {
-            const paragraphs = document.querySelectorAll('.sobre-texto p');
-
-            paragraphs.forEach((p, index) => {
-                p.addEventListener('mouseenter', function () {
-                    this.style.background = 'linear-gradient(45deg, rgba(255,105,180,0.1), rgba(255,192,203,0.1))';
-                    this.style.padding = '15px';
-                    this.style.borderRadius = '8px';
-                    this.style.borderLeft = '4px solid #ff69b4';
-                });
-
-                p.addEventListener('mouseleave', function () {
-                    this.style.background = '';
-                    this.style.padding = '';
-                    this.style.borderRadius = '';
-                    this.style.borderLeft = '';
-                });
-            });
-        }
-
-        // Text Reveal Effect
-        function setupTextReveal() {
-            const title = document.querySelector('.sobre-texto h2');
-            if (title) {
-                const text = title.textContent;
-                title.innerHTML = '';
-
-                for (let i = 0; i < text.length; i++) {
-                    const span = document.createElement('span');
-                    span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
-                    span.style.opacity = '0';
-                    span.style.animation = `fadeInUp 0.1s ease-out ${i * 0.1}s both`;
-                    title.appendChild(span);
-                }
-            }
-        }
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', function () {
-            createFloatingElements();
-            setupSmoothScroll();
-            setupParallax();
-            setupNavbarScroll();
-            setupInteractiveSteps();
-            animateStoryTimeline();
-            setupTextReveal();
-            revealElements();
-
-            // Scroll listener
-            window.addEventListener('scroll', revealElements);
-
-            // Initial reveal
-            setTimeout(revealElements, 100);
-        });
-
-        // Easter Egg: Click on logo multiple times
-        let logoClickCount = 0;
-        document.querySelector('.logo').addEventListener('click', function (e) {
-            logoClickCount++;
-            if (logoClickCount >= 5) {
-                // Create confetti effect
-                createConfetti();
-                logoClickCount = 0;
-            }
-        });
-
-        function createConfetti() {
-            const colors = ['#ff69b4', '#ffc0cb', '#ff1493', '#ffb6c1'];
-
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.style.position = 'fixed';
-                confetti.style.width = '10px';
-                confetti.style.height = '10px';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.left = Math.random() * window.innerWidth + 'px';
-                confetti.style.top = '-10px';
-                confetti.style.borderRadius = '50%';
-                confetti.style.pointerEvents = 'none';
-                confetti.style.zIndex = '10000';
-                confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s ease-out forwards`;
-
-                document.body.appendChild(confetti);
-
-                setTimeout(() => {
-                    confetti.remove();
-                }, 5000);
-            }
-        }
-
-        // Add confetti animation CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes confettiFall {
-                to {
-                    transform: translateY(${window.innerHeight + 100}px) rotate(360deg);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+    <script src="js/sobre.js"></script>
+    <script src="js/performance.js"></script>
+    <script src="js/responsive.js"></script>
 </body>
 
 </html>

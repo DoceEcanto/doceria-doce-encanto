@@ -1,0 +1,249 @@
+/* ===== PERFORMANCE.CSS - OTIMIZAÇÕES DE PERFORMANCE ===== */
+
+/* Critical CSS - Above the fold */
+.navbar,
+.hero,
+.loading-screen {
+    contain: layout style paint;
+}
+
+/* Otimização de imagens */
+img {
+    max-width: 100%;
+    height: auto;
+    loading: lazy;
+    decoding: async;
+}
+
+/* Imagens críticas (hero, logo) - eager loading */
+.hero img,
+.logo img,
+.loading-logo {
+    loading: eager;
+}
+
+/* Aspect ratio para evitar layout shift */
+.produto-item img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-image img {
+    aspect-ratio: 16/10;
+    object-fit: cover;
+}
+
+/* Container fluido responsivo */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 5vw, 2rem);
+    contain: layout;
+}
+
+/* Grid responsivo inteligente */
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
+    contain: layout;
+}
+
+.depoimentos-slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* Typography responsiva com clamp */
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.3;
+}
+
+h3 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    line-height: 1.4;
+}
+
+p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+}
+
+/* Botões responsivos */
+.btn {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 4vw, 2.5rem);
+    min-height: 48px;
+    /* Accessibility touch target */
+}
+
+/* Preload de fontes críticas */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Poppins Regular'), local('Poppins-Regular'),
+        url('https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2') format('woff2');
+}
+
+/* Lazy loading placeholder */
+.lazy-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Reduce motion para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .loading-spinner {
+        animation: none;
+        border: 6px solid #ff69b4;
+    }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+    .btn-primary {
+        background: #000;
+        color: #fff;
+        border: 2px solid #fff;
+    }
+
+    .btn-secondary {
+        background: #fff;
+        color: #000;
+        border: 2px solid #000;
+    }
+
+    .navbar {
+        background: #fff;
+        border-bottom: 2px solid #000;
+    }
+}
+
+/* Print styles */
+@media print {
+
+    .navbar,
+    .btn,
+    .whatsapp-float,
+    .btn-voltar-ao-topo,
+    .loading-screen,
+    .floating-elements {
+        display: none !important;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+        color: #000;
+        background: #fff;
+    }
+
+    .container {
+        max-width: none;
+        padding: 0;
+    }
+}
+
+/* Focus management para acessibilidade */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 10000;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Focus visível */
+.btn:focus,
+.btn-categoria:focus,
+nav a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 3px solid #ff69b4;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px rgba(255, 105, 180, 0.2);
+}
+
+/* Touch targets mínimos */
+button,
+input,
+select,
+textarea,
+a {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Scroll suave nativo */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Otimização de scroll */
+.scroll-container {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent layout shift */
+.produto-item,
+.depoimento-item {
+    min-height: 400px;
+}
+
+.hero-image {
+    min-height: 300px;
+}
+
+/* Container queries support */
+@supports (container-type: inline-size) {
+    .produtos-grid {
+        container-type: inline-size;
+    }
+
+    @container (min-width: 600px) {
+        .produto-item {
+            grid-column: span 2;
+        }
+    }
+}

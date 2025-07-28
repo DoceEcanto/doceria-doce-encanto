@@ -1,0 +1,476 @@
+/* ===== SOBRE.CSS - ESTILOS ESPECÍFICOS DA PÁGINA SOBRE ===== */
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff69b4, #ffc0cb, #ff1493);
+    background-size: 300% 300%;
+    animation: gradientMove 3s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-content {
+    text-align: center;
+    color: white;
+}
+
+.loading-logo {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(255, 255, 255, 0.3);
+    border-top: 6px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+/* Navbar Animations */
+.navbar {
+    animation: slideInFromTop 1s ease-out;
+    transition: all 0.3s ease;
+}
+
+.navbar:hover {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo:hover {
+    animation: heartbeat 1s ease-in-out;
+    color: #ff69b4;
+}
+
+.logo::before {
+    content: '✨';
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.logo:hover::before {
+    left: -20px;
+    opacity: 1;
+}
+
+/* Navigation Links */
+nav ul li a {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #ff69b4;
+    transform: translateY(-3px);
+}
+
+/* Page Banner */
+.page-banner {
+    position: relative;
+    overflow: hidden;
+}
+
+.page-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.8), rgba(255, 192, 203, 0.8));
+    animation: gradientShift 6s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background: linear-gradient(45deg, rgba(255, 105, 180, 0.8), rgba(255, 192, 203, 0.8));
+    }
+
+    50% {
+        background: linear-gradient(45deg, rgba(255, 192, 203, 0.8), rgba(255, 105, 180, 0.8));
+    }
+}
+
+.page-banner h1 {
+    animation: bounceIn 1.2s ease-out 0.5s both;
+    position: relative;
+}
+
+.page-banner h1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 3s ease-in-out 2s infinite;
+}
+
+.page-banner p {
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+/* Sobre Section */
+.secao-sobre {
+    position: relative;
+    overflow: hidden;
+}
+
+.sobre-content {
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.sobre-imagem {
+    animation: fadeInLeft 1s ease-out 0.8s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.sobre-imagem img {
+    transition: all 0.3s ease;
+    animation: float 6s ease-in-out infinite;
+}
+
+.sobre-imagem:hover img {
+    transform: scale(1.05) rotate(2deg);
+    filter: brightness(1.1);
+}
+
+.sobre-imagem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), rgba(255, 192, 203, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.sobre-imagem:hover::before {
+    opacity: 1;
+}
+
+.sobre-texto {
+    animation: fadeInRight 1s ease-out 1s both;
+}
+
+.sobre-texto h2 {
+    position: relative;
+    overflow: hidden;
+}
+
+.sobre-texto h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(45deg, #ff69b4, #ff1493);
+    transform: translateX(-100%);
+    animation: slideInRight 1s ease-out 1.5s both;
+}
+
+@keyframes slideInRight {
+    to {
+        transform: translateX(0);
+    }
+}
+
+.sobre-texto p {
+    animation: fadeInUp 0.8s ease-out both;
+    transition: all 0.3s ease;
+}
+
+.sobre-texto p:nth-child(2) {
+    animation-delay: 1.2s;
+}
+
+.sobre-texto p:nth-child(3) {
+    animation-delay: 1.4s;
+}
+
+.sobre-texto p:nth-child(4) {
+    animation-delay: 1.6s;
+}
+
+.sobre-texto p:hover {
+    transform: translateX(10px);
+    color: #555;
+}
+
+/* Como Pedir Section */
+.secao-como-pedir {
+    position: relative;
+    overflow: hidden;
+}
+
+.secao-como-pedir h2 {
+    animation: fadeInUp 0.8s ease-out;
+    text-align: center;
+    position: relative;
+}
+
+.secao-como-pedir h2::before,
+.secao-como-pedir h2::after {
+    content: '🍰';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.secao-como-pedir h2::before {
+    left: -60px;
+    animation-delay: 0.5s;
+}
+
+.secao-como-pedir h2::after {
+    right: -60px;
+    animation-delay: 1s;
+}
+
+.passos-pedido {
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.passo {
+    animation: fadeInUp 0.8s ease-out both;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.passo:nth-child(1) {
+    animation-delay: 0.8s;
+}
+
+.passo:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.passo:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+.passo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+.passo:hover::before {
+    left: 100%;
+}
+
+.passo:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    animation: glow 2s ease-in-out infinite;
+}
+
+.icone-passo {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.passo:hover .icone-passo {
+    transform: scale(1.2) rotate(360deg);
+}
+
+.icone-passo img {
+    transition: all 0.3s ease;
+}
+
+.passo:hover .icone-passo img {
+    filter: brightness(1.2);
+}
+
+.passo h3 {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.passo:hover h3 {
+    color: #ff69b4;
+    transform: scale(1.05);
+}
+
+.passo h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ff69b4;
+    transition: width 0.3s ease;
+}
+
+.passo:hover h3::after {
+    width: 100%;
+}
+
+.link-interna {
+    color: #ff69b4;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.link-interna::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ff1493;
+    transition: width 0.3s ease;
+}
+
+.link-interna:hover::after {
+    width: 100%;
+}
+
+.link-interna:hover {
+    color: #ff1493;
+    transform: translateX(5px);
+}
+
+/* Floating Elements */
+.floating-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-element {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(255, 105, 180, 0.3);
+    animation: floatElement 12s infinite linear;
+}
+
+@keyframes floatElement {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Parallax Background */
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,105,180,0.1)"/></svg>') repeat;
+    animation: parallaxMove 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes parallaxMove {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100px);
+    }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .sobre-content {
+        animation: fadeInUp 0.6s ease-out 0.3s both;
+    }
+
+    .passo {
+        animation: fadeInUp 0.6s ease-out both;
+    }
+
+    .passo:nth-child(n) {
+        animation-delay: 0.5s;
+    }
+
+    .secao-como-pedir h2::before,
+    .secao-como-pedir h2::after {
+        display: none;
+    }
+}

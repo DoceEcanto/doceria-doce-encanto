@@ -1,0 +1,335 @@
+/* ===== CARDAPIO.CSS - ESTILOS ESPECÍFICOS DA PÁGINA CARDÁPIO ===== */
+
+/* Loading Animation */
+.loading-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff69b4, #ffc0cb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOut 0.5s ease-out 2s both;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.loading-content {
+    text-align: center;
+    color: white;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+/* Navbar Animations */
+.navbar {
+    animation: fadeInUp 0.8s ease-out;
+    transition: all 0.3s ease;
+}
+
+.navbar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    animation: pulse 0.6s ease-in-out;
+    color: #ff69b4;
+}
+
+/* Navigation Links */
+nav ul li a {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ff69b4;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #ff69b4;
+    transform: translateY(-2px);
+}
+
+/* Page Banner */
+.page-banner {
+    animation: fadeInUp 1s ease-out 0.2s both;
+    position: relative;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.page-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.8), rgba(255, 192, 203, 0.8));
+    animation: gradientShift 5s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background: linear-gradient(45deg, rgba(255, 105, 180, 0.8), rgba(255, 192, 203, 0.8));
+    }
+
+    50% {
+        background: linear-gradient(45deg, rgba(255, 192, 203, 0.8), rgba(255, 105, 180, 0.8));
+    }
+}
+
+.page-banner h1 {
+    animation: bounceIn 1.2s ease-out 0.5s both;
+}
+
+.page-banner p {
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+/* Cardapio Section */
+.secao-cardapio h2 {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.subtitulo-cardapio {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* Categories Navigation */
+.categorias-nav {
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.btn-categoria {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-categoria::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-categoria:hover::before {
+    left: 100%;
+}
+
+.btn-categoria:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-categoria.active {
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* Products Grid */
+.produtos-grid {
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.produto-item {
+    animation: fadeInUp 0.8s ease-out both;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.produto-item:nth-child(1) {
+    animation-delay: 0.8s;
+}
+
+.produto-item:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.produto-item:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+.produto-item:nth-child(4) {
+    animation-delay: 1.4s;
+}
+
+.produto-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    animation: glow 2s ease-in-out infinite;
+}
+
+.produto-item img {
+    transition: all 0.3s ease;
+}
+
+.produto-item:hover img {
+    transform: scale(1.1);
+}
+
+.produto-item h3 {
+    transition: all 0.3s ease;
+}
+
+.produto-item:hover h3 {
+    color: #ff69b4;
+    animation: shake 0.5s ease-in-out;
+}
+
+.preco {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.produto-item:hover .preco {
+    color: #28a745;
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+/* Buttons */
+.btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    animation: pulse 0.3s ease-in-out;
+}
+
+/* Particles */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 105, 180, 0.3);
+    border-radius: 50%;
+    animation: floatParticle 8s infinite linear;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Back to Top Button */
+.btn-voltar-ao-topo {
+    animation: float 3s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.btn-voltar-ao-topo:hover {
+    transform: translateY(-5px) scale(1.1);
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* Footer */
+.footer {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.footer-logo a:hover {
+    animation: pulse 0.6s ease-in-out;
+}
+
+.footer-links a,
+.footer-social a {
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    transform: translateX(10px);
+    color: #ff69b4;
+}
+
+.footer-social a:hover {
+    transform: scale(1.2) rotate(10deg);
+}

@@ -7,479 +7,23 @@
     <meta name="description"
         content="Explore nosso delicioso cardápio de brigadeiros, beijinhos, morango do amor e maçã do amor da Doce Encanto. Encomende já!">
     <title>Nosso Cardápio | Doces e Brigadeiros Artesanais | Doce Encanto</title>
-    <!-- Caminho para o arquivo CSS principal -->
+
+    <!-- CSS Files Organizados -->
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/cardapio.css">
+    <link rel="stylesheet" href="../css/performance.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/mobile-first.css">
+
     <!-- Fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap"
         rel="stylesheet">
+
     <!-- Link canônico opcional para SEO -->
     <link rel="canonical" href="https://www.sua-doceria.com.br/produtos/">
-
-    <!-- Animações CSS -->
-    <style>
-        /* Animações de entrada */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.1);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes shake {
-
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-
-            25% {
-                transform: translateX(-5px);
-            }
-
-            75% {
-                transform: translateX(5px);
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes glow {
-
-            0%,
-            100% {
-                box-shadow: 0 0 5px rgba(255, 182, 193, 0.5);
-            }
-
-            50% {
-                box-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
-            }
-        }
-
-        /* Aplicando animações aos elementos */
-        .navbar {
-            animation: fadeInUp 0.8s ease-out;
-            transition: all 0.3s ease;
-        }
-
-        .navbar:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover {
-            animation: pulse 0.6s ease-in-out;
-            color: #ff69b4;
-        }
-
-        .page-banner {
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-
-        .page-banner h1 {
-            animation: bounceIn 1.2s ease-out 0.5s both;
-        }
-
-        .page-banner p {
-            animation: fadeInUp 1s ease-out 0.8s both;
-        }
-
-        .secao-cardapio h2 {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .subtitulo-cardapio {
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-
-        .categorias-nav {
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-        }
-
-        .btn-categoria {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-categoria::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn-categoria:hover::before {
-            left: 100%;
-        }
-
-        .btn-categoria:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-categoria.active {
-            animation: pulse 0.5s ease-in-out;
-        }
-
-        .produtos-grid {
-            animation: fadeInUp 0.8s ease-out 0.6s both;
-        }
-
-        .produto-item {
-            animation: fadeInUp 0.8s ease-out both;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .produto-item:nth-child(1) {
-            animation-delay: 0.8s;
-        }
-
-        .produto-item:nth-child(2) {
-            animation-delay: 1s;
-        }
-
-        .produto-item:nth-child(3) {
-            animation-delay: 1.2s;
-        }
-
-        .produto-item:nth-child(4) {
-            animation-delay: 1.4s;
-        }
-
-        .produto-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-            animation: glow 2s ease-in-out infinite;
-        }
-
-        .produto-item img {
-            transition: all 0.3s ease;
-        }
-
-        .produto-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .produto-item h3 {
-            transition: all 0.3s ease;
-        }
-
-        .produto-item:hover h3 {
-            color: #ff69b4;
-            animation: shake 0.5s ease-in-out;
-        }
-
-        .preco {
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .produto-item:hover .preco {
-            color: #28a745;
-            font-weight: bold;
-            transform: scale(1.1);
-        }
-
-        .btn {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            animation: pulse 0.3s ease-in-out;
-        }
-
-        .btn-voltar-ao-topo {
-            animation: float 3s ease-in-out infinite;
-            transition: all 0.3s ease;
-        }
-
-        .btn-voltar-ao-topo:hover {
-            transform: translateY(-5px) scale(1.1);
-            animation: pulse 0.5s ease-in-out;
-        }
-
-        .footer {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .footer-logo a:hover {
-            animation: pulse 0.6s ease-in-out;
-        }
-
-        .footer-links a,
-        .footer-social a {
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            transform: translateX(10px);
-            color: #ff69b4;
-        }
-
-        .footer-social a:hover {
-            transform: scale(1.2) rotate(10deg);
-        }
-
-        /* Animação de loading */
-        .loading-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #ff69b4, #ffc0cb);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            animation: fadeOut 0.5s ease-out 2s both;
-        }
-
-        .loading-content {
-            text-align: center;
-            color: white;
-        }
-
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-top: 5px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-
-        /* Efeito de parallax no banner */
-        .page-banner {
-            position: relative;
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .page-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 105, 180, 0.8), rgba(255, 192, 203, 0.8));
-            animation: gradientShift 5s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-
-            0%,
-            100% {
-                background: linear-gradient(45deg, rgba(255, 105, 180, 0.8), rgba(255, 192, 203, 0.8));
-            }
-
-            50% {
-                background: linear-gradient(45deg, rgba(255, 192, 203, 0.8), rgba(255, 105, 180, 0.8));
-            }
-        }
-
-        /* Efeito de hover nos navigation links */
-        nav ul li a {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #ff69b4;
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        nav ul li a:hover {
-            color: #ff69b4;
-            transform: translateY(-2px);
-        }
-
-        /* Scroll reveal animation */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
-        }
-
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Partículas flutuantes */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 105, 180, 0.3);
-            border-radius: 50%;
-            animation: floatParticle 8s infinite linear;
-        }
-
-        @keyframes floatParticle {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -498,21 +42,15 @@
     <!-- Barra de Navegação -->
     <header class="navbar">
         <div class="container">
-            <!-- Logo da Doceria -->
             <a href="../index.html#home" class="logo">Doce<span>Encanto</span></a>
-
-            <!-- Menu de Navegação Principal -->
             <nav>
                 <ul>
                     <li><a href="../index.html#home">Home</a></li>
-                    <!-- Link ativo para esta página (Cardápio) -->
                     <li><a href="index.html" class="active">Cardápio</a></li>
                     <li><a href="../sobre.html#sobre">Sobre Nós</a></li>
                     <li><a href="../contato.html#contato">Contato</a></li>
                 </ul>
             </nav>
-
-            <!-- Botão para abrir o menu mobile (visível em telas menores) -->
             <button class="btn-menu-mobile" aria-label="Abrir menu">&#9776;</button>
         </div>
     </header>
@@ -530,8 +68,7 @@
         <div class="container">
             <h2 class="scroll-reveal">Explore Nossas Delícias</h2>
             <p class="subtitulo-cardapio scroll-reveal">Todos os nossos produtos são preparados com ingredientes frescos
-                e de alta
-                qualidade.</p>
+                e de alta qualidade.</p>
 
             <!-- Navegação de Categorias -->
             <div class="categorias-nav scroll-reveal">
@@ -540,18 +77,16 @@
                 <button class="btn-categoria" data-categoria="frutas-amor">Frutas do Amor</button>
             </div>
 
-            <!-- Grid de Produtos -->
-            <div class="produtos-grid scroll-reveal" id="lista-produtos">
-
-                <!-- Categoria: Docinhos -->
+            <!-- Grid responsivo de produtos -->
+            <div class="produtos-grid grid grid-auto-fit gap-md scroll-reveal" id="lista-produtos"
+                data-grid-responsive='{"xs":1,"sm":1,"md":2,"lg":3,"xl":4}'>
                 <div class="produto-item" data-categoria="docinhos">
                     <img src="../img/cento-brigadeiros.jpg" alt="Cento de brigadeiros gourmet variados">
                     <h3>Cento de Brigadeiros</h3>
                     <p>100 unidades de brigadeiros gourmet com sabores variados, perfeitos para festas e eventos.</p>
                     <p class="preco">R$ 200,00 (cento)</p>
-                    <a href="../contato.html#contato" class="btn btn-secondary"
-                        aria-label="Pedir Cento de Brigadeiros">Pedir
-                        Agora</a>
+                    <a href="../contato.html#contato" class="btn btn-secondary btn-touch"
+                        aria-label="Pedir Cento de Brigadeiros">Pedir Agora</a>
                 </div>
 
                 <div class="produto-item" data-categoria="docinhos">
@@ -559,18 +94,17 @@
                     <h3>Cento de Beijinhos</h3>
                     <p>100 unidades de beijinhos tradicionais feitos com coco fresco e muito carinho.</p>
                     <p class="preco">R$ 180,00 (cento)</p>
-                    <a href="../contato.html#contato" class="btn btn-secondary"
-                        aria-label="Pedir Cento de Beijinhos">Pedir
-                        Agora</a>
+                    <a href="../contato.html#contato" class="btn btn-secondary btn-touch"
+                        aria-label="Pedir Cento de Beijinhos">Pedir Agora</a>
                 </div>
 
-                <!-- Categoria: Frutas do Amor -->
                 <div class="produto-item" data-categoria="frutas-amor">
                     <img src="../img/morango-amor.jpg" alt="Morango do amor coberto com chocolate">
                     <h3>Morango do Amor</h3>
                     <p>Morangos frescos e suculentos cobertos com chocolate nobre, uma combinação irresistível.</p>
                     <p class="preco">R$ 8,00 (unidade)</p>
-                    <a href="../contato.html#contato" class="btn btn-secondary" aria-label="Pedir Morango do Amor">Pedir
+                    <a href="../contato.html#contato" class="btn btn-secondary btn-touch"
+                        aria-label="Pedir Morango do Amor">Pedir
                         Agora</a>
                 </div>
 
@@ -579,10 +113,10 @@
                     <h3>Maçã do Amor</h3>
                     <p>Maçãs frescas cobertas com caramelo crocante, um doce clássico que conquista todas as idades.</p>
                     <p class="preco">R$ 12,00 (unidade)</p>
-                    <a href="../contato.html#contato" class="btn btn-secondary" aria-label="Pedir Maçã do Amor">Pedir
+                    <a href="../contato.html#contato" class="btn btn-secondary btn-touch"
+                        aria-label="Pedir Maçã do Amor">Pedir
                         Agora</a>
                 </div>
-
             </div>
         </div>
     </section>
@@ -596,32 +130,26 @@
     <footer class="footer scroll-reveal">
         <div class="container">
             <div class="footer-content">
-                <!-- Logo no Rodapé -->
                 <div class="footer-logo">
                     <a href="../index.html#home">Doce<span>Encanto</span></a>
                 </div>
-                <!-- Links de Navegação no Rodapé -->
                 <div class="footer-links">
                     <h4>Navegação</h4>
                     <ul>
                         <li><a href="../index.html#home">Home</a></li>
-                        <!-- Link ativo para esta página (Cardápio) -->
                         <li><a href="index.html" class="active">Cardápio</a></li>
                         <li><a href="../sobre.html#sobre">Sobre Nós</a></li>
                         <li><a href="../contato.html#contato">Contato</a></li>
                     </ul>
                 </div>
-                <!-- Links de Redes Sociais -->
                 <div class="footer-social">
                     <h4>Siga-nos</h4>
-                    <!-- Substitua '#' pelos links reais das suas redes sociais -->
                     <a href="#" aria-label="Instagram da Doce Encanto"><img src="../img/icon-instagram.png"
                             alt="Instagram"></a>
                     <a href="#" aria-label="WhatsApp da Doce Encanto"><img src="../img/icon-whatsapp.png"
                             alt="WhatsApp"></a>
                 </div>
             </div>
-            <!-- Informações de Copyright -->
             <div class="footer-bottom">
                 <p>&copy; 2025 Doce Encanto. Todos os direitos reservados.</p>
             </div>
@@ -632,126 +160,9 @@
     <script src="../js/main.js"></script>
     <script src="../js/catalogo.js"></script>
     <script src="../js/catalogo-firebase.js"></script>
-
-    <!-- Script para animações -->
-    <script>
-        // Remover loading animation após carregamento
-        window.addEventListener('load', function () {
-            setTimeout(() => {
-                const loading = document.querySelector('.loading-animation');
-                if (loading) {
-                    loading.style.display = 'none';
-                }
-            }, 2000);
-        });
-
-        // Scroll reveal animation
-        function revelarElementos() {
-            const elementos = document.querySelectorAll('.scroll-reveal');
-
-            elementos.forEach(elemento => {
-                const elementoTop = elemento.getBoundingClientRect().top;
-                const elementoVisivel = elementoTop < window.innerHeight - 100;
-
-                if (elementoVisivel) {
-                    elemento.classList.add('revealed');
-                }
-            });
-        }
-
-        // Criar partículas flutuantes
-        function criarParticulas() {
-            const particlesContainer = document.getElementById('particles');
-
-            for (let i = 0; i < 15; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 8 + 's';
-                particle.style.animationDuration = (Math.random() * 5 + 8) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Smooth scroll para links
-        function smoothScroll() {
-            const links = document.querySelectorAll('a[href^="#"]');
-
-            links.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        }
-
-        // Animação dos botões de categoria
-        function animarCategorias() {
-            const buttons = document.querySelectorAll('.btn-categoria');
-
-            buttons.forEach(button => {
-                button.addEventListener('click', function () {
-                    // Remove active de todos
-                    buttons.forEach(btn => btn.classList.remove('active'));
-                    // Adiciona active no clicado
-                    this.classList.add('active');
-
-                    // Anima produtos
-                    const produtos = document.querySelectorAll('.produto-item');
-                    produtos.forEach((produto, index) => {
-                        produto.style.animation = 'none';
-                        setTimeout(() => {
-                            produto.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1}s both`;
-                        }, 10);
-                    });
-                });
-            });
-        }
-
-        // Inicializar tudo quando a página carregar
-        document.addEventListener('DOMContentLoaded', function () {
-            criarParticulas();
-            smoothScroll();
-            animarCategorias();
-            revelarElementos();
-
-            // Listener para scroll
-            window.addEventListener('scroll', revelarElementos);
-
-            // Adicionar classe revealed nos elementos já visíveis
-            setTimeout(() => {
-                revelarElementos();
-            }, 100);
-        });
-
-        // Efeito de hover nos produtos com cursor
-        document.addEventListener('mousemove', function (e) {
-            const produtos = document.querySelectorAll('.produto-item');
-
-            produtos.forEach(produto => {
-                const rect = produto.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (y - centerY) / 10;
-                    const rotateY = (centerX - x) / 10;
-
-                    produto.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
-                } else {
-                    produto.style.transform = '';
-                }
-            });
-        });
-    </script>
+    <script src="../js/cardapio.js"></script>
+    <script src="../js/performance.js"></script>
+    <script src="../js/responsive.js"></script>
 </body>
 
 </html>
