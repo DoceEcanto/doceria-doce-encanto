@@ -7,6 +7,8 @@
     <title>Painel de Controle | Doce Encanto</title>
     <link rel="stylesheet" href="../css/style.css"> <!-- Link para o seu CSS principal -->
     <link rel="stylesheet" href="css/performance.css">
+    <!-- CSS do menu mobile (ADICIONAR) -->
+    <link rel="stylesheet" href="../css/mobile-menu-fix.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap"
@@ -154,6 +156,29 @@
 
 <body>
 
+    <!-- Barra de Navegação CORRIGIDA -->
+    <header class="navbar">
+        <div class="container">
+            <!-- Logo da Doceria -->
+            <a href="../index.html#home" class="logo">Doce<span>Encanto</span></a>
+
+            <!-- Menu de Navegação Principal -->
+            <nav>
+                <ul>
+                    <li><a href="../index.html#home" class="active">Home</a></li>
+                    <li><a href="../produtos/">Cardápio</a></li>
+                    <li><a href="../sobre.html#sobre">Sobre Nós</a></li>
+                    <li><a href="../contato.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+
+            <!-- Botão para abrir o menu mobile -->
+            <button class="btn-menu-mobile" aria-label="Abrir menu" type="button">
+                &#9776;
+            </button>
+        </div>
+    </header>
+
     <!-- Seção de Login -->
     <section id="login-section" class="auth-section">
         <div class="container">
@@ -227,6 +252,8 @@
     <!-- Seu script do admin -->
     <script src="../js/admin.js"></script>
     <script src="js/performance.js"></script>
+    <!-- JS do menu mobile (ADICIONAR) -->
+    <script src="../js/mobile-menu-fix.js"></script>
 </body>
 
 </html>

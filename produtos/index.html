@@ -22,6 +22,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap"
         rel="stylesheet">
 
+    <!-- CSS do menu mobile (ADICIONAR) -->
+    <link rel="stylesheet" href="../css/mobile-menu-fix.css">
+
     <!-- Link canônico opcional para SEO -->
     <link rel="canonical" href="https://www.sua-doceria.com.br/produtos/">
 </head>
@@ -39,10 +42,13 @@
     <!-- Partículas flutuantes -->
     <div class="particles" id="particles"></div>
 
-    <!-- Barra de Navegação -->
+    <!-- Barra de Navegação CORRIGIDA -->
     <header class="navbar">
         <div class="container">
+            <!-- Logo da Doceria -->
             <a href="../index.html#home" class="logo">Doce<span>Encanto</span></a>
+
+            <!-- Menu de Navegação Principal -->
             <nav>
                 <ul>
                     <li><a href="../index.html#home">Home</a></li>
@@ -51,7 +57,11 @@
                     <li><a href="../contato.html#contato">Contato</a></li>
                 </ul>
             </nav>
-            <button class="btn-menu-mobile" aria-label="Abrir menu">&#9776;</button>
+
+            <!-- Botão para abrir o menu mobile -->
+            <button class="btn-menu-mobile" aria-label="Abrir menu" type="button">
+                &#9776;
+            </button>
         </div>
     </header>
 
@@ -163,6 +173,9 @@
     <script src="../js/cardapio.js"></script>
     <script src="../js/performance.js"></script>
     <script src="../js/responsive.js"></script>
+
+    <!-- JS do menu mobile (ADICIONAR) -->
+    <script src="../js/mobile-menu-fix.js"></script>
 </body>
 
 </html>
