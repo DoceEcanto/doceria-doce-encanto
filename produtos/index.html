@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Explore nosso delicioso cardápio de brigadeiros, beijinhos, morango do amor e maçã do amor da Doce Encanto. Encomende já!">
+    <meta name="keywords"
+        content="cardápio doce encanto, brigadeiros gourmet, frutas do amor, doces artesanais Lages, tortas e bolos">
     <title>Nosso Cardápio | Doces e Brigadeiros Artesanais | Doce Encanto</title>
 
     <!-- CSS Files Organizados -->
@@ -16,7 +18,7 @@
     <link rel="stylesheet" href="../css/notificacoes.css">
     <link rel="stylesheet" href="../css/modal-observacoes.css">
     <link rel="stylesheet" href="../css/seo-simples.css">
-    <link rel="stylesheet" href="../css/sistema-busca.css">
+    <link rel="stylesheet" href="../css/busca-simples.css">
 
     <!-- Fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,117 +28,219 @@
 
     <!-- Link canônico opcional para SEO -->
     <link rel="canonical" href="https://www.sua-doceria.com.br/produtos/">
+
+    <!-- Schema para SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Menu",
+      "name": "Cardápio Doce Encanto",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Cento de Brigadeiros",
+          "description": "100 unidades de brigadeiros gourmet com sabores variados, perfeitos para festas e eventos.",
+          "price": "200.00",
+          "currency": "BRL",
+          "image": "../img/cento-brigadeiros.jpg",
+          "category": "Docinhos"
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Cento de Beijinhos",
+          "description": "100 unidades de beijinhos tradicionais feitos com coco fresco e muito carinho.",
+          "price": "180.00",
+          "currency": "BRL",
+          "image": "../img/cento-beijinhos.jpg",
+          "category": "Docinhos"
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Morango do Amor",
+          "description": "Morangos frescos e suculentos cobertos com chocolate nobre, uma combinação irresistível.",
+          "price": "8.00",
+          "currency": "BRL",
+          "image": "../img/morango-amor.jpg",
+          "category": "Frutas do Amor"
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Maçã do Amor",
+          "description": "Maçãs frescas cobertas com caramelo crocante, um doce clássico que conquista todas as idades.",
+          "price": "12.00",
+          "currency": "BRL",
+          "image": "../img/maca-amor.jpg",
+          "category": "Frutas do Amor"
+        }
+      ],
+      "provider": {
+        "@type": "Bakery",
+        "name": "Doce Encanto"
+      }
+    }
+    </script>
 </head>
 
 <body>
     <!-- Loading Animation -->
-    <div class="loading-animation">
+    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
         <div class="loading-content">
+            <div class="loading-logo">Doce<span class="accent-text">Encanto</span> 🍰</div>
             <div class="loading-spinner"></div>
-            <h2>Doce Encanto</h2>
-            <p>Carregando delícias...</p>
+            <p>Carregando suas delícias...</p>
         </div>
     </div>
 
     <!-- Partículas flutuantes -->
-    <div class="particles" id="particles"></div>
+    <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
 
-    <!-- Barra de Navegação CORRIGIDA -->
+    <!-- Barra de Navegação -->
     <header class="navbar">
         <div class="container">
             <!-- Logo da Doceria -->
-            <a href="../index.html#home" class="logo">Doce<span>Encanto</span></a>
+            <a href="../index.html#home" class="logo">Doce<span>Encanto</span></a> <!-- Link para a Home -->
 
             <!-- Menu de Navegação Principal -->
-            <nav>
+            <nav class="nav-desktop">
                 <ul>
                     <li><a href="../index.html#home">Home</a></li>
-                    <li><a href="index.html" class="active">Cardápio</a></li>
-                    <li><a href="../sobre.html#sobre">Sobre Nós</a></li>
-                    <li><a href="../contato.html#contato">Contato</a></li>
+                    <li><a href="index.html" class="active">Cardápio</a></li> <!-- Link ATIVO para Cardápio -->
+                    <li><a href="../sobre.html">Sobre Nós</a></li>
+                    <li><a href="../contato.html">Contato</a></li>
                 </ul>
             </nav>
 
             <!-- Botão para abrir o menu mobile -->
-            <button class="btn-menu-mobile" aria-label="Abrir menu" type="button">
+            <button class="btn-menu-mobile" aria-label="Abrir menu" type="button" onclick="toggleMobileMenu()">
                 &#9776;
             </button>
+            <!-- Menu Mobile -->
+            <nav class="nav-mobile" id="mobileMenu">
+                <button class="btn-close-mobile" aria-label=" Fechar menu"
+                    onclick="toggleMobileMenu()">&#10005;</button>
+                <ul>
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="index.html" class="active">Cardápio</a></li> <!-- Link ATIVO para Cardápio -->
+                    <li><a href="../sobre.html">Sobre Nós</a></li>
+                    <li><a href="../contato.html">Contato</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <!-- Banner da Página de Produtos -->
-    <section class="page-banner produtos-banner">
+    <section class="page-banner produtos-banner parallax-bg"
+        style="background-image: url('../img/banner-cardapio.jpg');">
         <div class="container">
-            <h1>Nosso Cardápio</h1>
-            <p>Descubra nossas delícias feitas com amor!</p>
+            <div class="page-banner-overlay"></div>
+            <div class="animate-fade-in">
+                <h1>Nosso Cardápio Encantador</h1>
+                <p>Descubra um mundo de sabores artesanais feitos com paixão!</p>
+            </div>
         </div>
     </section>
 
     <!-- Seção do Cardápio -->
     <section id="cardapio" class="secao-cardapio">
         <div class="container">
-            <h2 class="scroll-reveal">Explore Nossas Delícias</h2>
-            <p class="subtitulo-cardapio scroll-reveal">Todos os nossos produtos são preparados com ingredientes frescos
-                e de alta qualidade.</p>
+            <h2 class="scroll-reveal animate-bounce-in">Explore Nossas Delícias</h2>
+            <p class="subtitulo-cardapio scroll-reveal animate-fade-in">Todos os nossos produtos são preparados com
+                ingredientes frescos e
+                o toque especial da Doce Encanto.</p>
 
             <!-- Navegação de Categorias -->
-            <div class="categorias-nav scroll-reveal">
-                <button class="btn-categoria active" data-categoria="todos">Todos</button>
-                <button class="btn-categoria" data-categoria="docinhos">Docinhos</button>
-                <button class="btn-categoria" data-categoria="frutas-amor">Frutas do Amor</button>
+            <div class="categorias-nav scroll-reveal animate-slide-in-left">
+                <button class="btn-categoria active" data-categoria="todos">Todos os Sabores</button>
+                <button class="btn-categoria" data-categoria="docinhos">Docinhos da Vovó</button>
+                <button class="btn-categoria" data-categoria="frutas-amor">Frutas do Amor Encantado</button>
+                <button class="btn-categoria" data-categoria="bolos-tortas">Bolos & Tortas Especiais</button>
             </div>
 
-            <!-- SISTEMA DE BUSCA E FILTROS -->
-            <div class="busca-filtros-section">
-                <!-- Cole aqui o HTML do busca-filtros.html -->
+            <!-- Placeholder para Sistema de Busca e Filtros -->
+            <div class="busca-filtros-section scroll-reveal animate-fade-in-up">
+                <div class="container-busca">
+                    <input type="text" id="busca-produto" placeholder="Busque seu doce preferido...">
+                    <button id="btn-buscar">Buscar</button>
+                </div>
             </div>
 
-            <!-- SEUS PRODUTOS EXISTENTES AQUI -->
+            <!-- SEUS PRODUTOS AQUI -->
             <div class="produtos-grid grid grid-auto-fit gap-md scroll-reveal" id="lista-produtos"
                 data-grid-responsive='{"xs":1,"sm":1,"md":2,"lg":3,"xl":4}'>
-                <div class="produto-item" data-categoria="docinhos">
-                    <img src="../img/cento-brigadeiros.jpg" alt="Cento de brigadeiros gourmet variados">
-                    <h3>Cento de Brigadeiros</h3>
-                    <p>100 unidades de brigadeiros gourmet com sabores variados, perfeitos para festas e eventos.</p>
-                    <p class="preco">R$ 200,00 (cento)</p>
-                    <a href="../contato.html#contato" class="btn btn-secondary btn-touch"
-                        aria-label="Pedir Cento de Brigadeiros">Pedir Agora</a>
+
+                <!-- Card Brigadeiros -->
+                <div class="produto-item transition-all card-3d" data-categoria="docinhos">
+                    <img src="../img/cento-brigadeiros.jpg"
+                        alt="Cento de brigadeiros gourmet variados em um prato decorado" loading="lazy">
+                    <div class="produto-info">
+                        <h3>Cento de Brigadeiros 🍫</h3>
+                        <p>100 unidades de brigadeiros gourmet com sabores variados, perfeitos para festas e eventos.
+                        </p>
+                        <p class="preco">R$ 200,00</p>
+                        <a href="../contato.html" class="btn btn-secondary btn-touch btn-ripple"
+                            aria-label="Pedir Cento de Brigadeiros">Pedir Agora</a>
+                    </div>
                 </div>
 
-                <div class="produto-item" data-categoria="docinhos">
-                    <img src="../img/cento-beijinhos.jpg" alt="Cento de beijinhos tradicionais com coco">
-                    <h3>Cento de Beijinhos</h3>
-                    <p>100 unidades de beijinhos tradicionais feitos com coco fresco e muito carinho.</p>
-                    <p class="preco">R$ 180,00 (cento)</p>
-                    <a href="../contato.html#contato" class="btn btn-secondary btn-touch"
-                        aria-label="Pedir Cento de Beijinhos">Pedir Agora</a>
+                <!-- Card Beijinhos -->
+                <div class="produto-item transition-all card-3d" data-categoria="docinhos">
+                    <img src="../img/cento-beijinhos.jpg" alt="Cento de beijinhos tradicionais com coco ralado fresco"
+                        loading="lazy">
+                    <div class="produto-info">
+                        <h3>Cento de Beijinhos 🥥</h3>
+                        <p>100 unidades de beijinhos tradicionais feitos com coco fresco e muito carinho.</p>
+                        <p class="preco">R$ 180,00</p>
+                        <a href="../contato.html" class="btn btn-secondary btn-touch btn-ripple"
+                            aria-label="Pedir Cento de Beijinhos">Pedir Agora</a>
+                    </div>
                 </div>
 
-                <div class="produto-item" data-categoria="frutas-amor">
-                    <img src="../img/morango-amor.jpg" alt="Morango do amor coberto com chocolate">
-                    <h3>Morango do Amor</h3>
-                    <p>Morangos frescos e suculentos cobertos com chocolate nobre, uma combinação irresistível.</p>
-                    <p class="preco">R$ 8,00 (unidade)</p>
-                    <a href="../contato.html#contato" class="btn btn-secondary btn-touch"
-                        aria-label="Pedir Morango do Amor">Pedir
-                        Agora</a>
+                <!-- Card Morango do Amor -->
+                <div class="produto-item transition-all card-3d" data-categoria="frutas-amor">
+                    <img src="../img/morango-amor.jpg" alt="Morango do amor coberto com chocolate ao leite e decorado"
+                        loading="lazy">
+                    <div class="produto-info">
+                        <h3>Morango do Amor 🍓</h3>
+                        <p>Morangos frescos e suculentos cobertos com chocolate nobre, uma combinação irresistível.</p>
+                        <p class="preco">R$ 8,00 (unid.)</p>
+                        <a href="../contato.html" class="btn btn-secondary btn-touch btn-ripple"
+                            aria-label="Pedir Morango do Amor">Pedir Agora</a>
+                    </div>
                 </div>
 
-                <div class="produto-item" data-categoria="frutas-amor">
-                    <img src="../img/maca-amor.jpg" alt="Maçã do amor coberta com caramelo">
-                    <h3>Maçã do Amor</h3>
-                    <p>Maçãs frescas cobertas com caramelo crocante, um doce clássico que conquista todas as idades.</p>
-                    <p class="preco">R$ 12,00 (unidade)</p>
-                    <a href="../contato.html#contato" class="btn btn-secondary btn-touch"
-                        aria-label="Pedir Maçã do Amor">Pedir
-                        Agora</a>
+                <!-- Card Maçã do Amor -->
+                <div class="produto-item transition-all card-3d" data-categoria="frutas-amor">
+                    <img src="../img/maca-amor.jpg" alt="Maçã do amor clássica coberta com caramelo crocante brilhante"
+                        loading="lazy">
+                    <div class="produto-info">
+                        <h3>Maçã do Amor 🍎</h3>
+                        <p>Maçãs frescas cobertas com caramelo crocante, um doce clássico que conquista todas as idades.
+                        </p>
+                        <p class="preco">R$ 12,00 (unid.)</p>
+                        <a href="../contato.html" class="btn btn-secondary btn-touch btn-ripple"
+                            aria-label="Pedir Maçã do Amor">Pedir Agora</a>
+                    </div>
+                </div>
+
+                <!-- Card Bolo de Chocolate -->
+                <div class="produto-item transition-all card-3d" data-categoria="bolos-tortas">
+                    <img src="../img/bolo-chocolate.jpg" alt="Bolo de chocolate fofinho com cobertura cremosa"
+                        loading="lazy">
+                    <div class="produto-info">
+                        <h3>Bolo de Chocolate 🍫</h3>
+                        <p>O clássico bolo de chocolate, fofinho e com uma cobertura de ganache irresistível.</p>
+                        <p class="preco">R$ 60,00 (kg)</p>
+                        <a href="../contato.html" class="btn btn-secondary btn-touch btn-ripple"
+                            aria-label="Pedir Bolo de Chocolate">Pedir Agora</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Botão Voltar ao Topo -->
-    <a href="../index.html#home" id="btnVoltarAoTop" class="btn-voltar-ao-topo" aria-label="Voltar ao topo">
+    <a href="../index.html#home" id="btnVoltarAoTop" class="btn-voltar-ao-topo transition-all pulse"
+        aria-label="Voltar ao topo">
         &#9650;
     </a>
 
@@ -152,8 +256,8 @@
                     <ul>
                         <li><a href="../index.html#home">Home</a></li>
                         <li><a href="index.html" class="active">Cardápio</a></li>
-                        <li><a href="../sobre.html#sobre">Sobre Nós</a></li>
-                        <li><a href="../contato.html#contato">Contato</a></li>
+                        <li><a href="../sobre.html">Sobre Nós</a></li>
+                        <li><a href="../contato.html">Contato</a></li>
                     </ul>
                 </div>
                 <div class="footer-social">
@@ -165,25 +269,34 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Doce Encanto. Todos os direitos reservados.</p>
+                <p>&copy; 2025 Doce Encanto. Todos os direitos reservados. Feito com ❤️ em Lages-SC.</p>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js"></script> <!-- Este é o script principal -->
     <script src="../js/catalogo.js"></script>
     <script src="../js/catalogo-firebase.js"></script>
-    <script src="../js/cardapio.js"></script>
+    <script src="../js/cardapio.js"></script> <!-- Este script tem a lógica de filtro, quick view, etc. -->
     <script src="../js/carrinho.js"></script>
     <script src="../js/notificacoes.js"></script>
     <script src="../js/notificacoes-integracao.js"></script>
     <script src="../js/modal-observacoes.js"></script>
     <script src="../js/carrinho-modal-integration.js"></script>
-    <script src="../js/modal-observacoes.js"></script>
     <script src="../js/modal-fix-adicionar-sempre.js"></script>
     <script src="../js/seo-simples.js"></script>
-    <script src="../js/sistema-busca.js"></script>
+    <script src="../js/busca-standalone.js"></script>
+    <script src="../js/particles.min.js"></script> <!-- Necessário para o efeito de partículas -->
+
+    <!-- Scripts de Funcionalidade Específica da Página -->
+    <script>
+        // A função toggleMobileMenu precisa estar definida em algum lugar, idealmente em main.js
+        // Se ela não estiver em main.js, você pode defini-la aqui para esta página:
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+    </script>
 </body>
 
 </html>

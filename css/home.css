@@ -1,81 +1,100 @@
-/* ===== HOME.CSS - ESTILOS ESPECÍFICOS DA PÁGINA HOME ===== */
+/* ===== HOME.CSS - ESTILOS ESPECÍFICOS DA PÁGINA HOME (COMPLETO E APRIMORADO) ===== */
 
-/* Loading Screen */
+/* ----- LOADING SCREEN ----- */
 .loading-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #ff69b4, #ffc0cb, #ff1493);
+    background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink), var(--accent-pink));
     background-size: 300% 300%;
-    animation: gradientMove 3s ease infinite;
+    /* Gradiente mais dinâmico */
+    animation: gradientMove 5s ease infinite;
+    /* Animação de gradiente mais suave */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    /* Garantir que fique no topo */
     opacity: 1;
     transition: opacity 0.5s ease-out;
+    /* Transição de saída suave */
+    will-change: opacity;
+    /* Otimização */
 }
 
 .loading-screen.fade-out {
     opacity: 0;
     pointer-events: none;
+    /* Desabilita interações após sumir */
 }
 
 .loading-content {
     text-align: center;
-    color: white;
+    color: var(--white);
 }
 
 .loading-logo {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    /* Um pouco maior */
     font-weight: bold;
     margin-bottom: 20px;
     animation: pulse 1.5s ease-in-out infinite;
+    /* Logo pulsando */
+    font-family: var(--font-accent);
 }
 
 .loading-spinner {
-    width: 60px;
-    height: 60px;
-    border: 6px solid rgba(255, 255, 255, 0.3);
-    border-top: 6px solid white;
+    width: 70px;
+    /* Spinner maior */
+    height: 70px;
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    /* Bordas mais grossas */
+    border-top: 8px solid var(--white);
+    /* Cor do topo */
     border-radius: 50%;
     animation: spin 1s linear infinite;
+    /* Animação de giro */
     margin: 0 auto 20px;
 }
 
-/* Navbar Animations */
+/* ----- NAVBAR ANIMATIONS ----- */
 .navbar {
     animation: slideInFromTop 1s ease-out;
-    transition: all 0.3s ease;
+    /* Animação de entrada */
+    transition: all var(--transition-fast);
+    will-change: transform, background;
 }
 
 .navbar:hover {
     background: rgba(255, 255, 255, 0.95);
+    /* Hover com efeito blur e sombra */
     backdrop-filter: blur(10px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 20px var(--shadow-color);
 }
 
 .logo {
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
     position: relative;
     overflow: hidden;
 }
 
 .logo:hover {
     animation: heartbeat 1s ease-in-out;
-    color: #ff69b4;
+    /* Coração no logo */
+    color: var(--primary-pink);
 }
 
 .logo::before {
+    /* Efeito de brilho no logo */
     content: '✨';
     position: absolute;
     left: -30px;
     top: 50%;
     transform: translateY(-50%);
     opacity: 0;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
 }
 
 .logo:hover::before {
@@ -83,21 +102,22 @@
     opacity: 1;
 }
 
-/* Navigation Links */
+/* NAVIGATION LINKS */
 nav ul li a {
     position: relative;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
 }
 
 nav ul li a::after {
+    /* Efeito underline animado nos links */
     content: '';
     position: absolute;
     bottom: -5px;
     left: 0;
     width: 0;
     height: 3px;
-    background: linear-gradient(45deg, #ff69b4, #ff1493);
-    transition: width 0.3s ease;
+    background: linear-gradient(45deg, var(--primary-pink), var(--accent-pink));
+    transition: width var(--transition-fast);
 }
 
 nav ul li a:hover::after {
@@ -105,17 +125,18 @@ nav ul li a:hover::after {
 }
 
 nav ul li a:hover {
-    color: #ff69b4;
+    color: var(--primary-pink);
     transform: translateY(-3px);
 }
 
-/* Hero Section */
+/* ----- HERO SECTION ANIMATIONS ----- */
 .hero {
     position: relative;
     overflow: hidden;
 }
 
 .hero::before {
+    /* Gradiente animado de fundo */
     content: '';
     position: absolute;
     top: 0;
@@ -126,30 +147,21 @@ nav ul li a:hover {
     animation: gradientShift 8s ease-in-out infinite;
 }
 
-@keyframes gradientShift {
-
-    0%,
-    100% {
-        background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), rgba(255, 192, 203, 0.1));
-    }
-
-    50% {
-        background: linear-gradient(45deg, rgba(255, 192, 203, 0.1), rgba(255, 105, 180, 0.1));
-    }
-}
-
 .hero-text h2 {
     animation: fadeInLeft 1s ease-out 0.5s both;
+    /* Entrada suave */
     position: relative;
 }
 
 .hero-text h1 {
     animation: bounceInDown 1.2s ease-out 0.8s both;
+    /* Entrada com pulo */
     position: relative;
     overflow: hidden;
 }
 
 .hero-text h1::after {
+    /* Efeito shimmer no título */
     content: '';
     position: absolute;
     top: 0;
@@ -158,33 +170,29 @@ nav ul li a:hover {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     animation: shimmer 2s ease-in-out 2s infinite;
-}
-
-@keyframes shimmer {
-    0% {
-        left: -100%;
-    }
-
-    100% {
-        left: 100%;
-    }
+    /* Animação mais longa */
 }
 
 .hero-text p {
     animation: fadeInLeft 1s ease-out 1.2s both;
+    /* Entrada suave */
 }
 
 .hero-cta {
     animation: fadeInUp 1s ease-out 1.5s both;
+    /* Entrada de baixo */
 }
 
 .hero-image {
     animation: fadeInRight 1s ease-out 1s both;
+    /* Entrada da direita */
 }
 
 .hero-image img {
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
     animation: float 6s ease-in-out infinite;
+    /* Flutuação suave */
+    will-change: transform;
 }
 
 .hero-image:hover img {
@@ -192,14 +200,15 @@ nav ul li a:hover {
     filter: brightness(1.1);
 }
 
-/* Buttons */
+/* ----- BOTÕES (ANIMAÇÕES DE HOVER) ----- */
 .btn {
     position: relative;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
     overflow: hidden;
 }
 
 .btn::before {
+    /* Efeito ripple */
     content: '';
     position: absolute;
     top: 50%;
@@ -209,7 +218,7 @@ nav ul li a:hover {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+    transition: width var(--transition-slow), height var(--transition-slow);
 }
 
 .btn:hover::before {
@@ -219,32 +228,37 @@ nav ul li a:hover {
 
 .btn:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px var(--shadow-color);
 }
 
 .btn-primary:hover {
-    animation: glow 1s ease-in-out infinite;
+    animation: glow 1s ease-in-out infinite alternate;
+    /* Brilho alternado */
 }
 
-/* Products Section */
+/* ----- PRODUTOS SECTION ANIMATIONS ----- */
 .secao-destaques h2 {
     animation: fadeInUp 0.8s ease-out;
+    /* Entrada suave */
 }
 
 .subtitulo-destaques {
     animation: fadeInUp 0.8s ease-out 0.2s both;
+    /* Entrada suave com delay */
 }
 
 .produtos-grid {
     animation: fadeInUp 0.8s ease-out 0.4s both;
+    /* Entrada suave com delay */
 }
 
 .produto-item {
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
     position: relative;
     overflow: hidden;
 }
 
+/* Animações individuais para os primeiros itens (exemplo) */
 .produto-item:nth-child(1) {
     animation: fadeInUp 0.8s ease-out 0.6s both;
 }
@@ -258,6 +272,7 @@ nav ul li a:hover {
 }
 
 .produto-item::before {
+    /* Gradiente sutil no hover */
     content: '';
     position: absolute;
     top: 0;
@@ -266,7 +281,7 @@ nav ul li a:hover {
     bottom: 0;
     background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), rgba(255, 192, 203, 0.1));
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--transition-fast);
 }
 
 .produto-item:hover::before {
@@ -275,12 +290,13 @@ nav ul li a:hover {
 
 .produto-item:hover {
     transform: translateY(-15px) scale(1.03);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    animation: glow 2s ease-in-out infinite;
+    box-shadow: 0 20px 40px var(--shadow-color);
+    animation: glow 1.5s ease-in-out infinite alternate;
+    /* Brilho suave no hover */
 }
 
 .produto-item img {
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
 }
 
 .produto-item:hover img {
@@ -289,15 +305,16 @@ nav ul li a:hover {
 }
 
 .produto-item h3 {
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
 }
 
 .produto-item:hover h3 {
-    color: #ff69b4;
+    color: var(--primary-pink);
     animation: shake 0.5s ease-in-out;
+    /* Pequeno tremor no título */
 }
 
-/* Testimonials */
+/* ----- TESTIMONIALS ANIMATIONS ----- */
 .secao-depoimentos {
     position: relative;
     overflow: hidden;
@@ -305,20 +322,22 @@ nav ul li a:hover {
 
 .secao-depoimentos h2 {
     animation: fadeInUp 0.8s ease-out;
+    /* Entrada suave */
 }
 
 .depoimento-item {
     animation: fadeInUp 0.8s ease-out 0.5s both;
-    transition: all 0.3s ease;
+    /* Entrada suave com delay */
+    transition: all var(--transition-fast);
 }
 
 .depoimento-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px var(--shadow-color);
 }
 
 .depoimento-avatar img {
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
 }
 
 .depoimento-item:hover .depoimento-avatar img {
@@ -326,12 +345,13 @@ nav ul li a:hover {
     filter: brightness(1.1);
 }
 
-/* CTA Section */
+/* ----- CTA SECTION ANIMATIONS ----- */
 .cta-produtos {
     animation: fadeInUp 0.8s ease-out 0.8s both;
+    /* Entrada suave com delay */
 }
 
-/* Floating Hearts */
+/* ----- FLOATING HEARTS ----- */
 .floating-hearts {
     position: fixed;
     top: 0;
@@ -339,17 +359,233 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    /* Não interfere com cliques */
     z-index: -1;
+    /* Atrás de tudo, exceto fundo */
 }
 
 .heart {
     position: absolute;
     color: rgba(255, 105, 180, 0.3);
+    /* Rosa translúcido */
     font-size: 20px;
+    /* Tamanho da fonte */
     animation: floatHeart 8s infinite linear;
+    /* Animação de flutuação */
+    will-change: transform, opacity;
+    /* Otimização */
+}
+
+/* ----- RIPPLE EFFECT ----- */
+.ripple {
+    /* Definido em style.css, mas keyframes aqui para referência */
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+/* ----- KEYFRAMES (AGRUPADOS PARA CLAREZA) ----- */
+/* Animações de Loading */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animações de Navbar */
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Animações do Hero */
+@keyframes gradientShift {
+
+    /* Gradiente de fundo que muda */
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes shimmer {
+
+    /* Efeito shimmer no título */
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes fadeInLeft {
+
+    /* Entrada da esquerda */
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounceInDown {
+
+    /* Entrada com pulo */
+    0% {
+        opacity: 0;
+        transform: translateY(-2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(30px);
+    }
+
+    80% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+
+    /* Entrada de baixo */
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+
+    /* Entrada da direita */
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes glow {
+
+    /* Efeito de brilho */
+    0% {
+        box-shadow: 0 0 10px var(--primary-pink);
+    }
+
+    100% {
+        box-shadow: 0 0 25px var(--primary-pink-hover);
+    }
+}
+
+@keyframes shake {
+
+    /* Efeito de tremer */
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes float {
+
+    /* Animação de flutuar */
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 @keyframes floatHeart {
+
+    /* Animação de corações flutuantes */
     0% {
         transform: translateY(100vh) rotate(0deg);
         opacity: 0;
@@ -364,48 +600,46 @@ nav ul li a:hover {
     }
 
     100% {
-        transform: translateY(-100px) rotate(360deg);
+        transform: translateY(-100vh) rotate(360deg);
         opacity: 0;
     }
 }
 
-/* Ripple Effect */
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.6);
-    transform: scale(0);
-    animation: ripple 0.6s linear;
-    pointer-events: none;
-}
-
 @keyframes ripple {
+
+    /* Efeito ripple */
     to {
         transform: scale(4);
         opacity: 0;
     }
 }
 
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-    .hero-text h1 {
-        animation: zoomIn 1s ease-out 0.8s both;
+@keyframes zoomIn {
+
+    /* Zoom de entrada */
+    from {
+        opacity: 0;
+        transform: scale(0.3);
     }
 
-    .produto-item {
-        animation: fadeInUp 0.6s ease-out both;
-    }
-
-    .produto-item:nth-child(n) {
-        animation-delay: 0.2s;
+    50% {
+        opacity: 1;
     }
 }
 
-/* ...[código original acima igual ao seu]... */
+/* ----- RESPONSIVIDADE (INCLUINDO ANIMAÇÕES) ----- */
+@media (prefers-reduced-motion: reduce) {
 
-/* ------------ SEÇÃO EXTRA DE RESPONSIVIDADE ------------ */
+    /* Desativa todas as animações e transições */
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
 @media (max-width: 1100px) {
 
+    /* Ajustes gerais para telas menores */
     .secao-destaques .container,
     .secao-depoimentos .container {
         padding-left: 20px;
@@ -415,10 +649,15 @@ nav ul li a:hover {
 
 @media (max-width: 900px) {
 
-    .hero .flex,
-    .secao-destaques .produtos-grid {
-        flex-direction: column !important;
+    /* Tablet e abaixo */
+    .hero .container,
+    .hero .flex {
+        flex-direction: column-reverse !important;
+        /* Inverte a ordem: texto acima da imagem */
+        text-align: center;
+        /* Centraliza o conteúdo */
         gap: 2rem;
+        /* Ajusta o gap */
     }
 
     .hero-image,
@@ -428,79 +667,9 @@ nav ul li a:hover {
     }
 
     .hero-image img {
-        width: 100%;
-        height: auto;
-        max-width: 400px;
-        margin: 0 auto;
-        display: block;
-    }
-}
-
-@media (max-width: 700px) {
-    .hero-text h1 {
-        font-size: 2rem;
-    }
-
-    .secao-destaques h2 {
-        font-size: 1.3rem;
-    }
-
-    .produto-item h3 {
-        font-size: 1rem;
-    }
-
-    .produto-item p {
-        font-size: 0.97rem;
-    }
-
-    .produtos-grid {
-        gap: 1.4rem;
-    }
-}
-
-@media (max-width: 550px) {
-
-    .hero,
-    .secao-destaques,
-    .secao-depoimentos {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .hero-text h1 {
-        font-size: 1.2rem;
-    }
-
-    .cta-produtos a.btn {
-        font-size: 0.99rem;
-        padding: 0.7rem 1rem;
-    }
-
-    .footer-content,
-    .footer-links,
-    .footer-social {
-        flex-direction: column !important;
-        align-items: flex-start;
-    }
-
-    .footer-logo a {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 900px) {
-    .hero .container {
-        flex-direction: column-reverse !important;
-        /* Garante que o texto fique em cima da imagem */
-        text-align: center;
-    }
-
-    .hero-image,
-    .hero-image img {
         max-width: 320px;
         max-height: 270px;
         margin: 0 auto 20px auto;
-        width: 100%;
         height: auto;
         display: block;
     }
@@ -515,6 +684,150 @@ nav ul li a:hover {
         align-items: center;
         gap: 15px;
     }
+
+    /* Ajustes para a seção de destaques em telas menores */
+    .secao-destaques .produtos-grid {
+        flex-direction: column !important;
+        gap: 2rem;
+    }
 }
 
-/* ----------- FIM RESPONSIVIDADE ------------ */
+@media (max-width: 700px) {
+
+    /* Telas menores (smartphones maiores) */
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    /* Título menor */
+    .secao-destaques h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Título da seção menor */
+    .produto-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .produto-item p {
+        font-size: 0.97rem;
+    }
+
+    .produtos-grid {
+        gap: 1.4rem;
+    }
+
+    /* Gap menor */
+}
+
+@media (max-width: 550px) {
+
+    /* Telas pequenas (smartphones) */
+    /* Remove padding lateral de seções principais */
+    .hero,
+    .secao-destaques,
+    .secao-depoimentos {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Título ainda menor */
+    .cta-produtos a.btn {
+        font-size: 0.99rem;
+        padding: 0.7rem 1rem;
+    }
+
+    /* Botões menores */
+
+    /* Flex direction para rodapé e conteúdo */
+    .footer-content,
+    .footer-links,
+    .footer-social {
+        flex-direction: column !important;
+        align-items: flex-start;
+    }
+
+    .footer-logo a {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Telas muito pequenas */
+    .loading-logo {
+        font-size: 2.5rem;
+    }
+
+    .loading-spinner {
+        width: 50px;
+        height: 50px;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    /* Reduz H1 novamente */
+    .hero-text h2 {
+        font-size: 1.2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    /* Botões menores */
+    .btn-menu-mobile {
+        font-size: 1.8rem;
+    }
+
+    .hero-cta {
+        gap: 10px;
+    }
+
+    /* Menos gap nos botões do hero */
+    .produto-item img {
+        height: 170px;
+    }
+
+    /* Imagens de produto menores */
+    .depoimento-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    /* Avatares menores */
+    .depoimento-content p {
+        font-size: 1.1rem;
+    }
+
+    .depoimento-content h4 {
+        font-size: 1.2rem;
+    }
+
+    .page-banner h1 {
+        font-size: 2.2rem;
+    }
+
+    .btn-voltar-ao-topo {
+        width: 45px;
+        height: 45px;
+        font-size: 1.6rem;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* ----- KEYFRAMES ESPECÍFICOS PARA HOME ----- */
+/* (Já agrupados na seção principal de keyframes, mas listados aqui para referência direta) */
+/* gradientMove, pulse, spin, slideInFromTop, heartbeat, gradientShift, shimmer, fadeInLeft, bounceInDown, fadeInUp, fadeInRight, glow, shake, float, floatHeart, ripple, zoomIn */

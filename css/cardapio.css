@@ -1,233 +1,356 @@
-/* ===== CARDAPIO.CSS — CARDÁPIO DOCE ENCANTO ===== */
+/* ===== CARDAPIO.CSS - ESTILOS ESPECÍFICOS DA PÁGINA CARDÁPIO ===== */
 
-/* ---------- VARIÁVEIS DE TEMA ---------- */
-:root {
-    --rosa-principal: #ff69b4;
-    --rosa-claro: #ffe4f1;
-    --rosa-escuro: #d63384;
-    --cinza-texto: #4a4a4a;
-    --branco: #ffffff;
-    --sombra-card: 0 8px 22px rgba(255, 105, 180, .15);
-    --sombra-hover: 0 12px 30px rgba(255, 105, 180, .25);
-    --fonte-titulo: 'Satisfy', cursive;
-    --fonte-corpo: 'Poppins', sans-serif;
-}
-
-/* ---------- RESET RÁPIDO ---------- */
-* {
-    box-sizing: border-box;
-}
-
-/* ---------- CONTAINER DO CARDÁPIO ---------- */
-.secao-cardapio {
-    padding: 4rem 0;
-    background: linear-gradient(135deg, var(--rosa-claro) 0%, #fff 100%);
-}
-
-.secao-cardapio .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-/* ---------- TÍTULO & SUB ---------- */
-.secao-cardapio h2 {
-    font-family: var(--fonte-titulo);
-    font-size: clamp(2.2rem, 4vw, 3rem);
-    color: var(--rosa-principal);
+/* ----- BANNER DA PÁGINA DE PRODUTOS ----- */
+.page-banner.produtos-banner {
+    background-image: url('../img/banner-cardapio.jpg');
+    /* Imagem de banner específica para cardápio */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: var(--white);
     text-align: center;
-    margin-bottom: .5rem;
-    animation: fadeInUp .8s ease-out;
-}
-
-.subtitulo-cardapio {
-    font-size: clamp(.9rem, 2.5vw, 1.1rem);
-    color: var(--cinza-texto);
-    text-align: center;
-    margin-bottom: 2.5rem;
-    animation: fadeInUp .8s ease-out .2s both;
-}
-
-/* ---------- CATEGORIAS ---------- */
-.categorias-nav {
+    padding: 120px 0 100px 0;
+    /* Espaço maior */
     display: flex;
-    flex-wrap: wrap;
-    gap: .75rem;
+    align-items: center;
     justify-content: center;
-    margin-bottom: 2.5rem;
-    animation: fadeInUp .8s ease-out .4s both;
+    min-height: 45vh;
+    /* Altura mínima para visualização */
+}
+
+.page-banner.produtos-banner::before {
+    /* Overlay gradiente para contraste */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(233, 30, 99, 0.7), rgba(194, 24, 91, 0.8));
+    opacity: 0.8;
+}
+
+.page-banner.produtos-banner .container {
+    position: relative;
+    z-index: 1;
+}
+
+.page-banner.produtos-banner h1 {
+    font-size: 3.5rem;
+    /* Título grande */
+    color: var(--white);
+    font-family: var(--font-accent);
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    /* Sombra para legibilidade */
+}
+
+.page-banner.produtos-banner p {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ----- NAVEGAÇÃO DE CATEGORIAS ----- */
+.categorias-nav {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* Para quebrar linha em telas menores */
+    gap: 15px;
+    /* Espaço entre botões */
 }
 
 .btn-categoria {
-    font-family: var(--fonte-corpo);
-    font-size: .9rem;
-    padding: .6rem 1.4rem;
-    border: 2px solid var(--rosa-principal);
-    border-radius: 50px;
-    background: var(--branco);
-    color: var(--rosa-principal);
+    background-color: transparent;
+    color: var(--primary-pink);
+    border: 2px solid var(--primary-pink);
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    /* Arredondado */
     cursor: pointer;
-    transition: all .3s ease;
+    transition: all var(--transition-fast);
+    margin: 5px;
+    /* Pequena margem adicional */
 }
 
 .btn-categoria:hover,
-.btn-categoria.active {
-    background: var(--rosa-principal);
-    color: var(--branco);
+.btn-categoria:focus {
+    background-color: var(--primary-pink);
+    color: var(--white);
     transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--shadow-color);
 }
 
-/* ---------- GRID DE PRODUTOS ---------- */
-.produtos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    animation: fadeInUp .8s ease-out .6s both;
+.btn-categoria.active {
+    background-color: var(--primary-pink);
+    color: var(--white);
+    box-shadow: 0 5px 15px var(--shadow-color);
 }
 
-/* ---------- CARD ---------- */
-.produto-item {
-    background: var(--branco);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--sombra-card);
-    transition: transform .35s, box-shadow .35s;
-    transform-style: preserve-3d;
-}
-
-.produto-item:hover {
-    transform: rotateX(5deg) rotateY(5deg) translateZ(12px);
-    box-shadow: var(--sombra-hover);
-}
-
-/* Imagem */
-.produto-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform .4s;
-}
-
-.produto-item:hover img {
-    transform: scale(1.08);
-}
-
-/* Conteúdo do card */
-.produto-info {
-    padding: 1.5rem 1.25rem 2rem;
+/* ----- SISTEMA DE BUSCA E FILTROS (ESTILOS GERAIS) ----- */
+.busca-filtros-section {
+    margin-bottom: 40px;
     text-align: center;
 }
 
-.produto-item h3 {
-    font-family: var(--fonte-titulo);
-    font-size: 1.6rem;
-    color: var(--rosa-escuro);
-    margin-bottom: .5rem;
-    transition: color .3s;
+.busca-filtros-section .container-busca {
+    display: inline-flex;
+    /* Permite que os elementos fiquem lado a lado */
+    gap: 10px;
+    border: 1px solid var(--border-cardapio);
+    padding: 10px 15px;
+    border-radius: 30px;
+    background-color: var(--white);
+    box-shadow: 0 2px 5px var(--shadow-color);
 }
 
-.produto-item:hover h3 {
-    color: var(--rosa-principal);
+.busca-filtros-section input[type="text"] {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 5px 0;
+    width: 250px;
+    /* Largura padrão do campo de busca */
+    color: var(--text-dark-gray);
+}
+
+.busca-filtros-section input[type="text"]::placeholder {
+    color: var(--text-light-gray);
+}
+
+.busca-filtros-section button {
+    background-color: var(--primary-pink);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    /* Arredondado */
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color var(--transition-fast);
+}
+
+.busca-filtros-section button:hover,
+.busca-filtros-section button:focus {
+    background-color: var(--primary-pink-hover);
+}
+
+/* ----- SEÇÃO DO CARDÁPIO ----- */
+.secao-cardapio {
+    padding: 80px 0;
+    background-color: var(--background-light-gray);
+    /* Fundo claro */
+}
+
+.secao-cardapio h2 {
+    color: var(--primary-pink);
+    /* Título na cor primária */
+}
+
+/* PRODUTOS GRID - JÁ DEFINIDO EM STYLE.CSS PARA SER REUTILIZÁVEL */
+/* .produtos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 20px; } */
+
+/* ----- ESTILOS DOS CARDS DE PRODUTO ----- */
+.produto-item {
+    background-color: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    text-align: center;
+    padding: 25px;
+    /* Padding interno */
+    transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+    border: 1px solid var(--border-cardapio);
+    display: flex;
+    /* Para alinhar informações */
+    flex-direction: column;
+    justify-content: space-between;
+    /* Para empurrar o botão para baixo */
+    transform-style: preserve-3d;
+    /* Para efeito 3D */
+    will-change: transform, box-shadow;
+}
+
+.produto-item:hover,
+.produto-item:focus {
+    transform: translateY(-10px) perspective(1000px) rotateY(5deg);
+    /* Efeito 3D no hover */
+    box-shadow: 0 15px 30px var(--shadow-md);
+}
+
+.produto-item img {
+    border-radius: 12px;
+    /* Bordas arredondadas para a imagem */
+    margin-bottom: 20px;
+    width: 100%;
+    height: 220px;
+    /* Altura fixa para consistência */
+    object-fit: cover;
+    /* Garante que a imagem cubra o espaço */
+    border: 3px solid var(--primary-pink);
+    /* Borda na cor primária */
+    transition: transform var(--transition-fast);
+}
+
+.produto-item:hover img {
+    transform: scale(1.05) rotateY(2deg);
+    /* Leve zoom e rotação */
+}
+
+.produto-item .produto-info {
+    flex-grow: 1;
+    /* Permite que este div ocupe o espaço restante */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Para alinhar preço e botão */
+}
+
+.produto-item h3 {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+    color: var(--primary-pink);
+    display: flex;
+    /* Para alinhar ícone */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .produto-item p {
-    font-size: .9rem;
-    color: var(--cinza-texto);
-    margin-bottom: 1rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    color: var(--text-light-gray);
+    margin-bottom: 15px;
 }
 
-.preco {
-    font-size: 1.2rem;
+.produto-item .preco {
     font-weight: 700;
-    color: var(--rosa-principal);
-    margin-bottom: 1.2rem;
+    color: var(--primary-pink);
+    font-size: 1.2rem;
+    /* Preço em destaque */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    /* Espaço antes do botão */
 }
 
-/* Botão do card */
-.btn-pedir {
-    display: inline-block;
-    padding: .7rem 1.8rem;
-    background: var(--rosa-principal);
-    color: var(--branco);
-    border-radius: 50px;
-    font-size: .9rem;
-    text-decoration: none;
-    transition: background .3s, transform .3s;
+.produto-item .btn-secondary {
+    padding: 10px 20px;
+    font-size: 1rem;
+    width: auto;
+    /* Ajusta largura ao conteúdo */
+    margin: 0 auto;
+    /* Centraliza o botão */
+    display: block;
+    /* Para que o margin auto funcione */
 }
 
-.btn-pedir:hover {
-    background: var(--rosa-escuro);
-    transform: scale(1.05);
-}
+/* ----- RESPONSIVIDADE DO CARDÁPIO ----- */
+@media (max-width: 768px) {
+    .page-banner.produtos-banner {
+        padding: 100px 0 80px 0;
+        min-height: 40vh;
+    }
 
-/* ---------- RESPONSIVO ---------- */
-@media (max-width: 640px) {
+    .page-banner.produtos-banner h1 {
+        font-size: 2.8rem;
+    }
+
+    .page-banner.produtos-banner p {
+        font-size: 1.1rem;
+    }
+
     .categorias-nav {
         flex-direction: column;
+        /* Botões um abaixo do outro */
         align-items: center;
     }
 
     .btn-categoria {
-        width: 80%;
+        margin: 5px 0;
+    }
+
+    .busca-filtros-section .container-busca {
+        flex-direction: column;
+        width: 90%;
+        /* Mais largo em mobile */
+        display: block;
+        /* Para width funcionar */
+    }
+
+    .busca-filtros-section input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .busca-filtros-section button {
+        width: 100%;
+    }
+
+    .produto-item {
+        padding: 20px;
+    }
+
+    .produto-item img {
+        height: 180px;
+    }
+
+    .produto-item h3 {
+        font-size: 1.5rem;
+    }
+
+    .produto-item p {
+        font-size: 0.9rem;
+    }
+
+    .produto-item .preco {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-banner.produtos-banner {
+        padding: 80px 0 60px 0;
+        min-height: 35vh;
+    }
+
+    .page-banner.produtos-banner h1 {
+        font-size: 2.5rem;
+    }
+
+    .page-banner.produtos-banner p {
+        font-size: 1rem;
+    }
+
+    .categorias-nav {
+        gap: 10px;
+    }
+
+    .btn-categoria {
+        font-size: 1rem;
+        padding: 8px 20px;
     }
 
     .produtos-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-}
-
-/* ---------- ANIMAÇÕES ---------- */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+        gap: 20px;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ---------- PARTICLES (opcional) ---------- */
-.particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.particle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: var(--rosa-principal);
-    border-radius: 50%;
-    opacity: .4;
-    animation: floatParticle 10s infinite linear;
-}
-
-@keyframes floatParticle {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
+    .produto-item {
+        padding: 15px;
     }
 
-    10% {
-        opacity: .4;
+    .produto-item img {
+        height: 170px;
     }
 
-    90% {
-        opacity: .4;
+    .produto-item h3 {
+        font-size: 1.3rem;
     }
 
-    100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
+    .produto-item .preco {
+        font-size: 1rem;
     }
 }

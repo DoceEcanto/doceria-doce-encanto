@@ -1,27 +1,43 @@
-/* ----- VARIÁVEIS DE CORES ----- */
+/* ===== STYLE.CSS - ARQUIVO PRINCIPAL DE ESTILOS (COMPLETO E APRIMORADO) ===== */
+
+/* ----- VARIÁVEIS DE CORES E GLOBAIS ----- */
 :root {
-    --cor-primaria: #e91e63;
+    --primary-pink: #e91e63;
     /* Rosa vibrante */
-    --cor-primaria-hover: #c2185b;
+    --primary-pink-hover: #c2185b;
     /* Rosa mais escuro para hover */
-    --cor-secundaria: #ffffff;
+    --secondary-white: #ffffff;
     /* Branco */
-    --cor-fundo: #f8f8f8;
+    --background-light-gray: #f8f8f8;
     /* Fundo claro */
-    --cor-texto: #333;
+    --text-dark-gray: #333;
     /* Texto escuro padrão */
-    --cor-texto-branco: #fff;
-    /* Texto branco */
-    --cor-borda-cardapio: #eee;
-    /* Borda leve para itens de cardápio */
-    --cor-link-hover: #ad1457;
-    /* Cor de hover para links */
-    --cor-texto-subtitulo: #666;
+    --text-light-gray: #666;
     /* Texto para subtítulos */
-    --cor-foco-input: #e91e63;
-    /* Cor de foco para inputs, igual à primária */
-    --cor-overlay-banner: rgba(0, 0, 0, 0.4);
-    /* Overlay para banners */
+    --white: #fff;
+    /* Branco puro */
+    --border-cardapio: #eee;
+    /* Borda leve para itens de cardápio */
+    --link-hover-color: #ad1457;
+    /* Cor de hover para links */
+    --overlay-banner-dark: rgba(0, 0, 0, 0.4);
+    /* Overlay escuro para banners */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    /* Sombra padrão */
+    --shadow-md: rgba(0, 0, 0, 0.15);
+    --shadow-lg: rgba(0, 0, 0, 0.2);
+    --transition-fast: 0.3s ease;
+    /* Transição padrão */
+    --transition-slow: 0.5s ease-out;
+    --font-main: 'Poppins', sans-serif;
+    --font-accent: 'Satisfy', cursive;
+    --card-bg: #fcfcfd;
+    /* Fundo suave para cards */
+    --soft-pink-bg: #fff0f5;
+    /* Fundo rosa bem suave */
+    --gradient-hero: linear-gradient(to bottom, var(--primary-pink), var(--primary-pink-hover));
+    --gradient-footer: linear-gradient(to top, var(--text-dark-gray), #444);
+    /* Gradiente escuro no footer */
 }
 
 /* ----- RESET BÁSICO E ESTILOS GLOBAIS ----- */
@@ -32,14 +48,15 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    color: var(--cor-texto);
-    background-color: var(--cor-fundo);
+    font-family: var(--font-main);
+    color: var(--text-dark-gray);
+    background-color: var(--background-light-gray);
     line-height: 1.6;
     overflow-x: hidden;
     /* Evita scroll horizontal */
     scroll-behavior: smooth;
-    /* Habilita scroll suave por padrão no navegador */
+    /* Scroll suave nativo */
+    max-width: 100vw;
 }
 
 .container {
@@ -54,10 +71,9 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-main);
     margin-bottom: 15px;
-    color: var(--cor-primaria);
-    /* Títulos com cor primária */
+    color: var(--primary-pink);
 }
 
 h1 {
@@ -83,50 +99,81 @@ p {
 }
 
 a {
-    color: var(--cor-primaria);
+    color: var(--primary-pink);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color var(--transition-fast);
 }
 
 a:hover,
 a:focus {
-    /* Adicionado :focus para acessibilidade */
-    color: var(--cor-link-hover);
-    text-decoration: none;
-    /* Remove underline padrão, hover já define */
+    color: var(--link-hover-color);
+    outline: 2px solid var(--primary-pink);
+    /* Feedback visual no foco */
+    outline-offset: 2px;
 }
 
 img {
     max-width: 100%;
     height: auto;
     display: block;
-    /* Evita espaços extras abaixo da imagem */
 }
+
+/* Imagens responsivas */
 
 section {
     padding: 60px 0;
 }
 
-/* Títulos secundários mais suaves */
+/* Espaçamento padrão entre seções */
+
 .subtitulo-destaques,
 .subtitulo-cardapio,
 .subtitulo-depoimentos {
     text-align: center;
-    color: var(--cor-texto-subtitulo);
+    color: var(--text-light-gray);
     font-size: 1.2rem;
     margin-bottom: 40px;
 }
 
+::selection {
+    /* Estilo de seleção de texto personalizado */
+    background: var(--primary-pink);
+    color: var(--white);
+}
+
+:focus {
+    /* Estilo de foco global */
+    outline: 2px solid var(--primary-pink);
+    outline-offset: 2px;
+    transition: outline var(--transition-fast);
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Remove outline se não for via teclado */
+
+input:invalid,
+textarea:invalid {
+    /* Estilo para campos de formulário inválidos */
+    border-color: #e74c3c;
+    background: #fff5f5;
+}
+
 /* ----- NAVBAR ----- */
 .navbar {
-    background-color: var(--cor-secundaria);
+    background-color: var(--secondary-white);
     padding: 15px 0;
     position: sticky;
+    /* Fixa no topo */
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-    /* Transição suave ao scroll */
+    /* Acima de outros conteúdos */
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: background-color var(--transition-fast);
+    will-change: transform, background;
+    /* Otimização de performance */
 }
 
 .navbar .container {
@@ -136,15 +183,16 @@ section {
 }
 
 .navbar .logo {
-    font-family: 'Satisfy', cursive;
+    font-family: var(--font-accent);
     font-size: 2.2rem;
-    color: var(--cor-primaria);
+    color: var(--primary-pink);
 }
 
 .navbar .logo span {
-    color: var(--cor-texto);
-    /* Cor para a segunda parte do logo */
+    color: var(--text-dark-gray);
 }
+
+/* Cor do "Encanto" */
 
 .navbar nav ul {
     list-style: none;
@@ -158,18 +206,19 @@ section {
 .navbar nav ul li a {
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--cor-texto);
+    color: var(--text-dark-gray);
     padding: 5px 0;
     position: relative;
+    transition: color var(--transition-fast);
 }
 
 .navbar nav ul li a:hover,
 .navbar nav ul li a:focus {
-    color: var(--cor-primaria);
+    color: var(--primary-pink);
 }
 
-/* Efeito de underline sutil no hover/focus */
 .navbar nav ul li a::after {
+    /* Efeito underline sutil */
     content: '';
     position: absolute;
     width: 0;
@@ -177,42 +226,37 @@ section {
     display: block;
     margin-top: 5px;
     right: 0;
-    background: var(--cor-primaria);
-    transition: width 0.3s ease;
+    background: var(--primary-pink);
+    transition: width var(--transition-fast);
 }
 
 .navbar nav ul li a:hover::after,
 .navbar nav ul li a:focus::after {
     width: 100%;
     left: 0;
-    background: var(--cor-primaria);
 }
 
-/* Estilo para link ativo na navbar */
 .navbar nav ul li a.active {
-    color: var(--cor-primaria);
+    /* Link ativo */
+    color: var(--primary-pink);
     font-weight: 700;
-    /* Mais destaque para a página ativa */
 }
 
 .navbar nav ul li a.active::after {
     width: 100%;
-    background: var(--cor-primaria);
 }
 
+/* Botão Menu Mobile (oculto em desktop) */
 .btn-menu-mobile {
     display: none;
-    /* Escondido por padrão em telas maiores */
     background: none;
     border: none;
     font-size: 2rem;
     cursor: pointer;
-    color: var(--cor-primaria);
+    color: var(--primary-pink);
     padding: 5px;
-    /* Adicionado padding para facilitar o clique */
     border-radius: 4px;
-    /* Leve arredondamento */
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-fast);
 }
 
 .btn-menu-mobile:hover,
@@ -220,322 +264,424 @@ section {
     background-color: rgba(233, 30, 99, 0.1);
     /* Leve fundo rosa no hover */
     outline: none;
-    /* Remove outline padrão, o hover já dá feedback */
 }
 
-
-/* ----- HERO SECTION (BANNER PRINCIPAL) ----- */
+/* ----- HERO SECTION (DIFERENTE E BONITO) ----- */
 .hero {
-    background-color: var(--cor-primaria);
-    /* Fundo da cor primária */
-    color: var(--cor-texto-branco);
-    /* Texto branco para contraste */
-    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 85vh;
+    /* Altura maior para impacto visual */
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 70vh;
-    /* Altura mínima para preencher a tela */
+    background-size: cover;
+    background-position: center;
+    padding: 150px 0 100px 0;
+    /* Mais espaço para a navbar */
+    color: var(--white);
     text-align: left;
-    /* Alinhamento à esquerda para o texto */
+}
+
+.hero::before {
+    /* Overlay gradiente suave e animado */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(233, 30, 99, 0.6), rgba(194, 24, 91, 0.7));
+    opacity: 0.75;
+    animation: subtleGradientShift 10s ease-in-out infinite;
+    will-change: background;
 }
 
 .hero .container {
+    position: relative;
+    z-index: 1;
+    /* Garante que o conteúdo fique acima do overlay */
+}
+
+.hero .flex {
+    /* Configurações flex para o layout de texto/imagem */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    /* Permite que os itens quebrem linha em telas menores */
+    gap: 40px;
+    /* Mais espaço entre os elementos */
 }
 
 .hero-text {
     flex: 1;
     min-width: 300px;
-    /* Largura mínima antes de começar a quebrar */
-    padding-right: 30px;
-    /* Espaço entre texto e imagem */
 }
 
+/* Flexível */
+
 .hero-text h2 {
-    color: var(--cor-texto-branco);
     font-size: 1.5rem;
     font-weight: 400;
     margin-bottom: 10px;
+    color: var(--white);
+    animation: fadeInLeft 1s ease-out 0.5s both;
 }
 
 .hero-text h1 {
-    color: var(--cor-texto-branco);
-    font-size: 4rem;
-    /* Tamanho maior para o título principal */
+    font-size: 4.5rem;
+    /* Título bem grande */
     margin-bottom: 15px;
     line-height: 1.2;
-    /* Ajuste para o título principal */
+    color: var(--white);
+    font-family: var(--font-accent);
+    animation: bounceInDown 1.2s ease-out 0.8s both;
+    position: relative;
+    overflow: hidden;
+    /* Para o efeito shimmer */
 }
 
 .hero-text h1 span {
-    color: var(--cor-secundaria);
-    /* Cor diferente para a segunda parte do título */
-    font-family: 'Satisfy', cursive;
-    /* Usa a fonte Satisfy para a palavra 'Encanto' */
+    /* Acentua "Encanto" */
+    color: var(--secondary-white);
+    font-family: var(--font-accent);
+}
+
+.hero-text h1::after {
+    /* Efeito shimmer no título principal */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: shimmer 3s ease-in-out 2s infinite;
+    z-index: 1;
 }
 
 .hero-text p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+    font-size: 1.3rem;
+    /* Texto maior e mais legível */
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+    animation: fadeInLeft 1s ease-out 1.2s both;
 }
 
 .hero-cta {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     margin-top: 30px;
     flex-wrap: wrap;
     /* Quebra linha em telas menores */
+    animation: fadeInUp 1s ease-out 1.5s both;
 }
 
 .hero-image {
     flex: 1;
     min-width: 300px;
     text-align: center;
+    animation: fadeInRight 1s ease-out 1s both;
 }
 
 .hero-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    /* Bordas arredondadas para a imagem */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    /* Transição suave */
+    border-radius: 20px;
+    /* Mais arredondamento */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+    animation: float 7s ease-in-out infinite;
+    will-change: transform;
+    /* Otimização */
 }
 
 .hero-image img:hover {
-    transform: scale(1.03);
-    /* Leve zoom no hover */
+    transform: scale(1.05) rotate(3deg);
+    filter: brightness(1.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* ----- ESTILOS GERAIS PARA BOTÕES (CTAS) ----- */
+/* ----- BOTÕES GLOBAIS (COM RIPPLE EFFECT E ANIMAÇÕES) ----- */
 .btn {
     display: inline-block;
-    padding: 12px 25px;
+    padding: 14px 30px;
+    /* Padding maior */
     margin: 10px 5px;
-    /* Mantido para compatibilidade com layout flex/grid */
     border: none;
-    border-radius: 25px;
-    /* Bordas arredondadas para um visual amigável */
-    font-size: 1.1rem;
+    border-radius: 30px;
+    /* Cantos bem arredondados */
+    font-size: 1.15rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all var(--transition-slow);
     cursor: pointer;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    position: relative;
+    overflow: hidden;
+    /* Para o efeito ripple */
+    z-index: 1;
+    /* Para garantir que o ripple fique atrás */
+    will-change: transform, box-shadow;
+}
+
+.btn::before {
+    /* Efeito ripple */
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width var(--transition-slow), height var(--transition-slow);
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow-md);
 }
 
 .btn-primary {
-    background-color: var(--cor-primaria);
-    /* Sua cor primária */
-    color: var(--cor-texto-branco);
-    /* Texto branco */
+    background: var(--gradient-hero);
+    /* Gradiente sutil e atraente */
+    color: var(--white);
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background-color: var(--cor-primaria-hover);
-    /* Uma variação mais escura da cor primária */
-    transform: translateY(-2px);
-    /* Efeito de leve elevação */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(to bottom, var(--primary-pink-hover), var(--primary-pink));
+    /* Gradiente invertido no hover */
+    box-shadow: 0 8px 20px var(--shadow-lg);
 }
 
 .btn-secondary {
-    background-color: var(--cor-secundaria);
-    /* Sua cor secundária */
-    color: var(--cor-primaria);
-    /* Texto na cor primária */
-    border: 2px solid var(--cor-primaria);
+    background-color: transparent;
+    color: var(--primary-pink);
+    border: 2px solid var(--primary-pink);
 }
 
 .btn-secondary:hover,
 .btn-secondary:focus {
-    background-color: var(--cor-primaria);
-    /* Muda para cor primária no hover */
-    color: var(--cor-texto-branco);
-    /* Texto branco no hover */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: var(--primary-pink);
+    color: var(--white);
+    border-color: var(--primary-pink-hover);
 }
 
-/* Ajustes para o CTA dentro da seção de produtos */
-.cta-produtos {
-    margin-top: 3rem;
-    text-align: center;
-    padding-bottom: 3rem;
-    /* Espaço antes da próxima seção */
-}
-
-/* ----- SEÇÃO DE DESTAQUES ----- */
+/* ----- SEÇÃO DE DESTAQUES (COM CARDS 3D INSPIRADOS E ÍCONES) ----- */
 .secao-destaques {
-    background-color: var(--cor-secundaria);
-    /* Fundo branco para destacar */
+    background-color: var(--card-bg);
+    /* Fundo suave para destaque */
+    padding: 80px 0;
 }
 
 .secao-destaques h2 {
-    color: var(--cor-primaria);
+    color: var(--primary-pink);
 }
 
 .produtos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     /* Colunas responsivas */
-    gap: 30px;
+    gap: 40px;
+    /* Espaço maior entre cards */
     margin-top: 20px;
 }
 
 .produto-item {
-    background-color: var(--cor-secundaria);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    background-color: var(--secondary-white);
+    border-radius: 15px;
+    /* Mais arredondado */
+    box-shadow: 0 5px 15px var(--shadow-color);
     text-align: center;
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--cor-borda-cardapio);
-    /* Borda leve */
+    padding: 30px 20px;
+    /* Mais padding interno */
+    transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+    border: 1px solid var(--border-cardapio);
+    transform-style: preserve-3d;
+    /* Necessário para o efeito 3D */
+    will-change: transform, box-shadow;
+    /* Otimização */
 }
 
 .produto-item:hover,
 .produto-item:focus {
-    /* Adicionado focus */
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px) perspective(1000px) rotateY(5deg);
+    /* Efeito 3D sutil no hover */
+    box-shadow: 0 15px 30px var(--shadow-md);
 }
 
 .produto-item img {
-    border-radius: 8px;
-    margin-bottom: 15px;
+    border-radius: 12px;
+    /* Mais arredondado */
+    margin-bottom: 20px;
     width: 100%;
-    height: 200px;
-    /* Altura fixa para as imagens dos produtos */
+    height: 220px;
+    /* Altura fixa maior */
     object-fit: cover;
-    /* Para garantir que a imagem cubra a área */
+    border: 3px solid var(--primary-pink);
+    /* Borda na cor primária */
+    transition: transform var(--transition-fast);
+}
+
+.produto-item:hover img {
+    transform: scale(1.05) rotateY(2deg);
+    /* Pequeno giro no hover */
 }
 
 .produto-item h3 {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     margin-bottom: 10px;
-    color: var(--cor-primaria);
+    color: var(--primary-pink);
+    display: flex;
+    /* Para alinhar ícone */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .produto-item p {
     font-size: 0.95rem;
-    color: var(--cor-texto-subtitulo);
+    color: var(--text-light-gray);
     margin-bottom: 15px;
 }
 
 .produto-item .preco {
     font-weight: 700;
-    color: var(--cor-primaria);
+    color: var(--primary-pink);
     margin-top: 10px;
 }
 
-/* Botão "Pedir Agora" dentro do item de produto */
 .produto-item .btn-secondary {
     margin-top: 15px;
     padding: 10px 20px;
-    /* Menor padding para o botão interno */
     font-size: 1rem;
 }
 
-/* ----- SEÇÃO DE DEPOIMENTOS ----- */
+/* ----- SEÇÃO DE DEPOIMENTOS (SLIDER AUTOMÁTICO ANIMADO) ----- */
 .secao-depoimentos {
-    background-color: var(--cor-primaria);
-    /* Fundo com a cor primária */
-    color: var(--cor-texto-branco);
-    /* Texto branco */
+    background-color: var(--soft-pink-bg);
+    /* Fundo rosa suave */
+    color: var(--text-dark-gray);
     text-align: center;
+    padding: 90px 0;
+    /* Mais padding */
 }
 
 .secao-depoimentos h2 {
-    color: var(--cor-texto-branco);
-    /* Título branco */
+    color: var(--primary-pink);
 }
 
 .depoimentos-slider {
     display: flex;
     overflow-x: auto;
-    /* Permite scroll horizontal se houver muitos depoimentos */
     scroll-snap-type: x mandatory;
-    /* Para um scroll mais suave */
+    /* Para scroll suave em mobile */
     padding-bottom: 20px;
-    /* Espaço para o scrollbar */
     -webkit-overflow-scrolling: touch;
-    /* Melhora scroll em dispositivos touch */
+    /* Melhor scroll em touch */
+    position: relative;
+    /* Necessário para controles de carousel */
 }
 
 .depoimento-item {
     flex: 0 0 100%;
-    /* Cada item ocupa 100% da largura do container de scroll */
+    /* Ocupa a largura total do container */
     scroll-snap-align: start;
-    /* Alinha o item ao início do container */
+    /* Alinha ao início do container */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px;
-    max-width: 700px;
-    /* Largura máxima de um depoimento */
+    padding: 40px 30px;
+    /* Mais padding interno */
+    max-width: 750px;
+    /* Largura máxima do depoimento */
     margin: 0 auto;
     /* Centraliza o depoimento */
+    background-color: var(--secondary-white);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--shadow-md);
+    transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+    border: 1px solid var(--border-cardapio);
+    will-change: transform, box-shadow;
+}
+
+.depoimento-item:hover {
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 15px 30px var(--shadow-lg);
+}
+
+.depoimento-avatar {
+    width: 120px;
+    /* Avatar maior */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 25px;
+    border: 5px solid var(--primary-pink);
+    /* Borda da cor primária */
+    overflow: hidden;
+    /* Garante que a imagem seja redonda */
 }
 
 .depoimento-avatar img {
-    width: 100px;
-    height: 100px;
     border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 4px solid var(--cor-secundaria);
-    /* Borda branca no avatar */
 }
 
+/* Reforça borda arredondada */
+
 .depoimento-content p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    /* Texto maior */
     font-style: italic;
     margin-bottom: 15px;
+    color: var(--text-light-gray);
 }
 
 .depoimento-content h4 {
-    color: var(--cor-texto-branco);
-    font-size: 1.3rem;
+    color: var(--primary-pink);
+    font-size: 1.4rem;
+    /* Nome maior */
     margin-bottom: 5px;
 }
 
 .depoimento-content .depoimento-local {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    color: var(--text-light-gray);
 }
 
-/* ----- BOTÃO VOLTAR AO TOPO ----- */
+/* ----- BOTÃO VOLTAR AO TOPO (COM ANIMAÇÃO PULSE SUTIL) ----- */
 .btn-voltar-ao-topo {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: var(--cor-primaria);
-    color: var(--cor-texto-branco);
+    bottom: 40px;
+    /* Mais baixo */
+    right: 40px;
+    /* Mais à direita */
+    background-color: var(--primary-pink);
+    color: var(--white);
     font-size: 2rem;
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    /* Maior */
+    height: 55px;
+    /* Maior */
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 20px var(--shadow-lg);
     opacity: 0;
-    visibility: hidden;
     /* Começa invisível */
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    /* Adicionado transform */
+    visibility: hidden;
+    transition: opacity var(--transition-slow), visibility var(--transition-slow), transform var(--transition-slow);
     z-index: 1001;
-    /* Garante que fique acima de outros elementos */
+    /* Bem visível */
 }
 
 .btn-voltar-ao-topo.show {
@@ -545,348 +691,18 @@ section {
 
 .btn-voltar-ao-topo:hover,
 .btn-voltar-ao-topo:focus {
-    background-color: var(--cor-primaria-hover);
-    transform: translateY(-5px);
-    /* Efeito de elevação */
+    background-color: var(--primary-pink-hover);
+    transform: translateY(-5px) scale(1.1);
+    /* Efeito combinado */
+    box-shadow: 0 10px 25px var(--shadow-lg);
 }
 
-
-/* ----- PÁGINAS ESPECÍFICAS (BANNERS) ----- */
-.page-banner {
-    background-size: cover;
-    background-position: center;
-    color: var(--cor-texto-branco);
-    text-align: center;
-    padding: 100px 0;
-    position: relative;
-    display: flex;
-    /* Usando flex para centralizar conteúdo */
-    align-items: center;
-    justify-content: center;
-}
-
-.page-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--cor-overlay-banner);
-    /* Usando variável para o overlay */
-}
-
-.page-banner .container {
-    position: relative;
-    /* Para que o conteúdo fique acima do overlay */
-    z-index: 1;
-}
-
-.page-banner h1 {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
-    color: var(--cor-texto-branco);
-    line-height: 1.2;
-}
-
-.page-banner p {
-    font-size: 1.3rem;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* Estilos específicos para cada banner */
-.produtos-banner {
-    background-image: url('../img/banner-produtos.jpg');
-    /* Ajustado caminho para consistentemente usar ../ */
-}
-
-.sobre-banner {
-    background-image: url('../img/banner-sobre.jpg');
-    /* Ajustado caminho */
-}
-
-.contato-banner {
-    background-image: url('../img/banner-contato.jpg');
-    /* Ajustado caminho */
-}
-
-/* ----- SEÇÃO SOBRE NÓS ----- */
-.secao-sobre {
-    background-color: var(--cor-secundaria);
-}
-
-.secao-sobre .container {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    /* Permite quebrar linha em telas menores */
-}
-
-.sobre-content {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.sobre-imagem {
-    flex: 1;
-    min-width: 300px;
-}
-
-.sobre-imagem img {
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.sobre-imagem img:hover {
-    transform: scale(1.03);
-}
-
-.sobre-texto {
-    flex: 1.5;
-    /* Mais espaço para o texto */
-    min-width: 300px;
-}
-
-.sobre-texto h2 {
-    color: var(--cor-primaria);
-    text-align: left;
-    /* Título alinhado à esquerda */
-    margin-bottom: 20px;
-}
-
-.sobre-texto p {
-    font-size: 1.1rem;
-    color: var(--cor-texto);
-}
-
-.link-interna {
-    font-weight: 600;
-    color: var(--cor-primaria);
-}
-
-.link-interna:hover,
-.link-interna:focus {
-    text-decoration: underline;
-    color: var(--cor-link-hover);
-}
-
-/* ----- SEÇÃO COMO PEDIR ----- */
-.secao-como-pedir {
-    background-color: var(--cor-fundo);
-    /* Fundo neutro */
-}
-
-.secao-como-pedir h2 {
-    color: var(--cor-primaria);
-}
-
-.passos-pedido {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.passo {
-    flex: 1;
-    max-width: 300px;
-    /* Largura máxima para cada passo */
-    min-width: 250px;
-    /* Largura mínima */
-    background-color: var(--cor-secundaria);
-    /* Fundo branco para destaque */
-    padding: 25px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--cor-borda-cardapio);
-}
-
-.passo:hover,
-.passo:focus {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.icone-passo {
-    margin-bottom: 20px;
-}
-
-.icone-passo img {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto;
-}
-
-.passo h3 {
-    font-size: 1.5rem;
-    color: var(--cor-primaria);
-    margin-bottom: 10px;
-}
-
-.passo p {
-    font-size: 1rem;
-    color: var(--cor-texto-subtitulo);
-}
-
-/* ----- SEÇÃO DE CONTATO ----- */
-.secao-contato {
-    background-color: var(--cor-secundaria);
-}
-
-.secao-contato .container {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.contato-info {
-    flex: 1;
-    min-width: 300px;
-    background-color: var(--cor-primaria);
-    color: var(--cor-texto-branco);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.contato-info h2 {
-    color: var(--cor-texto-branco);
-    text-align: left;
-    margin-bottom: 15px;
-}
-
-.contato-info p {
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-}
-
-.contato-info ul {
-    list-style: none;
-    margin-bottom: 20px;
-}
-
-.contato-info ul li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.contato-info ul li img {
-    width: 24px;
-    height: 24px;
-    margin-right: 15px;
-    filter: invert(1);
-    /* Inverte as cores dos ícones para branco */
-}
-
-.contato-info ul li a {
-    color: var(--cor-texto-branco);
-    /* Link do telefone em branco */
-    font-weight: 600;
-}
-
-.contato-info ul li a:hover,
-.contato-info ul li a:focus {
-    color: var(--cor-link-hover);
-    /* Hover para link do telefone */
-}
-
-.contato-social h4 {
-    color: var(--cor-texto-branco);
-    margin-bottom: 15px;
-}
-
-.contato-social a {
-    margin-right: 15px;
-    display: inline-block;
-}
-
-.contato-social img {
-    width: 30px;
-    height: 30px;
-    filter: invert(1);
-    /* Ícones sociais brancos */
-    transition: transform 0.3s ease;
-}
-
-.contato-social img:hover,
-.contato-social img:focus {
-    transform: scale(1.1);
-}
-
-.contato-formulario {
-    flex: 1.5;
-    min-width: 300px;
-    background-color: var(--cor-secundaria);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.contato-formulario h3 {
-    color: var(--cor-primaria);
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--cor-texto);
-}
-
-.form-group input[type="text"],
-.form-group input[type="tel"],
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    /* Adicionado box-shadow */
-}
-
-.form-group input[type="text"]:focus,
-.form-group input[type="tel"]:focus,
-.form-group textarea:focus {
-    border-color: var(--cor-primaria);
-    outline: none;
-    /* Remove o outline padrão */
-    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
-    /* Sombra de foco suave */
-}
-
-.form-group textarea {
-    resize: vertical;
-    /* Permite redimensionar apenas na vertical */
-    min-height: 120px;
-}
-
-.btn-enviar-contato {
-    width: 100%;
-    /* Botão ocupa toda a largura */
-    padding: 15px;
-    font-size: 1.2rem;
-}
-
-/* ----- RODAPÉ ----- */
+/* ----- RODAPÉ (COM GRADIENTE, MAPA E ÍCONES ANIMADOS) ----- */
 .footer {
-    background-color: var(--cor-texto);
-    color: var(--cor-texto-branco);
-    padding: 40px 0 20px 0;
+    background: var(--gradient-footer);
+    /* Gradiente escuro mais dramático */
+    color: var(--white);
+    padding: 60px 0 30px 0;
 }
 
 .footer .container {
@@ -900,7 +716,7 @@ section {
     justify-content: space-between;
     width: 100%;
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     text-align: left;
 }
 
@@ -911,15 +727,14 @@ section {
 }
 
 .footer-logo a {
-    font-family: 'Satisfy', cursive;
-    font-size: 2.5rem;
-    color: var(--cor-secundaria);
-    /* Logo do footer em branco */
+    font-family: var(--font-accent);
+    font-size: 2.8rem;
+    /* Maior */
+    color: var(--secondary-white);
 }
 
 .footer-logo a span {
-    color: var(--cor-primaria);
-    /* Segunda parte do logo com cor primária */
+    color: var(--primary-pink);
 }
 
 .footer-links {
@@ -929,10 +744,12 @@ section {
 }
 
 .footer-links h4 {
-    color: var(--cor-secundaria);
-    /* Títulos do footer em branco */
     font-size: 1.3rem;
     margin-bottom: 15px;
+    color: var(--white);
+    border-bottom: 2px solid var(--primary-pink);
+    padding-bottom: 5px;
+    display: inline-block;
 }
 
 .footer-links ul {
@@ -944,14 +761,14 @@ section {
 }
 
 .footer-links ul li a {
-    color: var(--cor-texto-branco);
+    color: var(--white);
     font-size: 1rem;
-    transition: color 0.3s ease;
+    transition: color var(--transition-fast);
 }
 
 .footer-links ul li a:hover,
 .footer-links ul li a:focus {
-    color: var(--cor-primaria);
+    color: var(--primary-pink);
     text-decoration: underline;
 }
 
@@ -962,9 +779,12 @@ section {
 }
 
 .footer-social h4 {
-    color: var(--cor-secundaria);
     font-size: 1.3rem;
     margin-bottom: 15px;
+    color: var(--white);
+    border-bottom: 2px solid var(--primary-pink);
+    padding-bottom: 5px;
+    display: inline-block;
 }
 
 .footer-social a {
@@ -973,71 +793,326 @@ section {
 }
 
 .footer-social img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    /* Ícones maiores */
+    height: 35px;
     filter: invert(1);
-    /* Ícones sociais brancos */
-    transition: transform 0.3s ease;
+    /* Deixa branco */
+    transition: transform var(--transition-fast);
 }
 
 .footer-social img:hover,
 .footer-social img:focus {
-    transform: scale(1.1);
+    transform: scale(1.15);
+    filter: brightness(1.1) hue-rotate(30deg);
+    /* Efeito sutil na cor */
+}
+
+.footer-map {
+    margin-top: 20px;
+}
+
+.footer-map iframe {
+    border-radius: 10px;
+    /* Bordas arredondadas */
+    width: 100%;
+    max-width: 220px;
+    /* Limita a largura */
+    height: 160px;
+    border: none;
+    /* Remove borda padrão do iframe */
 }
 
 .footer-bottom {
     text-align: center;
     width: 100%;
     border-top: 1px solid #444;
-    padding-top: 20px;
-    margin-top: 20px;
-    font-size: 0.9rem;
+    /* Separador sutil */
+    padding-top: 25px;
+    margin-top: 25px;
+    font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* ----- RESPONSIVIDADE ----- */
-@media (max-width: 992px) {
+/* ----- ANIMAÇÕES GLOBAIS (PARA SCROLL REVEAL, ETC.) ----- */
+@keyframes subtleGradientShift {
+
+    /* Gradiente suave */
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes float {
+
+    /* Animação de flutuar */
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulse {
+
+    /* Efeito pulse sutil */
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+@keyframes spin {
+
+    /* Rotação para o spinner */
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideInFromTop {
+
+    /* Entrada do topo */
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceInDown {
+
+    /* Entrada com pulo */
+    0% {
+        opacity: 0;
+        transform: translateY(-2000px);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(30px);
+    }
+
+    80% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+
+    /* Efeito de brilho/cintilar */
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes fadeInLeft {
+
+    /* Entrada da esquerda */
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+
+    /* Entrada da direita */
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+
+    /* Entrada de baixo */
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+
+    /* Efeito de balançar */
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes glow {
+
+    /* Efeito de brilho suave */
+    0% {
+        box-shadow: 0 0 10px var(--primary-pink);
+    }
+
+    100% {
+        box-shadow: 0 0 25px var(--primary-pink-hover);
+    }
+}
+
+@keyframes zoomIn {
+
+    /* Entrada com zoom */
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes floatHeart {
+
+    /* Animação de corações flutuantes */
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes ripple {
+
+    /* Efeito ripple */
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ----- RESPONSIVIDADE GERAL ----- */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    /* Desativa animações */
+}
+
+@media (max-width: 1200px) {
+
+    /* Telas grandes */
     h1 {
         font-size: 2.8rem;
     }
 
     .hero-text h1 {
-        font-size: 3.5rem;
+        font-size: 3.8rem;
     }
 
     h2 {
         font-size: 2.2rem;
     }
 
-    h3 {
-        font-size: 1.6rem;
+    .navbar .logo {
+        font-size: 2rem;
     }
 
-    /* Navbar */
+    .hero-text h2 {
+        font-size: 1.3rem;
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 992px) {
+
+    /* Telas médias-grandes */
     .navbar nav {
+        /* Menu mobile */
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: var(--cor-secundaria);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        background-color: var(--secondary-white);
+        box-shadow: 0 2px 5px var(--shadow-color);
         flex-direction: column;
         align-items: center;
         padding: 20px 0;
         transform: translateY(-100%);
-        /* Começa escondido */
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        transition: transform var(--transition-fast), opacity var(--transition-fast);
         opacity: 0;
         pointer-events: none;
-        /* Não interage quando escondido */
     }
 
     .navbar nav.active {
         transform: translateY(0);
-        /* Mostra o menu */
         opacity: 1;
         pointer-events: auto;
-        /* Habilita interação */
     }
 
     .navbar nav ul {
@@ -1052,40 +1127,54 @@ section {
 
     .btn-menu-mobile {
         display: block;
-        /* Mostra o botão do menu em telas menores */
     }
 
-    /* Hero Section */
-    .hero .container {
+    /* Mostra o botão do menu */
+
+    .hero {
+        padding: 120px 0 80px 0;
+        min-height: 70vh;
+    }
+
+    .hero .flex {
         flex-direction: column-reverse;
         text-align: center;
+        gap: 30px;
     }
 
-    .hero-text {
-        padding-right: 0;
-        padding-top: 30px;
-        flex-basis: 100%;
-    }
-
+    /* Inverte ordem e centraliza */
     .hero-image {
-        flex-basis: 100%;
+        margin-top: 30px;
     }
 
     .hero-cta {
         justify-content: center;
     }
 
-    /* Seção de Destaques */
+    /* Centraliza botões */
+
     .produtos-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
     }
 
-    /* Seção de Depoimentos */
+    .produto-item {
+        padding: 25px 15px;
+    }
+
+    .produto-item img {
+        height: 190px;
+    }
+
     .depoimento-item {
         flex-basis: 90%;
+        padding: 30px 20px;
     }
 
-    /* Páginas Específicas (Banners) */
+    .page-banner {
+        padding: 80px 0;
+    }
+
     .page-banner h1 {
         font-size: 2.8rem;
     }
@@ -1094,27 +1183,20 @@ section {
         font-size: 1.1rem;
     }
 
-    /* Seção Sobre */
     .secao-sobre .container,
     .sobre-content {
         flex-direction: column;
     }
 
     .sobre-texto {
-        margin-top: 20px;
+        margin-top: 30px;
     }
 
-    /* Seção Como Pedir */
     .passos-pedido {
         flex-direction: column;
         align-items: center;
     }
 
-    .passo {
-        margin-bottom: 30px;
-    }
-
-    /* Seção Contato */
     .secao-contato .container {
         flex-direction: column;
     }
@@ -1122,11 +1204,9 @@ section {
     .contato-info,
     .contato-formulario {
         width: 100%;
-        box-sizing: border-box;
         margin-bottom: 30px;
     }
 
-    /* Rodapé */
     .footer-content {
         flex-direction: column;
         align-items: center;
@@ -1138,13 +1218,11 @@ section {
     .footer-social {
         margin-bottom: 30px;
     }
-
-    .footer-social a {
-        margin: 0 10px;
-    }
 }
 
 @media (max-width: 768px) {
+
+    /* Telas médias */
     h1 {
         font-size: 2.5rem;
     }
@@ -1157,27 +1235,34 @@ section {
         font-size: 2rem;
     }
 
-    h3 {
-        font-size: 1.5rem;
+    .hero-text h2 {
+        font-size: 1.3rem;
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
+    }
+
+    .navbar .logo {
+        font-size: 2rem;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1.1rem;
     }
 
     .hero {
-        min-height: 50vh;
+        min-height: 60vh;
     }
 
-    /* Reduz a altura do hero em telas menores */
-
-    .navbar nav ul li {
+    /* Reduz altura do hero */
+    .hero-cta .btn {
+        width: 90%;
         margin: 5px 0;
     }
 
-    .hero-cta .btn {
-        width: 80%;
-        /* Botões ocupam mais espaço em telas menores */
-        margin-left: 0;
-        margin-right: 0;
-    }
-
+    /* Botões um abaixo do outro */
     .produtos-grid {
         grid-template-columns: 1fr;
     }
@@ -1189,277 +1274,126 @@ section {
 
     .depoimento-item {
         flex-basis: 100%;
+        padding: 30px 15px;
     }
 
-    /* Agora ocupa 100% */
+    /* Ocupa 100% */
+    .depoimento-content p {
+        font-size: 1.15rem;
+    }
+
+    .depoimento-content h4 {
+        font-size: 1.3rem;
+    }
+
+    .page-banner {
+        padding: 80px 0;
+    }
 
     .page-banner h1 {
         font-size: 2.5rem;
     }
 
-    .page-banner p {
+    .btn-voltar-ao-topo {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+        bottom: 30px;
+        right: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Telas pequenas */
+    .loading-logo {
+        font-size: 2.5rem;
+    }
+
+    .loading-spinner {
+        width: 50px;
+        height: 50px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-text h2 {
+        font-size: 1.2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .navbar .logo {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .btn-menu-mobile {
+        font-size: 1.8rem;
+    }
+
+    .hero-cta {
+        gap: 10px;
+    }
+
+    .produto-item {
+        padding: 20px 15px;
+    }
+
+    .produto-item img {
+        height: 170px;
+    }
+
+    .depoimento-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .depoimento-content p {
         font-size: 1.1rem;
+    }
+
+    .depoimento-content h4 {
+        font-size: 1.2rem;
+    }
+
+    .page-banner h1 {
+        font-size: 2.2rem;
+    }
+
+    .page-banner p {
+        font-size: 1rem;
     }
 
     .btn-voltar-ao-topo {
         width: 45px;
         height: 45px;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         bottom: 20px;
         right: 20px;
     }
 }
 
-/* ----- ESTILOS ADICIONAIS PARA PAINEL ADMIN ----- */
-
-/* Estilos gerais para seções de autenticação/dashboard */
-.auth-section,
-#admin-dashboard {
-    padding: 60px 0;
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: var(--cor-fundo);
-}
-
-/* Estilos para os formulários de login e produto */
-#loginForm,
-#productForm {
-    background-color: var(--cor-secundaria);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-    margin-top: 20px;
-}
-
-/* Ajustes para labels e inputs no formulário de produto */
-#productForm label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--cor-texto);
-    text-align: left;
-}
-
-#productForm input[type="text"],
-#productForm input[type="number"],
-#productForm textarea,
-#productForm input[type="email"],
-#productForm input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#productForm input[type="text"]:focus,
-#productForm input[type="number"]:focus,
-#productForm textarea:focus,
-#productForm input[type="email"]:focus,
-#productForm input[type="password"]:focus {
-    border-color: var(--cor-primaria);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
-}
-
-/* Ajustes para input de arquivo */
-#productForm input[type="file"] {
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: var(--cor-secundaria);
-}
-
-#productForm input[type="file"]:focus {
-    border-color: var(--cor-primaria);
-    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
-}
-
-/* Preview da imagem */
-#productForm #currentProductImagePreview {
-    max-width: 100px;
-    display: block;
-    margin-top: 10px;
-    border: 1px solid var(--cor-borda-cardapio);
-    border-radius: 5px;
-}
-
-/* Layout para ações de editar/excluir */
-.admin-actions {
-    display: flex;
-    gap: 10px;
-    margin-left: auto;
-    /* Empurra os botões para a direita */
-}
-
-/* Estilo para cada item de produto na lista do admin */
-.product-admin-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    border-bottom: 1px solid var(--cor-borda-cardapio);
-    margin-bottom: 10px;
-    background-color: var(--cor-secundaria);
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.2s ease;
-}
-
-.product-admin-item:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.product-admin-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-
-.product-admin-item img {
-    margin-right: 15px;
-    border-radius: 4px;
-}
-
-.product-admin-item span {
-    margin-right: 15px;
-    flex-grow: 1;
-    /* Permite que o texto ocupe o espaço */
-    text-align: left;
-    font-size: 0.95rem;
-}
-
-.product-admin-item span:nth-of-type(2) {
-    /* Estilo para o preço */
-    flex-grow: 0;
-    /* Não cresce muito */
-    min-width: 80px;
-    /* Garante espaço mínimo */
-    text-align: right;
-    font-weight: 600;
-    color: var(--cor-primaria);
-}
-
-/* Estilo para botões menores de ação no admin */
-.btn-sm {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-}
-
-/* Botão de exclusão */
-.btn-danger {
-    background-color: #dc3545;
-    color: white;
-    border-color: #dc3545;
-}
-
-.btn-danger:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
-}
-
-/* Botão de Sair */
-#logout-btn {
-    margin-bottom: 30px;
-    background-color: var(--cor-primaria-hover);
-    border-color: var(--cor-primaria-hover);
-}
-
-#logout-btn:hover {
-    background-color: var(--cor-primaria);
-}
-
-/* Mensagens de erro e sucesso */
-#login-error,
-#form-message {
-    font-weight: 600;
-}
-
-#form-message.success {
-    color: green;
-}
-
-#form-message.error {
-    color: red;
-}
-
-#form-message.info {
-    color: blue;
-}
-
-/* ---------- MELHORIAS PRO-FINAIS PARA COLAR AO FINAL DO SEU style.css ---------- */
-
-/* 1. Foco visível e bonito para acessibilidade */
-:focus {
-    outline: 2px solid var(--cor-primaria);
-    outline-offset: 2px;
-    transition: outline 0.2s;
-}
-
-:focus:not(:focus-visible) {
-    outline: none;
-}
-
-/* 2. Seleção de texto personalizada (branding) */
-::selection {
-    background: var(--cor-primaria);
-    color: var(--cor-texto-branco);
-}
-
-/* 3. Garantia adicional de responsividade: */
-html,
-body {
-    max-width: 100vw;
-    overflow-x: hidden;
-}
-
-/* 4. Micro-polimento botão voltar ao topo para acessibilidade */
-.btn-voltar-ao-topo:focus {
-    outline: 2px solid var(--cor-primaria-hover);
-}
-
-/* 5. Feedback visual para campos de formulário inválidos (HTML5) */
-input:invalid,
-textarea:invalid {
-    border-color: #e74c3c;
-    background: #fff5f5;
-}
-
-/* 6. Responsividade dos cards/admin/dashboard em telas pequenas */
-@media (max-width: 600px) {
-    .product-admin-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .product-admin-item img {
-        margin-bottom: 10px;
-        margin-right: 0;
-    }
-
-    .admin-actions {
-        margin-left: 0;
-        margin-top: 10px;
-        width: 100%;
-    }
-}
-
-/* 7. Print CSS: esconde elementos supérfluos na impressão */
+/* ----- PRINT CSS ----- */
 @media print {
 
+    /* Oculta elementos que não devem aparecer na impressão */
     .navbar,
     .btn-voltar-ao-topo,
     .footer,
     .loading-screen,
-    .floating-elements,
-    .parallax-bg {
+    #floatingHearts,
+    .hero::before,
+    .btn-menu-mobile,
+    .footer-map {
         display: none !important;
     }
 
@@ -1467,6 +1401,46 @@ textarea:invalid {
         background: white !important;
         color: black !important;
     }
-}
 
-/* ---------- FIM DAS MELHORIAS PRO-FINAIS PARA COLAR ---------- */
+    section {
+        padding: 10px 0;
+    }
+
+    .hero {
+        padding-top: 0;
+        min-height: auto;
+    }
+
+    /* Remove altura mínima do hero */
+    .hero .container {
+        text-align: center;
+    }
+
+    .hero-text h1,
+    .hero-text h2,
+    .hero-text p {
+        color: black !important;
+    }
+
+    /* Cores de texto para impressão */
+    .produtos-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* 2 colunas na impressão */
+    .produto-item {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+
+    .produto-item img {
+        border: none;
+    }
+
+    /* Remove bordas de imagens de produto */
+    .hero-image img {
+        box-shadow: none;
+    }
+
+    /* Remove sombra da imagem do hero */
+}
