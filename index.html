@@ -16,19 +16,19 @@
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/mobile-first.css">
 
-    <!-- Fontes do Google Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap"
         rel="stylesheet">
 
-    <!-- Link canônico opcional para SEO -->
+    <!-- Link canônico para SEO -->
     <link rel="canonical" href="https://www.sua-doceria.com.br/">
 </head>
 
 <body>
     <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
+    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
         <div class="loading-content">
             <div class="loading-logo">Doce<span style="color: #fff;">Encanto</span></div>
             <div class="loading-spinner"></div>
@@ -37,13 +37,13 @@
     </div>
 
     <!-- Floating Hearts -->
-    <div class="floating-hearts" id="floatingHearts"></div>
+    <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
 
     <!-- Barra de Navegação -->
     <header class="navbar">
         <div class="container">
             <a href="index.html#home" class="logo">Doce<span>Encanto</span></a>
-            <nav>
+            <nav aria-label="Menu principal">
                 <ul>
                     <li><a href="index.html#home" class="active">Home</a></li>
                     <li><a href="produtos/">Cardápio</a></li>
@@ -55,7 +55,7 @@
         </div>
     </header>
 
-    <!-- Hero section com classes responsivas -->
+    <!-- Hero section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="flex flex-col lg:flex-row items-center gap-lg">
@@ -75,7 +75,7 @@
         </div>
     </section>
 
-    <!-- Seção de Produtos em Destaque -->
+    <!-- Seção de Destaques -->
     <section id="destaques" class="secao-destaques">
         <div class="container">
             <h2 class="scroll-reveal">Nossos Doces em Destaque</h2>
@@ -98,7 +98,7 @@
                     <h3>Torta de Limão</h3>
                     <p>Equilíbrio perfeito entre o doce e o azedinho, com base crocante.</p>
                 </div>
-                <!-- Você pode adicionar mais produtos aqui -->
+                <!-- Adicione mais produtos conforme desejar -->
             </div>
             <div class="cta-produtos scroll-reveal">
                 <a href="produtos/" class="btn btn-primary">Explorar Todo o Cardápio</a>
@@ -132,6 +132,7 @@
                         <p class="depoimento-local">São Joaquim, SC</p>
                     </div>
                 </div>
+                <!-- Mais depoimentos se desejar -->
             </div>
         </div>
     </section>

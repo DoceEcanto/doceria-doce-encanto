@@ -22,13 +22,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Satisfy&display=swap"
         rel="stylesheet">
 
-    <!-- Link canônico opcional para SEO -->
+    <!-- Metatags OpenGraph, Twitter, Favicon e Schema (melhor SEO possível, opcional) -->
+    <!-- Substitua os links e imagens pelas reais do seu projeto -->
+    <!--
+    <meta property="og:title" content="Sobre Nós | Doce Encanto">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Conheça a história da Doce Encanto em Lages - SC, confeitaria artesanal feita com paixão.">
+    <meta property="og:url" content="https://www.sua-doceria.com.br/sobre.html">
+    <meta property="og:image" content="https://www.sua-doceria.com.br/img/og-image.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sobre Nós | Doce Encanto">
+    <meta name="twitter:description" content="Conheça a história da Doce Encanto em Lages - SC, confeitaria artesanal feita com paixão.">
+    <meta name="twitter:image" content="https://www.sua-doceria.com.br/img/og-image.jpg">
+    -->
+    <!-- Favicon e manifest idem -->
+
     <link rel="canonical" href="https://www.sua-doceria.com.br/sobre.html">
 </head>
 
 <body>
     <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
+    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
         <div class="loading-content">
             <div class="loading-logo">Doce<span style="color: #fff;">Encanto</span></div>
             <div class="loading-spinner"></div>
@@ -37,16 +52,16 @@
     </div>
 
     <!-- Floating Elements -->
-    <div class="floating-elements" id="floatingElements"></div>
+    <div class="floating-elements" id="floatingElements" aria-hidden="true"></div>
 
     <!-- Parallax Background -->
-    <div class="parallax-bg"></div>
+    <div class="parallax-bg" aria-hidden="true"></div>
 
     <!-- Barra de Navegação -->
     <header class="navbar">
         <div class="container">
             <a href="index.html#home" class="logo">Doce<span>Encanto</span></a>
-            <nav>
+            <nav aria-label="Menu principal">
                 <ul>
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="produtos/">Cardápio</a></li>
@@ -58,71 +73,75 @@
         </div>
     </header>
 
-    <!-- Banner da Página Sobre -->
-    <section class="page-banner sobre-banner">
-        <div class="container">
-            <h1>Sobre Nós</h1>
-            <p>A Doce Encanto: paixão que vira arte.</p>
-        </div>
-    </section>
+    <main>
+        <!-- Banner da Página Sobre -->
+        <section class="page-banner sobre-banner">
+            <div class="container">
+                <h1>Sobre Nós</h1>
+                <p>A Doce Encanto: paixão que vira arte.</p>
+            </div>
+        </section>
 
-    <!-- Seção "Sobre a Doceria" com classes responsivas -->
-    <section id="sobre" class="secao-sobre">
-        <div class="container">
-            <div class="sobre-content flex flex-col md:flex-row items-center gap-lg scroll-reveal">
-                <div class="sobre-imagem flex-1">
-                    <img src="img/sobre-nos-doceria.jpg"
-                        alt="Confeiteira da Doce Encanto decorando um bolo com atenção aos detalhes" class="w-full">
-                </div>
-                <div class="sobre-texto flex-1">
-                    <h2 class="text-2xl mb-md">Nossa História</h2>
-                    <p>A Doce Encanto nasceu do sonho de transformar momentos cotidianos em celebrações saborosas.
-                        Fundada em Lages - SC, nossa confeitaria se dedica a criar doces, bolos e tortas artesanais com
-                        ingredientes selecionados e muito carinho.</p>
-                    <p>Acreditamos que cada mordida deve ser uma experiência memorável, por isso colocamos paixão em
-                        cada detalhe, desde a escolha dos ingredientes até a decoração final.</p>
-                    <p>Seja para um aniversário, um encontro especial ou simplesmente para adoçar o seu dia, a Doce
-                        Encanto está aqui para tornar seus momentos ainda mais doces.</p>
+        <!-- Seção "Sobre a Doceria" -->
+        <section id="sobre" class="secao-sobre">
+            <div class="container">
+                <div class="sobre-content flex flex-col md:flex-row items-center gap-lg scroll-reveal">
+                    <div class="sobre-imagem flex-1">
+                        <img src="img/sobre-nos-doceria.jpg"
+                            alt="Confeiteira da Doce Encanto decorando um bolo com atenção aos detalhes" class="w-full">
+                    </div>
+                    <div class="sobre-texto flex-1">
+                        <h2 class="text-2xl mb-md">Nossa História</h2>
+                        <p>A Doce Encanto nasceu do sonho de transformar momentos cotidianos em celebrações saborosas.
+                            Fundada em Lages - SC, nossa confeitaria se dedica a criar doces, bolos e tortas artesanais
+                            com
+                            ingredientes selecionados e muito carinho.</p>
+                        <p>Acreditamos que cada mordida deve ser uma experiência memorável, por isso colocamos paixão em
+                            cada detalhe, desde a escolha dos ingredientes até a decoração final.</p>
+                        <p>Seja para um aniversário, um encontro especial ou simplesmente para adoçar o seu dia, a Doce
+                            Encanto está aqui para tornar seus momentos ainda mais doces.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Seção "Como Pedir" com grid responsivo -->
-    <section id="como-pedir" class="secao-como-pedir">
-        <div class="container">
-            <h2 class="scroll-reveal text-2xl mb-lg">Como Pedir Conosco</h2>
-            <div class="passos-pedido grid grid-auto-fit gap-md scroll-reveal"
-                data-grid-responsive='{"xs":1,"sm":1,"md":3,"lg":3,"xl":3}'>
-                <div class="passo">
-                    <div class="icone-passo">
-                        <img src="img/icon-cardapio.png" alt="Ícone de um cardápio aberto">
+        <!-- Seção "Como Pedir" -->
+        <section id="como-pedir" class="secao-como-pedir">
+            <div class="container">
+                <h2 class="scroll-reveal text-2xl mb-lg">Como Pedir Conosco</h2>
+                <div class="passos-pedido grid grid-auto-fit gap-md scroll-reveal"
+                    data-grid-responsive='{"xs":1,"sm":1,"md":3,"lg":3,"xl":3}'>
+                    <div class="passo">
+                        <div class="icone-passo">
+                            <img src="img/icon-cardapio.png" alt="Ícone de um cardápio aberto">
+                        </div>
+                        <h3>1. Explore Nosso Cardápio</h3>
+                        <p>Visite nossa página de <a href="produtos/" class="link-interna">Cardápio</a> e escolha seus
+                            produtos favoritos.</p>
                     </div>
-                    <h3>1. Explore Nosso Cardápio</h3>
-                    <p>Visite nossa página de <a href="produtos/" class="link-interna">Cardápio</a> e escolha seus
-                        produtos favoritos.</p>
-                </div>
-                <div class="passo">
-                    <div class="icone-passo">
-                        <img src="img/icon-whatsapp.png" alt="Ícone do WhatsApp">
+                    <div class="passo">
+                        <div class="icone-passo">
+                            <img src="img/icon-whatsapp.png" alt="Ícone do WhatsApp">
+                        </div>
+                        <h3>2. Entre em Contato</h3>
+                        <p>Envie uma mensagem pelo nosso <a href="contato.html#contato"
+                                class="link-interna">WhatsApp</a>
+                            informando sua escolha, endereço e data desejada.</p>
                     </div>
-                    <h3>2. Entre em Contato</h3>
-                    <p>Envie uma mensagem pelo nosso <a href="contato.html#contato" class="link-interna">WhatsApp</a>
-                        informando sua escolha, endereço e data desejada.</p>
-                </div>
-                <div class="passo">
-                    <div class="icone-passo">
-                        <img src="img/icon-entrega.png" alt="Ícone de um pacote sendo entregue">
+                    <div class="passo">
+                        <div class="icone-passo">
+                            <img src="img/icon-entrega.png" alt="Ícone de um pacote sendo entregue">
+                        </div>
+                        <h3>3. Receba sua Doce Encanto</h3>
+                        <p>Aguarde a confirmação do seu pedido e aproveite nossas delícias!</p>
                     </div>
-                    <h3>3. Receba sua Doce Encanto</h3>
-                    <p>Aguarde a confirmação do seu pedido e aproveite nossas delícias!</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Botão Voltar ao Topo -->
-    <a href="index.html#home" id="btnVoltarAoTop" class="btn-voltar-ao-topo" aria-label="Voltar ao topo">
+    <a href="#topo" id="btnVoltarAoTop" class="btn-voltar-ao-topo" aria-label="Voltar ao topo">
         &#9650;
     </a>
 
@@ -144,10 +163,10 @@
                 </div>
                 <div class="footer-social">
                     <h4>Siga-nos</h4>
-                    <a href="#" aria-label="Instagram da Doce Encanto"><img src="img/icon-instagram.png"
-                            alt="Instagram"></a>
-                    <a href="#" aria-label="WhatsApp da Doce Encanto"><img src="img/icon-whatsapp.png"
-                            alt="WhatsApp"></a>
+                    <a href="https://instagram.com/doceencanto" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram da Doce Encanto"><img src="img/icon-instagram.png" alt="Instagram"></a>
+                    <a href="https://wa.me/5549998406192" target="_blank" rel="noopener noreferrer"
+                        aria-label="WhatsApp da Doce Encanto"><img src="img/icon-whatsapp.png" alt="WhatsApp"></a>
                 </div>
             </div>
             <div class="footer-bottom">

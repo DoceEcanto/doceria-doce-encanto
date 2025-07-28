@@ -1,24 +1,24 @@
 // ===== SOBRE.JS - FUNCIONALIDADES ESPECÍFICAS DA PÁGINA SOBRE =====
 
-// Loading Screen
+// Loading Screen com proteção
 window.addEventListener('load', function () {
     setTimeout(() => {
         const loadingScreen = document.getElementById('loadingScreen');
-        loadingScreen.classList.add('fade-out');
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-        }, 500);
+        if (loadingScreen) {
+            loadingScreen.classList.add('fade-out');
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }
     }, 2000);
 });
 
 // Scroll Reveal Animation
 function revealElements() {
     const elements = document.querySelectorAll('.scroll-reveal');
-
     elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = elementTop < window.innerHeight - 100;
-
         if (elementVisible) {
             element.classList.add('revealed');
         }
@@ -28,8 +28,8 @@ function revealElements() {
 // Create Floating Elements
 function createFloatingElements() {
     const elementsContainer = document.getElementById('floatingElements');
+    if (!elementsContainer) return;
     const symbols = ['🍰', '🧁', '🍪', '🍩', '🎂', '🍓', '💖', '✨'];
-
     for (let i = 0; i < 12; i++) {
         const element = document.createElement('div');
         element.className = 'floating-element';
@@ -41,19 +41,17 @@ function createFloatingElements() {
     }
 }
 
-// Smooth Scroll
+// Smooth Scroll (só ativa se for âncora real)
 function setupSmoothScroll() {
-    const links = document.querySelectorAll('a[href^="#"]');
-
-    links.forEach(link => {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            const hash = this.getAttribute('href');
+            if (hash.length > 1) {
+                const target = document.querySelector(hash);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
         });
     });
@@ -65,11 +63,9 @@ function setupParallax() {
         const scrolled = window.pageYOffset;
         const parallaxBg = document.querySelector('.parallax-bg');
         const sobreImagem = document.querySelector('.sobre-imagem img');
-
         if (parallaxBg) {
             parallaxBg.style.transform = `translateY(${scrolled * 0.3}px)`;
         }
-
         if (sobreImagem) {
             sobreImagem.style.transform = `translateY(${scrolled * 0.2}px)`;
         }
@@ -79,7 +75,7 @@ function setupParallax() {
 // Navbar Scroll Effect
 function setupNavbarScroll() {
     const navbar = document.querySelector('.navbar');
-
+    if (!navbar) return;
     window.addEventListener('scroll', function () {
         if (window.scrollY > 100) {
             navbar.style.background = 'rgba(255,255,255,0.95)';
@@ -95,38 +91,27 @@ function setupNavbarScroll() {
 
 // Interactive Steps
 function setupInteractiveSteps() {
-    const steps = document.querySelectorAll('.passo');
-
-    steps.forEach((step, index) => {
+    document.querySelectorAll('.passo').forEach(step => {
         step.addEventListener('mouseenter', function () {
-            // Add special effects for each step
             const icon = this.querySelector('.icone-passo img');
-            if (icon) {
-                icon.style.filter = 'hue-rotate(180deg) brightness(1.2)';
-            }
+            if (icon) icon.style.filter = 'hue-rotate(180deg) brightness(1.2)';
         });
-
         step.addEventListener('mouseleave', function () {
             const icon = this.querySelector('.icone-passo img');
-            if (icon) {
-                icon.style.filter = '';
-            }
+            if (icon) icon.style.filter = '';
         });
     });
 }
 
 // Timeline Animation for Story
 function animateStoryTimeline() {
-    const paragraphs = document.querySelectorAll('.sobre-texto p');
-
-    paragraphs.forEach((p, index) => {
+    document.querySelectorAll('.sobre-texto p').forEach(p => {
         p.addEventListener('mouseenter', function () {
             this.style.background = 'linear-gradient(45deg, rgba(255,105,180,0.1), rgba(255,192,203,0.1))';
             this.style.padding = '15px';
             this.style.borderRadius = '8px';
             this.style.borderLeft = '4px solid #ff69b4';
         });
-
         p.addEventListener('mouseleave', function () {
             this.style.background = '';
             this.style.padding = '';
@@ -136,13 +121,12 @@ function animateStoryTimeline() {
     });
 }
 
-// Text Reveal Effect
+// Text Reveal Effect animado para o título
 function setupTextReveal() {
     const title = document.querySelector('.sobre-texto h2');
     if (title) {
         const text = title.textContent;
         title.innerHTML = '';
-
         for (let i = 0; i < text.length; i++) {
             const span = document.createElement('span');
             span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
@@ -153,10 +137,9 @@ function setupTextReveal() {
     }
 }
 
-// Easter Egg: Confetti Effect
+// ---- Easter Egg: Confetti Effect ----
 function createConfetti() {
     const colors = ['#ff69b4', '#ffc0cb', '#ff1493', '#ffb6c1'];
-
     for (let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
         confetti.style.position = 'fixed';
@@ -172,18 +155,16 @@ function createConfetti() {
 
         document.body.appendChild(confetti);
 
-        setTimeout(() => {
-            confetti.remove();
-        }, 5000);
+        setTimeout(() => confetti.remove(), 5000);
     }
 }
 
-// Easter Egg: Click on logo multiple times
+// Logo Easter Egg: só roda se .logo existe
 function setupEasterEgg() {
-    let logoClickCount = 0;
     const logo = document.querySelector('.logo');
-    
-    logo.addEventListener('click', function (e) {
+    if (!logo) return;
+    let logoClickCount = 0;
+    logo.addEventListener('click', function () {
         logoClickCount++;
         if (logoClickCount >= 5) {
             createConfetti();
@@ -192,9 +173,11 @@ function setupEasterEgg() {
     });
 }
 
-// Add confetti animation CSS dynamically
+// Adiciona confetti animation CSS só uma vez
 function addConfettiStyles() {
+    if (document.getElementById('confetti-style')) return;
     const style = document.createElement('style');
+    style.id = 'confetti-style';
     style.textContent = `
         @keyframes confettiFall {
             to {
@@ -206,7 +189,7 @@ function addConfettiStyles() {
     document.head.appendChild(style);
 }
 
-// Initialize everything
+// ---------------- INIT ALL ----------------
 document.addEventListener('DOMContentLoaded', function () {
     addConfettiStyles();
     createFloatingElements();
@@ -219,9 +202,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setupEasterEgg();
     revealElements();
 
-    // Scroll listener
     window.addEventListener('scroll', revealElements);
-
-    // Initial reveal
     setTimeout(revealElements, 100);
 });

@@ -400,3 +400,121 @@ nav ul li a:hover {
         animation-delay: 0.2s;
     }
 }
+
+/* ...[código original acima igual ao seu]... */
+
+/* ------------ SEÇÃO EXTRA DE RESPONSIVIDADE ------------ */
+@media (max-width: 1100px) {
+
+    .secao-destaques .container,
+    .secao-depoimentos .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .hero .flex,
+    .secao-destaques .produtos-grid {
+        flex-direction: column !important;
+        gap: 2rem;
+    }
+
+    .hero-image,
+    .hero-text {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-image img {
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+@media (max-width: 700px) {
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .secao-destaques h2 {
+        font-size: 1.3rem;
+    }
+
+    .produto-item h3 {
+        font-size: 1rem;
+    }
+
+    .produto-item p {
+        font-size: 0.97rem;
+    }
+
+    .produtos-grid {
+        gap: 1.4rem;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .hero,
+    .secao-destaques,
+    .secao-depoimentos {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .hero-text h1 {
+        font-size: 1.2rem;
+    }
+
+    .cta-produtos a.btn {
+        font-size: 0.99rem;
+        padding: 0.7rem 1rem;
+    }
+
+    .footer-content,
+    .footer-links,
+    .footer-social {
+        flex-direction: column !important;
+        align-items: flex-start;
+    }
+
+    .footer-logo a {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero .container {
+        flex-direction: column-reverse !important;
+        /* Garante que o texto fique em cima da imagem */
+        text-align: center;
+    }
+
+    .hero-image,
+    .hero-image img {
+        max-width: 320px;
+        max-height: 270px;
+        margin: 0 auto 20px auto;
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .hero-text {
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+}
+
+/* ----------- FIM RESPONSIVIDADE ------------ */

@@ -474,3 +474,56 @@ nav ul li a:hover {
         display: none;
     }
 }
+
+@media (max-width: 700px) {
+    .page-banner h1 {
+        font-size: 1.3rem;
+    }
+
+    .sobre-texto h2 {
+        font-size: 1.1rem;
+    }
+
+    .sobre-texto p,
+    .passo h3,
+    .passo p {
+        font-size: 0.97rem;
+    }
+
+    .sobre-imagem img {
+        max-width: 95vw;
+        max-height: 260px;
+        object-fit: cover;
+    }
+
+    .secao-sobre,
+    .secao-como-pedir {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .passos-pedido,
+    .sobre-content {
+        gap: 1.5rem;
+    }
+
+    .icone-passo img {
+        max-width: 2.3rem;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-banner {
+        padding: 32px 6px 16px 6px;
+    }
+
+    .sobre-imagem img {
+        max-width: 98vw;
+        height: 170px;
+    }
+
+    .passo {
+        padding: 0.8em 0.6em;
+    }
+}

@@ -135,12 +135,25 @@ nav ul li a:hover {
 /* Categories Navigation */
 .categorias-nav {
     animation: fadeInUp 0.8s ease-out 0.4s both;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    justify-content: flex-start;
 }
 
 .btn-categoria {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    flex: 1 1 110px;
+    min-width: 110px;
+    max-width: 200px;
+    padding: 0.5rem 1.1rem;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 .btn-categoria::before {
@@ -167,9 +180,45 @@ nav ul li a:hover {
     animation: pulse 0.5s ease-in-out;
 }
 
-/* Products Grid */
+@media (max-width: 640px) {
+    .categorias-nav {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .btn-categoria {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+}
+
+/* Products Grid - RESPONSIVO */
 .produtos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: 100%;
+    margin-top: 2rem;
     animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+@media (min-width: 640px) {
+    .produtos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .produtos-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .produtos-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .produto-item {
@@ -177,6 +226,15 @@ nav ul li a:hover {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    box-sizing: border-box;
 }
 
 .produto-item:nth-child(1) {
@@ -202,6 +260,11 @@ nav ul li a:hover {
 }
 
 .produto-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: 10px;
     transition: all 0.3s ease;
 }
 
@@ -211,11 +274,17 @@ nav ul li a:hover {
 
 .produto-item h3 {
     transition: all 0.3s ease;
+    font-size: 1.13rem;
 }
 
 .produto-item:hover h3 {
     color: #ff69b4;
     animation: shake 0.5s ease-in-out;
+}
+
+.produto-item p,
+.produto-item .preco {
+    font-size: 1.03rem;
 }
 
 .preco {
@@ -229,35 +298,56 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 
-/* Buttons */
-.btn {
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+@media (max-width: 500px) {
+    .produto-item {
+        padding: 1rem;
+    }
+
+    .produto-item h3 {
+        font-size: 1rem;
+    }
 }
 
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+/* Buttons - responsivos e sempre seguros */
+.btn,
+.btn-touch {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    word-break: break-word;
+    box-sizing: border-box;
+    font-size: 1rem;
+    border-radius: 5px;
+    /* existe background/padrao no global, então não defino aqui */
+    padding: 0.6rem 1.2rem;
 }
 
-.btn:hover::before {
-    width: 300px;
-    height: 300px;
+@media (min-width: 640px) {
+
+    .btn,
+    .btn-touch {
+        width: auto;
+        display: inline-block;
+        min-width: 140px;
+        max-width: 100%;
+        font-size: 1.08rem;
+        margin-top: 1rem;
+    }
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    animation: pulse 0.3s ease-in-out;
+@media (max-width: 639px) {
+
+    .btn,
+    .btn-touch {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 0.7rem;
+        font-size: 1rem;
+    }
 }
 
 /* Particles */
@@ -333,3 +423,5 @@ nav ul li a:hover {
 .footer-social a:hover {
     transform: scale(1.2) rotate(10deg);
 }
+
+/* ----- FIM ----- */

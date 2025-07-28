@@ -1394,4 +1394,79 @@ section {
     color: blue;
 }
 
-/* Para feedback de upload */
+/* ---------- MELHORIAS PRO-FINAIS PARA COLAR AO FINAL DO SEU style.css ---------- */
+
+/* 1. Foco visível e bonito para acessibilidade */
+:focus {
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: 2px;
+    transition: outline 0.2s;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* 2. Seleção de texto personalizada (branding) */
+::selection {
+    background: var(--cor-primaria);
+    color: var(--cor-texto-branco);
+}
+
+/* 3. Garantia adicional de responsividade: */
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* 4. Micro-polimento botão voltar ao topo para acessibilidade */
+.btn-voltar-ao-topo:focus {
+    outline: 2px solid var(--cor-primaria-hover);
+}
+
+/* 5. Feedback visual para campos de formulário inválidos (HTML5) */
+input:invalid,
+textarea:invalid {
+    border-color: #e74c3c;
+    background: #fff5f5;
+}
+
+/* 6. Responsividade dos cards/admin/dashboard em telas pequenas */
+@media (max-width: 600px) {
+    .product-admin-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-admin-item img {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    .admin-actions {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+
+/* 7. Print CSS: esconde elementos supérfluos na impressão */
+@media print {
+
+    .navbar,
+    .btn-voltar-ao-topo,
+    .footer,
+    .loading-screen,
+    .floating-elements,
+    .parallax-bg {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* ---------- FIM DAS MELHORIAS PRO-FINAIS PARA COLAR ---------- */

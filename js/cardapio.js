@@ -27,6 +27,7 @@ function revelarElementos() {
 // Criar partículas flutuantes
 function criarParticulas() {
     const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
 
     for (let i = 0; i < 15; i++) {
         const particle = document.createElement('div');
@@ -44,13 +45,17 @@ function smoothScroll() {
 
     links.forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            // Evitar conflito com links vazios ou 'href="#"'
+            const href = this.getAttribute('href');
+            if (href && href.length > 1) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
         });
     });
@@ -93,14 +98,17 @@ function setupCategoryFilter() {
             this.classList.add('active');
 
             // Filter products
-            productItems.forEach((item, index) => {
+            let visibleIndex = 0;
+            productItems.forEach((item) => {
                 const itemCategory = item.getAttribute('data-categoria');
                 
                 if (selectedCategory === 'todos' || itemCategory === selectedCategory) {
                     item.style.display = 'block';
-                    item.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1}s both`;
+                    item.style.animation = `fadeInUp 0.5s ease-out ${visibleIndex * 0.1}s both`;
+                    visibleIndex++;
                 } else {
                     item.style.display = 'none';
+                    item.style.animation = '';
                 }
             });
         });
@@ -152,6 +160,7 @@ function setupButtonRipples() {
             ripple.style.transform = 'scale(0)';
             ripple.style.animation = 'buttonRipple 0.6s linear';
             ripple.style.pointerEvents = 'none';
+            ripple.className = 'ripple-effect';
 
             this.appendChild(ripple);
 
@@ -169,9 +178,13 @@ function setupQuickView() {
     productItems.forEach(item => {
         // Add quick view on double click
         item.addEventListener('dblclick', function() {
-            const productName = this.querySelector('h3').textContent;
-            const productPrice = this.querySelector('.preco').textContent;
-            const productDesc = this.querySelector('p:not(.preco)').textContent;
+            const productName = this.querySelector('h3') ? this.querySelector('h3').textContent : '';
+            const productPrice = this.querySelector('.preco') ? this.querySelector('.preco').textContent : '';
+            let productDesc = '';
+            // Pega primeiro <p> de descrição que não seja preco
+            this.querySelectorAll('p').forEach(p => {
+                if (!p.classList.contains('preco') && !productDesc) productDesc = p.textContent;
+            });
             
             showQuickViewModal(productName, productPrice, productDesc);
         });
@@ -203,16 +216,13 @@ function showQuickViewModal(name, price, description) {
         modalStyle.textContent = `
             #quickViewModal {
                 position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
                 z-index: 10000;
                 display: none;
             }
             .modal-overlay {
-                width: 100%;
-                height: 100%;
+                width: 100%; height: 100%;
                 background: rgba(0,0,0,0.8);
                 display: flex;
                 justify-content: center;
@@ -220,28 +230,30 @@ function showQuickViewModal(name, price, description) {
             }
             .modal-content {
                 background: white;
-                padding: 30px;
+                padding: 30px 20px;
                 border-radius: 10px;
                 max-width: 500px;
-                width: 90%;
+                width: 95vw;
                 text-align: center;
                 position: relative;
                 animation: modalSlideIn 0.3s ease-out;
+                box-sizing: border-box;
+                margin: 20px;
             }
             .close-modal {
                 position: absolute;
-                top: 10px;
-                right: 15px;
+                top: 10px; right: 15px;
                 font-size: 24px;
                 cursor: pointer;
                 color: #999;
             }
-            .close-modal:hover {
-                color: #ff69b4;
-            }
+            .close-modal:hover { color: #ff69b4; }
             @keyframes modalSlideIn {
                 from { transform: scale(0.8); opacity: 0; }
                 to { transform: scale(1); opacity: 1; }
+            }
+            @media (max-width: 500px) {
+                .modal-content { padding: 16px 4px; min-width: 0; }
             }
         `;
         document.head.appendChild(modalStyle);
@@ -275,6 +287,11 @@ function addButtonRippleCSS() {
                 transform: scale(4);
                 opacity: 0;
             }
+        }
+        .ripple-effect {
+            position: absolute !important;
+            z-index: 10;
+            pointer-events: none;
         }
     `;
     document.head.appendChild(style);

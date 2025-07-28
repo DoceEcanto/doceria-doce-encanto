@@ -4,21 +4,21 @@
 window.addEventListener('load', function () {
     setTimeout(() => {
         const loadingScreen = document.getElementById('loadingScreen');
-        loadingScreen.classList.add('fade-out');
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-        }, 500);
+        if(loadingScreen){
+            loadingScreen.classList.add('fade-out');
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }
     }, 2000);
 });
 
 // Scroll Reveal Animation
 function revealElements() {
     const elements = document.querySelectorAll('.scroll-reveal');
-
     elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = elementTop < window.innerHeight - 100;
-
         if (elementVisible) {
             element.classList.add('revealed');
         }
@@ -28,7 +28,7 @@ function revealElements() {
 // Create Floating Hearts
 function createFloatingHearts() {
     const heartsContainer = document.getElementById('floatingHearts');
-
+    if(!heartsContainer) return;
     for (let i = 0; i < 10; i++) {
         const heart = document.createElement('div');
         heart.className = 'heart';
@@ -43,16 +43,18 @@ function createFloatingHearts() {
 // Smooth Scroll
 function setupSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
-
     links.forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            const href = this.getAttribute('href');
+            if (href && href.length > 1) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
         });
     });
@@ -63,7 +65,6 @@ function setupParallax() {
     window.addEventListener('scroll', function () {
         const scrolled = window.pageYOffset;
         const heroImage = document.querySelector('.hero-image img');
-
         if (heroImage) {
             heroImage.style.transform = `translateY(${scrolled * 0.5}px)`;
         }
@@ -73,7 +74,6 @@ function setupParallax() {
 // Button Ripple Effect
 function setupButtonRipple() {
     const buttons = document.querySelectorAll('.btn');
-
     buttons.forEach(button => {
         button.addEventListener('click', function (e) {
             const rect = this.getBoundingClientRect();
@@ -99,7 +99,7 @@ function setupButtonRipple() {
 // Navbar Scroll Effect
 function setupNavbarScroll() {
     const navbar = document.querySelector('.navbar');
-
+    if(!navbar) return;
     window.addEventListener('scroll', function () {
         if (window.scrollY > 100) {
             navbar.style.background = 'rgba(255,255,255,0.95)';
@@ -116,7 +116,6 @@ function setupNavbarScroll() {
 // Product Card 3D Effect
 function setup3DCards() {
     const cards = document.querySelectorAll('.produto-item');
-
     cards.forEach(card => {
         card.addEventListener('mousemove', function (e) {
             const rect = this.getBoundingClientRect();
@@ -152,10 +151,10 @@ function enhanceHeroAnimation() {
             sparkle.style.animation = 'sparkle 2s ease-out forwards';
             sparkle.style.pointerEvents = 'none';
             sparkle.style.zIndex = '1';
-            
+
             heroTitle.style.position = 'relative';
             heroTitle.appendChild(sparkle);
-            
+
             setTimeout(() => {
                 sparkle.remove();
             }, 2000);
@@ -165,7 +164,10 @@ function enhanceHeroAnimation() {
 
 // Add sparkle animation CSS
 function addSparkleAnimation() {
+    // Evita CSS duplicado no <head> se recarregar em SPA
+    if(document.getElementById('sparkle-css')) return;
     const style = document.createElement('style');
+    style.id = 'sparkle-css';
     style.textContent = `
         @keyframes sparkle {
             0% {

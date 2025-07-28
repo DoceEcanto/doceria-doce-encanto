@@ -4,6 +4,7 @@
 window.addEventListener('load', function () {
     setTimeout(() => {
         const loadingScreen = document.getElementById('loadingScreen');
+        if (!loadingScreen) return;
         loadingScreen.classList.add('fade-out');
         setTimeout(() => {
             loadingScreen.style.display = 'none';
@@ -14,11 +15,9 @@ window.addEventListener('load', function () {
 // Scroll Reveal Animation
 function revealElements() {
     const elements = document.querySelectorAll('.scroll-reveal');
-
     elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = elementTop < window.innerHeight - 100;
-
         if (elementVisible) {
             element.classList.add('revealed');
         }
@@ -28,6 +27,7 @@ function revealElements() {
 // Create Floating Elements
 function createFloatingElements() {
     const elementsContainer = document.getElementById('floatingElements');
+    if (!elementsContainer) return;
     const symbols = ['📞', '💌', '📱', '✉️', '📧', '💬', '📲', '💖'];
 
     for (let i = 0; i < 10; i++) {
@@ -44,6 +44,7 @@ function createFloatingElements() {
 // Enhanced Form Handling
 function setupFormEnhancements() {
     const form = document.getElementById('formContato');
+    if (!form) return;
     const inputs = form.querySelectorAll('input, textarea');
     const typingIndicator = document.getElementById('typingIndicator');
     let typingTimer;
@@ -56,19 +57,17 @@ function setupFormEnhancements() {
             this.parentNode.style.borderRadius = '8px';
             this.parentNode.style.padding = '10px';
         });
-
         input.addEventListener('blur', function () {
             this.parentNode.style.transform = '';
             this.parentNode.style.background = '';
             this.parentNode.style.borderRadius = '';
             this.parentNode.style.padding = '';
         });
-
         // Typing indicator
         input.addEventListener('input', function () {
+            if (!typingIndicator) return;
             clearTimeout(typingTimer);
             typingIndicator.classList.add('show');
-
             typingTimer = setTimeout(() => {
                 typingIndicator.classList.remove('show');
             }, 1000);
@@ -81,7 +80,7 @@ function setupFormEnhancements() {
 
         const nome = document.getElementById('nome').value;
         const telefone = document.getElementById('telefone').value;
-        const produto = document.getElementById('produto').value;
+        const produto = document.getElementById('produto').value || '';
         const mensagem = document.getElementById('mensagem').value;
 
         // Create WhatsApp message
@@ -107,6 +106,7 @@ function setupFormEnhancements() {
 // Success Animation
 function showSuccessAnimation() {
     const form = document.getElementById('formContato');
+    if (!form) return;
     const successDiv = document.createElement('div');
     successDiv.className = 'form-success';
     successDiv.innerHTML = `
@@ -125,6 +125,7 @@ function showSuccessAnimation() {
 // Phone Number Formatting
 function setupPhoneFormatting() {
     const phoneInput = document.getElementById('telefone');
+    if (!phoneInput) return;
 
     phoneInput.addEventListener('input', function (e) {
         let value = e.target.value.replace(/\D/g, '');
@@ -132,7 +133,6 @@ function setupPhoneFormatting() {
         if (value.length >= 2) {
             value = value.replace(/^(\d{2})(\d{0,5})(\d{0,4}).*/, '(\$1) \$2-\$3');
         }
-
         e.target.value = value;
     });
 }
@@ -140,7 +140,6 @@ function setupPhoneFormatting() {
 // Interactive Contact Items
 function setupContactInteractions() {
     const contactItems = document.querySelectorAll('.contato-info ul li');
-
     contactItems.forEach(item => {
         item.addEventListener('mouseenter', function () {
             // Add ripple effect
@@ -169,16 +168,18 @@ function setupContactInteractions() {
 // Smooth Scroll
 function setupSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
-
     links.forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            const href = this.getAttribute('href');
+            if (href && href.length > 1) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
         });
     });
@@ -187,7 +188,7 @@ function setupSmoothScroll() {
 // Navbar Scroll Effect
 function setupNavbarScroll() {
     const navbar = document.querySelector('.navbar');
-
+    if (!navbar) return;
     window.addEventListener('scroll', function () {
         if (window.scrollY > 100) {
             navbar.style.background = 'rgba(255,255,255,0.95)';
@@ -205,6 +206,7 @@ function setupNavbarScroll() {
 function setupFormValidation() {
     const form = document.getElementById('formContato');
     const submitBtn = document.querySelector('.btn-enviar-contato');
+    if (!form || !submitBtn) return;
 
     form.addEventListener('input', function () {
         const nome = document.getElementById('nome').value;
@@ -224,11 +226,10 @@ function setupFormValidation() {
 // WhatsApp Button Animation
 function setupWhatsAppButton() {
     const whatsappBtn = document.querySelector('.whatsapp-float');
-    
+    if (!whatsappBtn) return;
     whatsappBtn.addEventListener('mouseenter', function () {
         this.innerHTML = '💬';
     });
-    
     whatsappBtn.addEventListener('mouseleave', function () {
         this.innerHTML = '📱';
     });
